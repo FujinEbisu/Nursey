@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'safe_places/index'
+  get 'safe_places/show'
+  get 'safe_places/new'
+  get 'safe_places/create'
   get 'reviews/index'
   get 'reviews/show'
   get 'reviews/new'
