@@ -10,19 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_06_02_120805) do
+ActiveRecord::Schema[7.1].define(version: 2025_06_02_144633) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "chats", force: :cascade do |t|
-    t.text "content"
-    t.bigint "mother_id", null: false
-    t.bigint "doctor_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["doctor_id"], name: "index_chats_on_doctor_id"
-    t.index ["mother_id"], name: "index_chats_on_mother_id"
-  end
 
   create_table "children", force: :cascade do |t|
     t.string "first_name"
@@ -56,6 +46,16 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_02_120805) do
     t.index ["mother_id"], name: "index_feeds_on_mother_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.bigint "mother_id", null: false
+    t.bigint "doctor_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["doctor_id"], name: "index_messages_on_doctor_id"
+    t.index ["mother_id"], name: "index_messages_on_mother_id"
+  end
+
   create_table "mothers", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -63,6 +63,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_02_120805) do
     t.integer "time_between_feed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_mothers_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -82,6 +84,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_02_120805) do
     t.text "options"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "users", force: :cascade do |t|
@@ -92,15 +96,19 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_02_120805) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "userable_type", null: false
+    t.bigint "userable_id", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["userable_type", "userable_id"], name: "index_users_on_userable"
   end
 
-  add_foreign_key "chats", "doctors"
-  add_foreign_key "chats", "mothers"
   add_foreign_key "children", "mothers"
   add_foreign_key "feeds", "children"
   add_foreign_key "feeds", "mothers"
+  add_foreign_key "messages", "doctors"
+  add_foreign_key "messages", "mothers"
+  add_foreign_key "mothers", "users"
   add_foreign_key "reviews", "mothers"
   add_foreign_key "reviews", "safe_places"
 end
