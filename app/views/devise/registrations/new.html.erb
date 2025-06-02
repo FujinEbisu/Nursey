@@ -4,7 +4,7 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= type = f.input :userable_type, as: :select, collection: ["Doctor", "Mother"] %>
+    <%= f.input :userable_type, as: :select, collection: ["Doctor", "Mother"], input_html: { id: 'user_type_select' } %>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
@@ -18,24 +18,56 @@
                 input_html: { autocomplete: "new-password" } %>
   </div>
   # Regardes tes notes !
-  <% if type.value = "Doctor" %>
-  <%= f.simple_fields_for :doctor do |p| %>
-    <%= p.input :first_name %>
-    <%= p.input :last_name %>
-    <%= p.input :speciality %>
-    <%= p.input :availibity %>
-  <% end %>
-<% end %>
-<% if type.value = "Mother" %>
-<%= f.simple_fields_for :mother do |p| %>
-    <%= p.input :first_name %>
-    <%= p.input :last_name %>
-    <%= p.input :birthday %>
-  <% end %>
-<% end %>
+  
+  <!-- Doctor specific fields -->
+  <div id="doctor-fields" style="display: none;">
+    <%= f.simple_fields_for :doctor do |p| %>
+      <%= p.input :first_name %>
+      <%= p.input :last_name %>
+      <%= p.input :speciality %>
+      <%= p.input :availibity %>
+    <% end %>
+  </div>
+
+  <!-- Mother specific fields -->
+  <div id="mother-fields" style="display: none;">
+    <%= f.simple_fields_for :mother do |p| %>
+      <%= p.input :first_name %>
+      <%= p.input :last_name %>
+      <%= p.input :birthday %>
+    <% end %>
+  </div>
+
   <div class="form-actions">
     <%= f.button :submit, "Sign up" %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+<!-- IL FAUT QUE JE METTE LE SCRIPT DANS LE CONTROLLER -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const userTypeSelect = document.getElementById('user_type_select');
+    const doctorFields = document.getElementById('doctor-fields');
+    const motherFields = document.getElementById('mother-fields');
+    
+    function toggleFields() {
+      const selectedType = userTypeSelect.value;
+      
+      if (selectedType === 'Doctor') {
+        doctorFields.style.display = 'block';
+        motherFields.style.display = 'none';
+      } else if (selectedType === 'Mother') {
+        doctorFields.style.display = 'none';
+        motherFields.style.display = 'block';
+      } else {
+        doctorFields.style.display = 'none';
+        motherFields.style.display = 'none';
+      }
+    }
+    
+    userTypeSelect.addEventListener('change', toggleFields);
+    toggleFields(); // Initialize on page load
+  });
+</script>
