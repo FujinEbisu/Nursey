@@ -1,0 +1,113 @@
+// *** Buttons white bckground dark text ***
+
+.button-standard {
+  padding: 8px 24px;
+  background-color: $final-white;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: $final-light;
+  }
+}
+.button-standard > a {
+  color: $final-darker;
+  text-decoration: none;
+  font-family: poppins, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+
+// *** Buttons dark background white text ***
+
+.button-standard-dark {
+  padding: 8px 24px;
+  background-color: $final-darker;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: $final-dark;
+  }
+}
+.button-standard-dark > a {
+  color: $final-white;
+  text-decoration: none;
+  font-family: poppins, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+// *** Big buttons white bckground dark text ***
+
+.button-big-standard {
+  padding: 8px 64px;
+  background-color: $final-white;
+  border: none;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: $final-light;
+  }
+}
+.button-big-standard > a {
+  color: $final-darker;
+  text-decoration: none;
+  font-family: poppins, sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+}
+
+
+// *** Menu Button ***
+// DO NOT TOUCH THIS BUTTON, IT IS USED IN THE NAVBAR AND IT IS RESPONSIBLE FOR THE RESPONSIVE MENU //
+
+
+.button-menu {
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.menu__icon {
+  width: 28px;
+  height: 28px;
+  padding: 3px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.menu__icon span {
+  width: 100%;
+  height: 0.15rem;
+  border-radius: 0.130rem;
+  background-color: rgb(225, 88, 90);
+  transition: transform .4s, background-color .4s, width .4s, opacity .4s;
+}
+
+.menu__icon:hover span:nth-child(1) {
+  transform: translateY(7.5px) rotate(-45deg);
+}
+
+.menu__icon:hover span:nth-child(2) {
+  width: 0;
+  opacity: 0;
+}
+
+.menu__icon:hover span:nth-child(3) {
+  transform: translateY(-7.5px) rotate(45deg);
+}
+
+/* ============================ */
