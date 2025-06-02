@@ -4,6 +4,7 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= type = f.input :userable_type, as: :select, collection: ["Doctor", "Mother"] %>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
@@ -16,7 +17,22 @@
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
   </div>
-
+  # Regardes tes notes !
+  <% if type.value = "Doctor" %>
+  <%= f.simple_fields_for :doctor do |p| %>
+    <%= p.input :first_name %>
+    <%= p.input :last_name %>
+    <%= p.input :speciality %>
+    <%= p.input :availibity %>
+  <% end %>
+<% end %>
+<% if type.value = "Mother" %>
+<%= f.simple_fields_for :mother do |p| %>
+    <%= p.input :first_name %>
+    <%= p.input :last_name %>
+    <%= p.input :birthday %>
+  <% end %>
+<% end %>
   <div class="form-actions">
     <%= f.button :submit, "Sign up" %>
   </div>

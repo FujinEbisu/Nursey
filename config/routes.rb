@@ -1,33 +1,4 @@
 Rails.application.routes.draw do
-  get 'safe_places/index'
-  get 'safe_places/show'
-  get 'safe_places/new'
-  get 'safe_places/create'
-  get 'reviews/index'
-  get 'reviews/show'
-  get 'reviews/new'
-  get 'reviews/create'
-  get 'reviews/edit'
-  get 'reviews/update'
-  get 'reviews/destroy'
-  get 'doctors/index'
-  get 'doctors/show'
-  get 'doctors/new'
-  get 'doctors/create'
-  get 'doctors/edit'
-  get 'doctors/update'
-  get 'doctors/destroy'
-  get 'children/index'
-  get 'children/new'
-  get 'children/create'
-  get 'children/destroy'
-  get 'feeds/index'
-  get 'feeds/show'
-  get 'feeds/new'
-  get 'feeds/create'
-  get 'feeds/edit'
-  get 'feeds/update'
-  get 'feeds/destroy'
 
   devise_for :users
   root to: "pages#home"
@@ -51,4 +22,5 @@ Rails.application.routes.draw do
 
   resources :messages, only: [:index, :new, :show, :create, :update]
   resources :doctors
+  resources :mothers, only: [:show, :new, :create, :edit, :update, :destroy]
 end
