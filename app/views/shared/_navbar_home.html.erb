@@ -1,12 +1,14 @@
 <div class="nav-bar-home">
-<div class="nav-bar-home-logo">
- <%= image_tag "avatar.png", class: "logo" %>
-  <!--  change email for name -->
-<h1>Welcome <%= @user.email %></h1>
-</div>
-<div class="nav-bar-home-content">
+<%= render "shared/menu_bar" %>
 
+<div class="">
+<!--  change email for name -->
+<h1 class="welcome-text">Welcome <%= @user.email %></h1>
+</div>
+
+<div class="">
 <button class="btn btn-primary">
   Sign out
 </button> 
+</div>
 </div>
