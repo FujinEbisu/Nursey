@@ -49,6 +49,6 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
-  resources :chats, only: [:index, :new, :show, :create, :update]
+  resources :messages, only: [:index, :new, :show, :create, :update]
   resources :doctors
 end
