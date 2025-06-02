@@ -10,9 +10,79 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_06_02_090545) do
+ActiveRecord::Schema[7.1].define(version: 2025_06_02_120805) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "chats", force: :cascade do |t|
+    t.text "content"
+    t.bigint "mother_id", null: false
+    t.bigint "doctor_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["doctor_id"], name: "index_chats_on_doctor_id"
+    t.index ["mother_id"], name: "index_chats_on_mother_id"
+  end
+
+  create_table "children", force: :cascade do |t|
+    t.string "first_name"
+    t.bigint "mother_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mother_id"], name: "index_children_on_mother_id"
+  end
+
+  create_table "doctors", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "speciality"
+    t.datetime "availability"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "feeds", force: :cascade do |t|
+    t.string "type"
+    t.bigint "mother_id", null: false
+    t.bigint "child_id", null: false
+    t.datetime "time_left", precision: nil
+    t.datetime "time_right", precision: nil
+    t.float "quantity_left"
+    t.float "quantity_right"
+    t.string "mood"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["child_id"], name: "index_feeds_on_child_id"
+    t.index ["mother_id"], name: "index_feeds_on_mother_id"
+  end
+
+  create_table "mothers", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.datetime "birthday"
+    t.integer "time_between_feed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "comment"
+    t.float "rating"
+    t.bigint "safe_place_id", null: false
+    t.bigint "mother_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mother_id"], name: "index_reviews_on_mother_id"
+    t.index ["safe_place_id"], name: "index_reviews_on_safe_place_id"
+  end
+
+  create_table "safe_places", force: :cascade do |t|
+    t.string "name"
+    t.string "adress"
+    t.text "options"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,4 +96,11 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_02_090545) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "chats", "doctors"
+  add_foreign_key "chats", "mothers"
+  add_foreign_key "children", "mothers"
+  add_foreign_key "feeds", "children"
+  add_foreign_key "feeds", "mothers"
+  add_foreign_key "reviews", "mothers"
+  add_foreign_key "reviews", "safe_places"
 end
