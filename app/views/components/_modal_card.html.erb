@@ -17,11 +17,12 @@
         <h1>Total:</h1> <!--timer-->
         </div>
         <%= simple_form_for [@mother, @feed] do |f| %>
-          <%= f.input :quantity_left, wrapper_html: { class: 'form-group' }%>
-          <%= f.input :quantity_right, wrapper_html: { class: 'form-group' } %>
+          <%= f.input :quantity_left, wrapper_html: { class: 'form-group' }, input_html: { class: 'form-input-modal' }%>
+          <%= f.input :quantity_right, wrapper_html: { class: 'form-group' }, input_html: { class: 'form-input-modal' } %>
           <%= f.input :comment %>
           <%= f.input :mood %>
-          <%= f.button :submit %>
+          <%= f.input :child_id, as: :select, collection: @child_id %>
+          <%= f.button :submit, input_html: { class: 'button-standard'} %>
         <% end %>
       <div class="modal-footer border-top-0">
         <button type="button" class="button-standard" data-bs-dismiss="modal"><a href="">Close</a></button>
