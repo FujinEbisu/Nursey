@@ -1,4 +1,4 @@
-.nav-bar-home {
+.nav-bar-mother {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -16,9 +16,22 @@
 
 .nav-bar {
   padding: 10px;
-  background-color: #FBC4AB;
-  height: 20vh;
   border-radius: 0 0 25px 25px;
+  background-color: $final-light;
+  height: 8vh;
+  transition: height 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  &.active {
+    height: 98vh;
+    transition: height 0.3s ease;
+    
+    .menu-bar-display {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
 }
 
 .menu-bar {
@@ -27,22 +40,49 @@
   justify-content: space-between;
   padding: 10px;
   width: 100%;
+  position: relative;
+  z-index: 2;
 }
 
 .menu-bar-display {
-  display: flex;
-  align-content: space-around;
-  justify-content: space-between;
-  padding: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 95vh;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  padding: 60px 20px 20px; // Top padding to avoid hamburger menu
 }
 
+.menu-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
 
-.welcome-text {
+.menu-item {
   font-family: 'Poppins', sans-serif;
-  text-align: center;
+  font-size: 2.5rem;
   font-weight: 900;
-  font-size: 48px;
-  color: #923838;
+  color: $final-darker;
+  padding: 1rem;
+  transition: all 0.3s ease;
+  text-align: center;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: $final-darker;
+    text-underline-offset: 10px;
+    text-decoration-thickness: 3px;
+    transform: translateY(-2px);
+  }
 }
+

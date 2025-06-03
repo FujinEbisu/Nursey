@@ -1,1 +1,56 @@
 // Specific CSS for your home-page
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(90vh - 8vh);
+  padding: 0 2.3rem;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.welcome-text {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    font-weight: 900;
+    font-size: 48px;
+    color: $final-darker;
+
+    @media (max-width: 768px) {
+        font-size: 48px;
+    }
+  }
+
+.home-text {
+    font-family: 'Poppins', sans-serif;
+    text-align: start;
+    font-weight: 400;
+    font-size: 20px;
+    color: $final-darker;
+
+    @media (max-width: 768px) {
+        font-size: 16px;
+    }
+}
+
+.phone-mockup {
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+}
+
+.phone-mockup-image {
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
+
+
+
+}

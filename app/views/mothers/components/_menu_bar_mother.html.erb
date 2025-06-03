@@ -1,0 +1,24 @@
+<div class="menu-bar" data-controller="menu-bar" data-menu-bar-target="menu">
+<button class="menu__icon button-menu" data-action="click->menu-bar#toggle">
+ <span></span>
+ <span></span>
+ <span></span>
+</button>
+<%= image_tag "https://res.cloudinary.com/dc7iookgc/image/upload/c_crop,w_450,h_450,ar_1:1/v1748785341/profile_jy5ww4.jpg", class: "avatar" %>
+  
+
+<!-- Menu content shown/hidden -->
+  <div class="menu-bar-display">
+    <nav class="menu-content">
+      <%= link_to "Dashboard", "#", class: "menu-item" %>
+      <%= link_to "Conseil", "#", class: "menu-item" %>
+      <%= link_to "Historique", "#", class: "menu-item" %>
+      <%= link_to "Blog", "#", class: "menu-item" %>
+      <% if user_signed_in? %>
+        <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "menu-item" %>
+      <% else %>
+        <%= link_to "Sign in", new_user_session_path, class: "menu-item" %>
+      <% end %>
+    </nav>
+  </div>
+</div>
