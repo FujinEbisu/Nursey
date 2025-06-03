@@ -8,6 +8,13 @@
   padding: 0 2.3rem;
 }
 
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 .welcome-text {
     font-family: 'Poppins', sans-serif;
     text-align: center;

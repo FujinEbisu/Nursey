@@ -12,10 +12,22 @@ Landing page
     <div class="home-text">
       <p>Pour que suivre bébé ne devienne jamais une charge.</p>
     </div>
+    <div class="button-container">
+      <% if user_signed_in? %>
+        <button class="button-standard-dark">
+          <%= link_to 'Dashboard', dashboard_path %>
+        </button>
+      <% else %>
+        <button class="button-standard-dark">
+          <%= link_to 'Sign up', new_user_registration_path %>
+        </button>
+      <% end %>
+    </div>
     <div class="phone-mockup">
       <%= image_tag "https://res.cloudinary.com/dc7iookgc/image/upload/v1748945303/phones_mockup_tmaufi.png", class: "phone-mockup-image" %>
     </div>
   </div>
+
 
 
  
