@@ -1,11 +1,11 @@
+<div class="form-container" data-controller="formulaire">
 <h2>Sign up</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :userable_type, as: :select, collection: ["Doctor", "Mother"], input_html: { id: 'user_type_select' } %>
-    <%= f.input :email,
+      <%= f.input :email,
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "email" }%>
@@ -16,27 +16,21 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :userable_type, as: :select, collection: ["Doctor", "Mother"], input_html: {id: 'user_type_select', data: { formulaire_target: "type", action: "change->formulaire#display" }} %>
+    <div data-formulaire-target="doctor" class="d-none">
+      <%= f.input :speciality %>
+      <%= f.input :availibity %>
+
   </div>
-  # Regardes tes notes !
-  
-  <!-- Doctor specific fields -->
-  <div id="doctor-fields" style="display: none;">
-    <%= f.simple_fields_for :doctor do |p| %>
-      <%= p.input :first_name %>
-      <%= p.input :last_name %>
-      <%= p.input :speciality %>
-      <%= p.input :availibity %>
-    <% end %>
+  <div data-formulaire-target="mother" class="d-none">
+      <%= f.input :birthday %>
+
+  </div>
   </div>
 
-  <!-- Mother specific fields -->
-  <div id="mother-fields" style="display: none;">
-    <%= f.simple_fields_for :mother do |p| %>
-      <%= p.input :first_name %>
-      <%= p.input :last_name %>
-      <%= p.input :birthday %>
-    <% end %>
-  </div>
 
   <div class="form-actions">
     <%= f.button :submit, "Sign up" %>
@@ -44,30 +38,4 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
-
-<!-- IL FAUT QUE JE METTE LE SCRIPT DANS LE CONTROLLER -->
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const userTypeSelect = document.getElementById('user_type_select');
-    const doctorFields = document.getElementById('doctor-fields');
-    const motherFields = document.getElementById('mother-fields');
-    
-    function toggleFields() {
-      const selectedType = userTypeSelect.value;
-      
-      if (selectedType === 'Doctor') {
-        doctorFields.style.display = 'block';
-        motherFields.style.display = 'none';
-      } else if (selectedType === 'Mother') {
-        doctorFields.style.display = 'none';
-        motherFields.style.display = 'block';
-      } else {
-        doctorFields.style.display = 'none';
-        motherFields.style.display = 'none';
-      }
-    }
-    
-    userTypeSelect.addEventListener('change', toggleFields);
-    toggleFields(); // Initialize on page load
-  });
-</script>
+</div>
