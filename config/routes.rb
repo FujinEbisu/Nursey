@@ -24,5 +24,5 @@ Rails.application.routes.draw do
 
   resources :messages, only: [:index, :new, :show, :create, :update]
   resources :doctors
-  resources :mothers, only: [:show, :new, :create, :edit, :update, :destroy]
+  resources :mothers, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 end
