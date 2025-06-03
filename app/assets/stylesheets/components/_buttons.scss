@@ -12,6 +12,23 @@
     background-color: $final-light;
   }
 }
+.button-home {
+  padding: 8px 24px;
+  background-color: $final-white;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 24px;
+  font-weight: 700;
+  color: $final-darker;
+  text-decoration: none;
+  font-family: poppins, sans-serif;
+
+  &:hover {
+    background-color: $final-light;
+  }
+}
 .button-standard > a {
   color: $final-darker;
   text-decoration: none;
