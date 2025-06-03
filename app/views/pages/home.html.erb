@@ -6,6 +6,7 @@ Landing page
 <div class="home-container">
 
   <div class="home-content">
+  <%= render "components/modal_card" %>
     <div>
       <h1 class="welcome-text">Bienvenue sur Nursey</h1>
     </div>
@@ -15,7 +16,7 @@ Landing page
     <div class="button-container">
       <% if user_signed_in? %>
         <button class="button-standard-dark">
-          <%= link_to 'Dashboard', dashboard_path %>
+          <%= link_to 'Dashboard', mothers_path %>
         </button>
       <% else %>
         <button class="button-standard-dark">
