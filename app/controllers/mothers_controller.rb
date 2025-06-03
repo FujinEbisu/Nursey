@@ -1,6 +1,7 @@
 class MothersController < ApplicationController
   def show
     @mother = current_user
+    raise
   end
 
   def new
