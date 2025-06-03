@@ -10,7 +10,8 @@ class FeedsController < ApplicationController
 
   def new
     @feed = Feed.new
-    @children = current_user.children
+    @mother = current_user.userable
+    @children = @mother.children
   end
 
   def create
