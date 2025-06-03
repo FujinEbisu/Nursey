@@ -5,6 +5,7 @@ class MothersController < ApplicationController
   end
 
   def show
+    raise
   end
 
   def new
@@ -32,6 +33,6 @@ class MothersController < ApplicationController
   private 
 
   def define_mother
-    @mother = current_user
+    @mother = current_user.userable
   end
 end
