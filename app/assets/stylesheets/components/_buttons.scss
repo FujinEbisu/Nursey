@@ -2,15 +2,21 @@
 
 .button-standard {
   padding: 8px 24px;
-  background-color: $final-white;
+  background-color: $final-light;
   border: none;
   border-radius: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  color: $final-darker;
 
   &:hover {
-    background-color: $final-light;
-  }
+    background-color: $final-dark;
+    color: $final-white;
+
+    & > a {
+      color: $final-white;
+    }
+    }
 }
 .button-home {
   padding: 8px 24px;
@@ -38,6 +44,7 @@
 }
 
 
+
 // *** Buttons dark background white text ***
 
 .button-standard-dark {
@@ -47,11 +54,13 @@
   border-radius: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  color: $final-white;
 
   &:hover {
     background-color: $final-dark;
   }
 }
+
 .button-standard-dark > a {
   color: $final-white;
   text-decoration: none;
@@ -69,7 +78,8 @@
   border-radius: 24px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-
+  color: $final-darker;
+  
   &:hover {
     background-color: $final-light;
   }
@@ -124,6 +134,20 @@
 }
 
 .nav-bar.active .menu__icon span:nth-child(3) {
+  transform: translateY(-7.5px) rotate(45deg);
+}
+
+// Add these rules for the nav-bar-mother
+.nav-bar-mother.active .menu__icon span:nth-child(1) {
+  transform: translateY(7.5px) rotate(-45deg);
+}
+
+.nav-bar-mother.active .menu__icon span:nth-child(2) {
+  width: 0;
+  opacity: 0;
+}
+
+.nav-bar-mother.active .menu__icon span:nth-child(3) {
   transform: translateY(-7.5px) rotate(45deg);
 }
 

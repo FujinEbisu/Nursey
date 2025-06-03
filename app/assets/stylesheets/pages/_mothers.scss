@@ -1,0 +1,72 @@
+.mothers-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: calc(90vh - 8vh);
+    padding: 0 2.3rem;
+    margin-top: 1rem;
+
+    @media (max-width: 768px) {
+    }
+  }
+
+  .nav-bar-mother {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 25px;
+    background-color: $final-mid;
+    height: 50vh;
+    box-shadow: 0 4px 4px rgba(251, 196, 171, 0.25);
+    border-radius: 0 0 25px 25px;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: space-around;
+    justify-content: space-between;
+    align-items: center;
+  
+    &.active {
+      height: 98vh;
+      transition: height 0.3s ease;
+      
+      .menu-bar-display {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+.nouvelle_tete {
+  transition: opacity 0.3s ease;
+
+  &.active {
+    display: none;
+  }
+}
+
+.user_welcome {
+  transition: opacity 0.3s ease;
+
+  &.active {
+    display: none;
+  }
+}
+
+// *** Menu Button ***
+// DO NOT TOUCH THIS BUTTON, IT IS USED IN THE NAVBAR AND IT IS RESPONSIBLE FOR THE RESPONSIVE MENU //
+
+.nav-bar-mother.active .menu__icon span:nth-child(1) {
+  transform: translateY(7.5px) rotate(-45deg);
+}
+
+.nav-bar-mother.active .menu__icon span:nth-child(2) {
+  width: 0;
+  opacity: 0;
+}
+
+.nav-bar-mother.active .menu__icon span:nth-child(3) {
+  transform: translateY(-7.5px) rotate(45deg);
+}
+
+/* ============================ */
