@@ -1,0 +1,32 @@
+<!-- Button trigger modal -->
+<button type="button" class="button-standard" data-bs-toggle="modal" data-bs-target="#ModalMother">
+ <a href=""> Launch modal</a>
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="ModalMother" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <%# <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+      </div> %>
+      <div class="modal-body">
+        ...INSERT TURBO HERE...
+        <!-- simple form with label on the left and input on the right -->
+        <div class="row">
+        <h1>Total:</h1> <!--timer-->
+        </div>
+        <%= simple_form_for [@mother, @feed] do |f| %>
+          <%= f.input :quantity_left, wrapper_html: { class: 'form-group' }%>
+          <%= f.input :quantity_right, wrapper_html: { class: 'form-group' } %>
+          <%= f.input :comment %>
+          <%= f.input :mood %>
+          <%= f.button :submit %>
+        <% end %>
+      <div class="modal-footer border-top-0">
+        <button type="button" class="button-standard" data-bs-dismiss="modal"><a href="">Close</a></button>
+        <button type="button" class="button-standard-dark"><a href="">Save changes</a></button>
+      </div>
+    </div>
+  </div>
+</div>
