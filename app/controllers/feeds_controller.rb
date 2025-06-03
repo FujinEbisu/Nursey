@@ -10,12 +10,14 @@ class FeedsController < ApplicationController
 
   def new
     @feed = Feed.new
-    @children = current_user.children
+    @mother = current_user.userable
+    @children = @mother.children
+    raise
   end
 
   def create
     @feed = Feed.new(feed_params)
-    @feed.mother = current_user
+    @feed.mother = current_user.userable
     if @feed.save
       redirect_to feed_path(@feed), notice: 'Feed was successfully created.'
     else
