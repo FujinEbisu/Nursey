@@ -5,5 +5,4 @@ class Mother < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_one :user, as: :userable, dependent: :destroy
 
-  validates :name, presence: true
 end
