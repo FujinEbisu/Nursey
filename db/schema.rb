@@ -63,8 +63,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_02_144633) do
     t.integer "time_between_feed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id", null: false
-    t.index ["user_id"], name: "index_mothers_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -108,7 +106,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_02_144633) do
   add_foreign_key "feeds", "mothers"
   add_foreign_key "messages", "doctors"
   add_foreign_key "messages", "mothers"
-  add_foreign_key "mothers", "users"
   add_foreign_key "reviews", "mothers"
   add_foreign_key "reviews", "safe_places"
 end
