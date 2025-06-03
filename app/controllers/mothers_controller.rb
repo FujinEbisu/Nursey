@@ -5,7 +5,6 @@ class MothersController < ApplicationController
   end
 
   def show
-    raise
   end
 
   def new
