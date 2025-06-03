@@ -16,27 +16,13 @@
         <div class="row">
         <h1>Total:</h1> <!--timer-->
         </div>
-        <form action="" method="post">
-          <div class="form-group">
-            <label for="Leftboob" class="form-label"><h1>Gauche</h1></label>
-            <div>
-              <input type="number" class="form-control" id="Leftboob" placeholder="10ml">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="Rightboob" class="form-label"><h1>Droite</h1></label>
-            <div>
-              <input type="number" class="form-control" id="Rightboob" placeholder="10ml">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="commentary" class="form-label"><h1>Commentaire</h1></label>
-            <div>
-              <input type="text" class="form-control" id="commentary" placeholder="Noticed something?">
-            </div>
-          </div>
-        <button type="submit" class="button-standard"><a href="">Valider</a></button>
-      </form>
+        <%= simple_form_for [@mother, @feed] do |f| %>
+          <%= f.input :quantity_left, wrapper_html: { class: 'form-group' }%>
+          <%= f.input :quantity_right, wrapper_html: { class: 'form-group' } %>
+          <%= f.input :comment %>
+          <%= f.input :mood %>
+          <%= f.button :submit %>
+        <% end %>
       <div class="modal-footer border-top-0">
         <button type="button" class="button-standard" data-bs-dismiss="modal"><a href="">Close</a></button>
         <button type="button" class="button-standard-dark"><a href="">Save changes</a></button>
