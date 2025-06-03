@@ -1,0 +1,23 @@
+<!-- 
+Menu bar for home page
+Each SPAN are the 3 lines of the menu bar
+-->
+<div class="nav-bar" data-controller="menu-bar" data-menu-bar-target="dropdown">
+  <div class="menu-bar">
+    <button class="menu__icon button-menu" data-action="click->menu-bar#toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <!-- Menu content that will be shown/hidden -->
+  <div class="menu-bar-display">
+    <nav class="menu-content">
+      <%= link_to "Sign in", new_user_session_path, class: "menu-item" %>
+      <%= link_to "Blog", "#", class: "menu-item" %>
+      <%= link_to "About us", "#", class: "menu-item" %>
+      <%= link_to "Contact us", "#", class: "menu-item" %>
+    </nav>
+  </div>
+</div>

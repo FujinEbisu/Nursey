@@ -1,9 +1,14 @@
 class MothersController < ApplicationController
+  before_action :define_mother, only: [:index, :show, :edit, :update, :destroy]
+
+  def index
+  end
+
   def show
-    @mother = current_user
   end
 
   def new
+    @mother = Mother.new
   end
 
   def create
@@ -22,5 +27,11 @@ class MothersController < ApplicationController
   end
 
   def destroy
+  end
+
+  private 
+
+  def define_mother
+    @mother = current_user
   end
 end
