@@ -17,12 +17,13 @@
 
 .modal-header {
   border: none;
+  padding: 0;
 }
 
 .modal-title {
   color: $final-darker;
   text-align: center;
-  padding: 16px;
+  padding: 8px;
   font-weight: bolder;
   font-size: 1.5rem;
 }
@@ -75,6 +76,9 @@
 
   input:checked ~ label {
     transform: scale(1);
+    border-radius: 50%;
+    padding: 0 px;
+    background-color: $final-light;
 
   }
 
@@ -98,4 +102,38 @@
 
 .emoji-radio {
   display: none;
+}
+
+#feed_comment {
+  width: 100%;
+  height: 40px;
+  border-radius: 8px;
+  border: none;
+  padding: 8px;
+  background-color: $final-white;
+
+}
+
+.feed_comment > label {
+    color: $final-darker;
+    font-weight: bold;
+  }
+
+#feed_child_id {
+  width: 100%;
+  height: 40px;
+  border-radius: 8px;
+  border: none;
+  padding: 8px;
+  background-color: $final-white;
+}
+
+.feed_quantity_right > label {
+  color: $final-darker;
+  font-weight: bold;
+}
+
+.feed_quantity_left > label {
+  color: $final-darker;
+  font-weight: bold;
 }
