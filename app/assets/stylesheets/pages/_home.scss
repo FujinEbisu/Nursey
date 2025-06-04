@@ -8,6 +8,13 @@
   padding: 0 2.3rem;
 }
 
+.button-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
 .button-container-mothers {
   display: flex;
   justify-content: space-around;
