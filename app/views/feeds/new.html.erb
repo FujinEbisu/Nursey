@@ -6,7 +6,7 @@
   </div>
   <div class="home-container-feed" >
     <div class="chronometer" >
-    <h4>Temps total</h3>
+    <h4 data-chronometer-target="time">Temps total</h3>
       <span data-chronometer-target="output">00:00</span>
     </div>
     <div class="chronometer d-none" data-chronometer-target="second">
@@ -19,11 +19,13 @@
     <div class="choose-side" data-chronometer-target="chooseSide">
       <button class="button-standard" data-action="click->chronometer#display" data-chronometer-target="droite">Droite</button>
       <button class="button-standard" data-action="click->chronometer#display" data-chronometer-target="gauche">Gauche</button>
+
+      <button class="button-standard d-none" data-action="click->chronometer#display"  data-chronometer-target="change">Changer de seins</button>
+
     </div>
+
     <div>
-      <button class="button-standard d-none" data-action="click->chronometer#display" data-chronometer-target="change">Changer de seins</button>
-    <div>
-      <button class="button-standard-dark" data-action="click->chronometer#display" data-chronometer-target="stop">Stop</button>
+      <button class="button-standard-dark mt-2" data-action="click->chronometer#display" data-chronometer-target="stop">Stop</button>
     </div>
     </div>
     <% end %>
