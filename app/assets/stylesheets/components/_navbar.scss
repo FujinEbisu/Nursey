@@ -10,7 +10,7 @@
   &.active {
     height: 98vh;
     transition: height 0.3s ease;
-    
+
     .menu-bar-display {
       opacity: 1;
       pointer-events: all;
@@ -71,4 +71,3 @@
     transform: translateY(-2px);
   }
 }
-

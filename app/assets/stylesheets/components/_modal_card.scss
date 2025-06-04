@@ -41,24 +41,25 @@
 }
 
 /// *** test ***///
-.form-inline {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+// .form-inline {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+// }
 
-.form-check-input {
-  display: none;
-}
-.form-check{
-  display: inline-flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-}
+// .form-check-input {
+//   display: none;
+// }
+// .form-check{
+//   display: inline-flex;
+//   justify-content: space-evenly;
+//   flex-wrap: wrap;
+// }
 
 
 .emoji-radio-group {
   display: flex;
+  justify-content: space-between;
   gap: 1rem;
   margin-bottom: 1rem;
 }
@@ -70,27 +71,31 @@
   cursor: pointer;
   font-size: 2rem;
   transition: transform 0.2s ease;
+
+
+  input:checked ~ label {
+    transform: scale(1);
+
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transform: scale(0.8);
+    transition: transform 0.2s ease;
+    &:hover {
+      transform: scale(1);
+    }
+
+  }
+}
+
+.radio_buttons {
+  display: flex
 }
 
 .emoji-radio {
   display: none;
-}
-
-.emoji-radio:checked + .emoji-option .emoji {
-  transform: scale(1.1);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  border: solid 2px $final-darker;
-}
-
-.emoji {
-  transition: transform 0.3s ease;
-  cursor: pointer;
-  transform: scale(0.91);
-  &:hover {
-    transform:scale(1)
-  }
-}
-
-.emoji {
-  padding: 0.25rem;
 }

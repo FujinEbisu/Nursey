@@ -11,7 +11,6 @@
         <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
       </div> %>
       <div class="modal-body">
-        ...INSERT TURBO HERE...
         <!-- simple form with label on the left and input on the right -->
         <div class="row">
         <h1>Total:</h1> <!--timer-->
@@ -20,25 +19,15 @@
           <%= f.input :quantity_left, wrapper_html: { class: 'form-group' }, input_html: { class: 'form-input-modal' }%>
           <%= f.input :quantity_right, wrapper_html: { class: 'form-group' }, input_html: { class: 'form-input-modal' } %>
           <%= f.input :comment %>
-          <%# f.input :mood, as: :checkbox %>
-        <%# <div class="form-inline">
-          <%= f.input :mood, as: :radio_buttons, collection: Feed.moods.keys %>
-        <%# </div> %>
-        <%# crvgbhnj %>
+        <div class="form-inline">
+          <%= f.input :mood, as: :radio_buttons, collection: Feed.moods.keys.map {
+            |mood| [emoji_for_mood(mood), mood] }, item_wrapper_class: 'emoji-option', label_method: :first, value_method: :last, input_html: {class:"emoji-radio"} %>
+        </div>
 
-      <div class="emoji-radio-group">
-  <% Feed.moods.keys.each do |mood| %>
-      <%= f.radio_button :mood, mood, id: "feed_mood_#{mood}", class: "emoji-radio" %>
-    <label class="emoji-option" for="feed_mood_<%= mood %>" %>
-      <span class="emoji"><%= emoji_for_mood(mood) %></span>
-    </label>
-  <% end %>
-</div>
+
 
 <%= f.error :mood %>
 
-
-            <%# ygnj,k %>
           <%= f.input :child_id, as: :select, collection: @child_id %>
           <%= f.button :submit, input_html: { class: 'button-standard'} %>
         <% end %>

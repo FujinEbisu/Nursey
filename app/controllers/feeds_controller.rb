@@ -26,6 +26,7 @@ class FeedsController < ApplicationController
 
   def create
     @feed = Feed.new(feed_params)
+    raise
     @feed.mother = current_user.userable
     if @feed.save
       redirect_to feed_path(@feed), notice: 'Feed was successfully created.'
