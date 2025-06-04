@@ -1,32 +1,38 @@
 <!-- Button trigger modal -->
-<button type="button" class="button-standard" data-bs-toggle="modal" data-bs-target="#ModalMother">
- <a href=""> Launch modal</a>
-</button>
-
+<button class="button-standard-dark" data-bs-toggle="modal" data-bs-target="#ModalMother" data-action="click->chronometer#display" data-chronometer-target="stop">Stop</button>
 <!-- Modal -->
 <div class="modal fade" id="ModalMother" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <%# <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-      </div> %>
+       <div class="modal-header justify-content-center">
+        <h5 class="modal-title" id="exampleModalLabel">Tirage</h5>
+      </div>
       <div class="modal-body">
-        ...INSERT TURBO HERE...
         <!-- simple form with label on the left and input on the right -->
         <div class="row">
         <h1>Total:</h1> <!--timer-->
         </div>
         <%= simple_form_for [@mother, @feed] do |f| %>
-          <%= f.input :quantity_left, wrapper_html: { class: 'form-group' }%>
-          <%= f.input :quantity_right, wrapper_html: { class: 'form-group' } %>
+          <%= f.input :quantity_left, wrapper_html: { class: 'form-group' }, input_html: { class: 'form-input-modal' }%>
+          <%= f.input :quantity_right, wrapper_html: { class: 'form-group' }, input_html: { class: 'form-input-modal' } %>
+          <%# <%= f.input :time_left, wrapper_html: { class: 'form-group' }, input_html: { class: 'form-input-modal' }%>
+          <%# <%= f.input :time_right, wrapper_html: { class: 'form-group' }, input_html: { class: 'form-input-modal' } %>
           <%= f.input :comment %>
-          <%= f.input :mood %>
-          <%= f.button :submit %>
+        <div class="form-inline">
+          <%= f.input :mood, as: :radio_buttons, collection: Feed.moods.keys.map {
+            |mood| [emoji_for_mood(mood), mood] }, item_wrapper_class: 'emoji-option', label_method: :first, value_method: :last, input_html: {class:"emoji-radio"} %>
+        </div>
+        <%= f.error :mood %>
+
+          <%= f.input :child_id, as: :select, collection: @mother.children.map { |c| [c.first_name, c.id] }, prompt: "Select child" %>
+          <div class="d-flex justify-content-center">
+            <%= f.button :submit, class: 'button-standard-dark'%>
+          </div>
         <% end %>
-      <div class="modal-footer border-top-0">
+      <%# <div class="modal-footer border-top-0">
         <button type="button" class="button-standard" data-bs-dismiss="modal"><a href="">Close</a></button>
         <button type="button" class="button-standard-dark"><a href="">Save changes</a></button>
-      </div>
+      </div> %>
     </div>
   </div>
 </div>
