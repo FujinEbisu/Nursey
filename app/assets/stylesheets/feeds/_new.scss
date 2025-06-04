@@ -12,18 +12,19 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-margin-bottom: 1rem;
-border: 0cap;
- padding: 8px 24px;
+  margin-bottom: 2rem;
+  border: 0cap;
+  padding: 8px 24px;
   background-color: $final-dark;
   border: none;
   border-radius: 16px;
-  color: $final-white
+  color:$final-white
 }
 
 .home-header {
   text-align: center;
-  margin: 2rem 0;
+  padding: 6rem 0 0 0;
+    align-items: end;
 }
 
 .home-container-feed {
@@ -32,12 +33,14 @@ border: 0cap;
   align-items: center;
   justify-content: flex-start;
   height: calc(90vh - 8vh);
-  padding: 0 2.3rem;
+  padding: 4rem 2.3rem 0 2.3rem;
+
 }
 
 .feed-title {
   color: $final-darker;
   text-align: center;
+
   font-weight: bolder;
   font-size: 1.5rem;
 }

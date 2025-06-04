@@ -1,4 +1,4 @@
-<%= render "mothers/components/navbar_mother" %>
+<%= render "mothers/components/navbar_mother_mini" %>
 <%= turbo_frame_tag :new_feed do %>
 <div data-controller="chronometer">
   <div class="home-header" >
@@ -13,7 +13,7 @@
     <h4 data-chronometer-target="newtitle"> time</h3>
       <span data-chronometer-target="output2">00:00</span>
     </div>
-    <div class="mt-4">
+    <div class="mt-5">
       <button class="button-standard-dark" data-action="click->chronometer#display" data-chronometer-target="tirage">Tirage</button>
     </div>
     <div class="choose-side" data-chronometer-target="chooseSide">
