@@ -13,6 +13,7 @@ require 'faker'
 Mother.destroy_all
 Doctor.destroy_all
 User.destroy_all
+Child.destroy_all
 puts "db destroyed"
 
 10.times do
@@ -27,13 +28,25 @@ puts "db destroyed"
     speciality: Faker::Job.field,
     availability: Faker::Time.forward(days: 23, period: :morning)
   )
-  User.create!(
-    email: Faker::Internet.email,
-    password: 'password',
-    password_confirmation: 'password',
-    userable_type: ['Mother', 'Doctor'].sample,
-    userable_id: Mother.last.id + Doctor.last.id
+    User.create!(
+      email: Faker::Internet.email,
+      password: "azerty",
+      password_confirmation: "azerty",
+      userable_type: ['Mother', 'Doctor'].sample,
+      userable_id: (Mother.last.id)
+    )
+    User.create!(
+      email: Faker::Internet.email,
+      password: "azerty",
+      password_confirmation: "azerty",
+      userable_type: ['Mother', 'Doctor'].sample,
+      userable_id: (Doctor.last.id)
+    )
+
+  Child.create!(
+    first_name: Faker::Name.first_name,
+    mother_id: Mother.last.id
   )
-  puts "Created Mother, Doctor, and User records."
+  puts "Created Mother, Doctor, Children and User records."
 end
-puts "10 Mothers, Doctors, and Users created successfully."
+puts "10 Mothers, Doctors, Children and Users created successfully."
