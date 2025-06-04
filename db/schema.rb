@@ -61,7 +61,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_04_124910) do
   create_table "mothers", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.datetime "birthday"
+    t.date "birthday"
     t.integer "time_between_feed", default: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

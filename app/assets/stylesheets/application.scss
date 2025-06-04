@@ -21,3 +21,22 @@ a {
   text-decoration: none;
   color: $final-darker;
 }
+
+h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: $final-darker;
+  padding: 1rem;
+}
+
+h3, h6, h4 {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  color: $final-darker;
+}
+
+p {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 400;
+}
