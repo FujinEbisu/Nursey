@@ -13,10 +13,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  resources :feeds
-  resources :users do
-    resources :children, only: [:index, :new, :create, :destroy]
-  end
+
+  resources :users
+
 
   resources :safe_places, only: [:index, :show, :new, :create] do
     resources :reviews
@@ -26,5 +25,7 @@ Rails.application.routes.draw do
   resources :doctors
   resources :mothers, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     resources :feeds
+    resources :children, only: [:index, :new, :create]
   end
+  resources :children, only: [:destroy]
 end

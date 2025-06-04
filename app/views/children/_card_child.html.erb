@@ -1,0 +1,16 @@
+<div class="card-child">
+<div>
+<%  if child.sexe == "fille" %>
+  <i class="fa-solid fa-venus" style="color:#FBC4AB;font-size:32px;margin-left:8px"></i>
+<% else %>
+  <i class="fa-solid fa-mars" style="color:#FBC4AB;font-size:32px;margin-left:8px"></i>
+<% end %>
+</div>
+
+  <h3 class="card-child-name"><%= child.first_name %></h3>
+<div class="card-child-content">
+  <%= link_to child_path( child), data: { turbo_method: :delete, turbo_confirm: "Cet enfant est trop vieux ?" } do %>
+  <i class="fa-solid fa-child-reaching" style="font-size:24px"></i> Supprimer
+  <% end %>
+</div>
+</div>
