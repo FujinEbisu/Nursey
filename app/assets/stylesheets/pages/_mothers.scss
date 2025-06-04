@@ -101,8 +101,6 @@
   flex-direction: column;
   align-items: center;
 
-
-
   h1 {
     font-family: 'Poppins', sans-serif;
     font-size: 2.5rem;
@@ -144,13 +142,10 @@
   background-color: $final-light;
   border-radius: 25px;
   padding: 1rem;
-  margin: 1rem;
 }
 
 .pill-container {
- // It has to look like this a pill with a background color and a border radius
- background-color: $final-light;
- border-radius: 35px;
+ border-radius: 25px;
  padding: 1rem;
  margin: 1rem;
  display: flex;
@@ -158,11 +153,18 @@
  align-items: center;
  justify-content: center;
  gap: 1rem;
+ border: 3px solid $final-light; 
 }
 
 .notification-container h6 {
   font-size: 1rem;
 }
 
-.mother-details-buttons {
+.mother-edit-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
 }

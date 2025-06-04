@@ -1,11 +1,13 @@
 <%= turbo_frame_tag "edit-mother-details" do %>
+    <h3>Editer vos détails</h3>
 <div class="mother-edit">
-    <h1>Editer vos détails</h1>
     <%= simple_form_for @mother, html: { class: "form-edit-mother"} do |f| %>
-        <%= f.input :first_name, label: 'Prénom' %>
-        <%= f.input :last_name, label: 'Nom' %>
-        <%= f.input :birthday, label: 'Date de naissance', as: :date, html5: true %>
-        <p><%= f.input :time_between_feed, label: 'Temps entre les tétées en heures', as: :integer %></p>
+        <div class="mother-edit-form">
+        <%= f.input :first_name, label: 'Prénom', placeholder: 'Prénom' %>
+        <%= f.input :last_name, label: 'Nom', placeholder: 'Nom' %>
+        </div>
+        <%= f.input :birthday, label: 'Date de naissance', as: :date, html5: true, placeholder: 'Date de naissance' %>
+        <p><%= f.input :time_between_feed, label: 'Temps entre les tétées en heures', as: :integer, placeholder: 'Temps entre les tétées en heures' %></p>
         <%= f.submit "Sauvegarder", class: "button-standard-dark" %>
     <% end %>
 </div>
