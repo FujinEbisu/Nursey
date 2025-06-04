@@ -1,0 +1,10 @@
+<%= simple_form_for [@mother, @child] do |f| %>
+<div class="form-header">
+    <%= f.input :first_name, required: true, input_html: { class: "input-modern"}, label_html: { class: "label-modern"}%>
+    <%= f.input :sexe, as: :radio_buttons, collection: [['<i class="fa-solid fa-venus" style="color:#FBC4AB;font-size:32px;margin-left:8px"></i>'.html_safe, 'fille'], ['<i class="fa-solid fa-mars" style="color:#FBC4AB;font-size:32px;margin-left:8px"></i>'.html_safe, 'garcon']], escape: false, item_wrapper_class: "checkbox-inline" %>
+    <%= f.submit "Ajouter", class: 'button-standard'%>
+<% end %>
+<div class="form-actions">
+  <%= link_to "Annuler", mother_children_path(@mother), class: "button-standard" %>
+</div>
+</div>

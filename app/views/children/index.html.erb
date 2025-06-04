@@ -1,2 +1,9 @@
-<h1>Children#index</h1>
-<p>Find me in app/views/children/index.html.erb</p>
+<%= render "mothers/components/navbar_mother_mini" %>
+<div class="home-header" >
+  <h1 class="feed-title">Mes enfants</h1>
+</div>
+<div class="home-container-feed">
+ <% @children.each do |child|  %>
+<%= render "card_child", child: child %>
+<% end %>
+</div>

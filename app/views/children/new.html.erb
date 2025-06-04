@@ -1,2 +1,8 @@
-<h1>Children#new</h1>
-<p>Find me in app/views/children/new.html.erb</p>
+<%= render "mothers/components/navbar_mother_mini" %>
+<div class="home-header" >
+  <h1 class="feed-title">Ajoutez votre enfant</h1>
+</div>
+<div class="home-container-feed">
+  <p>Vous pouvez ajouter un enfant pour suivre ses tétées.</p>
+<%= render "form_child", mother: @mother, child: @child %>
+</div>
