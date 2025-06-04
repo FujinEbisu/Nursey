@@ -25,6 +25,6 @@ Rails.application.routes.draw do
   resources :messages, only: [:index, :new, :show, :create, :update]
   resources :doctors
   resources :mothers, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
-    resources :feeds, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+    resources :feeds
   end
 end
