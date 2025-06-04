@@ -1,8 +1,5 @@
 <!-- Button trigger modal -->
-<button type="button" class="button-standard" data-bs-toggle="modal" data-bs-target="#ModalMother">
- <a href=""> Launch modal</a>
-</button>
-
+<button class="button-standard-dark" data-bs-toggle="modal" data-bs-target="#ModalMother" data-action="click->chronometer#display" data-chronometer-target="stop">Stop</button>
 <!-- Modal -->
 <div class="modal fade" id="ModalMother" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
@@ -27,13 +24,15 @@
         </div>
         <%= f.error :mood %>
 
-          <%= f.input :child_id, as: :select, collection: Child.all.map { |c| [c.name, c.id] }, prompt: "Select child" %>
-          <%= f.button :submit, class: 'button-standard' %>
+          <%= f.input :child_id, as: :select, collection: @mother.children.map { |c| [c.first_name, c.id] }, prompt: "Select child" %>
+          <div class="d-flex justify-content-center">
+            <%= f.button :submit, class: 'button-standard-dark'%>
+          </div>
         <% end %>
-      <div class="modal-footer border-top-0">
+      <%# <div class="modal-footer border-top-0">
         <button type="button" class="button-standard" data-bs-dismiss="modal"><a href="">Close</a></button>
         <button type="button" class="button-standard-dark"><a href="">Save changes</a></button>
-      </div>
+      </div> %>
     </div>
   </div>
 </div>

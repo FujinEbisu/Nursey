@@ -126,6 +126,11 @@
   border: none;
   padding: 8px;
   background-color: $final-white;
+  color: $final-darker;
+}
+.feed_child_id > label {
+  color: $final-darker;
+  font-weight: bold;
 }
 
 .feed_quantity_right > label {
@@ -136,4 +141,13 @@
 .feed_quantity_left > label {
   color: $final-darker;
   font-weight: bold;
+}
+
+.feed_mood > legend {
+  display: none;
+}
+.feed_mood {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
