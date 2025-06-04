@@ -5,7 +5,7 @@ class ChildrenController < ApplicationController
   end
 
   def new
-    @mother = User.find(params[:user_id])
+    set_mother
     @child = Child.new
   end
 
@@ -14,26 +14,27 @@ class ChildrenController < ApplicationController
     @child = Child.new(child_params)
     @child.mother = @mother
     if @child.save
-      redirect_to user_children_path(@mother), notice: 'Child was successfully created.'
+      redirect_to mother_path(@mother), notice: 'Child was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def destroy
+    set_mother
     set_child
     @child.destroy
-    redirect_to user_children_path(current_user), notice: 'Child was successfully deleted.'
+    redirect_to mother_children_path(@mother), notice: 'Child was successfully deleted.'
   end
 
   private
 
   def child_params
-    params.require(:child).permit(:name)
+    params.require(:child).permit(:first_name, :sexe)
   end
 
   def set_mother
-    @mother = current_user
+    @mother = current_user.userable
   end
 
   def set_child

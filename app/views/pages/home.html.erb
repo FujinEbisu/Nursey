@@ -17,6 +17,9 @@ Landing page
         <button class="button-standard-dark">
           <%= link_to 'Dashboard', mothers_path %>
         </button>
+        <button class="button-standard-dark">
+          <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "menu-item" %>
+        </button>
       <% else %>
         <button class="button-standard-dark">
           <%= link_to 'Sign up', new_user_registration_path %>

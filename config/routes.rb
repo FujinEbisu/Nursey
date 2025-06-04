@@ -14,9 +14,8 @@ Rails.application.routes.draw do
   # root "posts#index"
 
 
-  resources :users do
-    resources :children, only: [:index, :new, :create, :destroy]
-  end
+  resources :users
+
 
   resources :safe_places, only: [:index, :show, :new, :create] do
     resources :reviews
@@ -25,6 +24,8 @@ Rails.application.routes.draw do
   resources :messages, only: [:index, :new, :show, :create, :update]
   resources :doctors
   resources :mothers, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
-    resources :feeds, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+    resources :feeds
+    resources :children, only: [:index, :new, :create]
   end
+  resources :children, only: [:destroy]
 end

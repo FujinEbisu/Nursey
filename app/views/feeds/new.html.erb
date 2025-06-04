@@ -1,3 +1,33 @@
-<h1>Feeds#new</h1>
-<p>Find me in app/views/feeds/new.html.erb</p>
-<%= render "components/modal_card" %>
+<%= render "mothers/components/navbar_mother_mini" %>
+<%= turbo_frame_tag :new_feed do %>
+<div data-controller="chronometer">
+  <div class="home-header" >
+    <h1 class="feed-title" data-chronometer-target="title">Nouvelle Tetée</h1>
+  </div>
+  <div class="home-container-feed" >
+    <div class="chronometer" >
+    <h4>Temps total</h3>
+      <span data-chronometer-target="output">00:00</span>
+    </div>
+    <div class="chronometer d-none" data-chronometer-target="second">
+    <h4 data-chronometer-target="newtitle"> time</h3>
+      <span data-chronometer-target="output2">00:00</span>
+    </div>
+    <div class="mt-5">
+      <button class="button-standard-dark" data-action="click->chronometer#display" data-chronometer-target="tirage">Tirage</button>
+    </div>
+    <div class="choose-side" data-chronometer-target="chooseSide">
+      <button class="button-standard" data-action="click->chronometer#display" data-chronometer-target="droite">Droite</button>
+      <button class="button-standard" data-action="click->chronometer#display" data-chronometer-target="gauche">Gauche</button>
+    </div>
+    <div>
+      <button class="button-standard d-none" data-action="click->chronometer#display" data-chronometer-target="change">Changer de seins</button>
+    <div>
+      <button class="button-standard-dark" data-action="click->chronometer#display" data-chronometer-target="stop">Stop</button>
+    </div>
+    </div>
+    <% end %>
+</div>
+
+
+<%#= render "components/modal_card" %>

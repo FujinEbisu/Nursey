@@ -10,6 +10,8 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "feeds/index";
+@import "children/new";
 
 body {
   background-color: $final-white;

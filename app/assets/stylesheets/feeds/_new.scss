@@ -1,0 +1,49 @@
+.choose-side {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.chronometer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  border: 0cap;
+  padding: 8px 24px;
+  background-color: $final-dark;
+  border: none;
+  border-radius: 16px;
+  color:$final-white
+}
+
+.home-header {
+  text-align: center;
+  padding: 6rem 0 0 0;
+    align-items: end;
+}
+
+.home-container-feed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: calc(90vh - 8vh);
+  padding: 4rem 2.3rem 0 2.3rem;
+
+}
+
+.feed-title {
+  color: $final-darker;
+  text-align: center;
+
+  font-weight: bolder;
+  font-size: 1.5rem;
+}
+
+
+// Usage as a mixin
