@@ -1,2 +1,7 @@
-<h1>Mothers#show</h1>
-<p>Find me in app/views/mothers/show.html.erb</p>
+<%= render "mothers/components/navbar_mother_mini" %>
+<div class="mothers-container" style="margin-top: 1rem;">
+  <h1>Bienvenue dans votre espace <%= @mother.first_name %></h1>
+  <p> C'est ici que vous pouvez editer tous vos parametres</p>
+  <%= render "mothers/components/details" %>
+  <%= link_to "Editer", edit_mother_path(@mother) %>
+</div>
