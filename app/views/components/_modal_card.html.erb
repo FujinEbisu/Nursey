@@ -20,7 +20,25 @@
           <%= f.input :quantity_left, wrapper_html: { class: 'form-group' }, input_html: { class: 'form-input-modal' }%>
           <%= f.input :quantity_right, wrapper_html: { class: 'form-group' }, input_html: { class: 'form-input-modal' } %>
           <%= f.input :comment %>
-          <%= f.input :mood %>
+          <%# f.input :mood, as: :checkbox %>
+        <%# <div class="form-inline">
+          <%= f.input :mood, as: :radio_buttons, collection: Feed.moods.keys %>
+        <%# </div> %>
+        <%# crvgbhnj %>
+
+      <div class="emoji-radio-group">
+  <% Feed.moods.keys.each do |mood| %>
+      <%= f.radio_button :mood, mood, id: "feed_mood_#{mood}", class: "emoji-radio" %>
+    <label class="emoji-option" for="feed_mood_<%= mood %>" %>
+      <span class="emoji"><%= emoji_for_mood(mood) %></span>
+    </label>
+  <% end %>
+</div>
+
+<%= f.error :mood %>
+
+
+            <%# ygnj,k %>
           <%= f.input :child_id, as: :select, collection: @child_id %>
           <%= f.button :submit, input_html: { class: 'button-standard'} %>
         <% end %>

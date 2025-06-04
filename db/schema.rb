@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_06_03_134118) do
+ActiveRecord::Schema[7.1].define(version: 2025_06_03_154429) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -39,10 +39,10 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_03_134118) do
     t.datetime "time_right", precision: nil
     t.float "quantity_left"
     t.float "quantity_right"
-    t.string "mood"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "comment"
+    t.integer "mood"
     t.index ["child_id"], name: "index_feeds_on_child_id"
     t.index ["mother_id"], name: "index_feeds_on_mother_id"
   end
