@@ -1,5 +1,5 @@
 class MothersController < ApplicationController
-  before_action :define_mother, only: [:index, :show, :edit, :update, :destroy]
+  before_action :define_mother, :mother_user, only: [:index, :show, :edit, :update, :destroy]
 
   def index
   end
@@ -33,5 +33,9 @@ class MothersController < ApplicationController
 
   def define_mother
     @mother = current_user.userable
+  end
+
+  def mother_user
+    @mother_user = current_user
   end
 end
