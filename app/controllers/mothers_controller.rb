@@ -24,12 +24,23 @@ class MothersController < ApplicationController
   end
 
   def update
+    ## should update mothers details and redirect to the mother profile page
+    @mother.update(mother_params)
+    if @mother.update(mother_params)
+      redirect_to mother_path(@mother), notice: 'Vos détails ont été mis à jour.'
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
   end
 
   private 
+
+  def mother_params
+    params.require(:mother).permit(:first_name, :last_name, :birthday, :time_between_feed)
+  end
 
   def define_mother
     @mother = current_user.userable

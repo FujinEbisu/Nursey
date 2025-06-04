@@ -1,7 +1,36 @@
 <%= render "mothers/components/navbar_mother_mini" %>
 <div class="mothers-container" style="margin-top: 1rem;">
-  <h1>Bienvenue dans votre espace <%= @mother.first_name %></h1>
-  <p> C'est ici que vous pouvez editer tous vos parametres</p>
-  <%= render "mothers/components/details" %>
-  <%= link_to "Editer", edit_mother_path(@mother) %>
+  <%= turbo_frame_tag "edit-mother-details" do %>
+    <div class="mother-details">
+      <div class="mother-details-avatar">
+        <%= image_tag "https://res.cloudinary.com/dc7iookgc/image/upload/c_crop,w_600,h_600,ar_1:1/v1748785341/profile_jy5ww4.jpg", class: "avatar-large" %>
+      </div>
+
+      <% quantite = @mother.feeds.sum(:quantity_left) + @mother.feeds.sum(:quantity_right) %>
+
+      <div class="mother-details-name">
+        <h3>
+          <%= @mother.first_name %> <%= @mother.last_name %>
+        </h3>
+      </div>
+      <div class="pill-container">
+      <p>Temps entre tétées: </p>
+      <h4><%= @mother.time_between_feed %> heures </h4>
+      </div>
+
+      <div class="mother-details-feeds">
+      <div class="pill-container">
+        <h6>Nombre de tétées: </h6>
+        <p><%= @mother.feeds.count %></p>
+      </div>
+      <div class="pill-container">
+        <h6>Total de lait tiré: </h6>
+        <p><%= quantite.to_i %></p>
+      </div>
+    </div>
+  <% end %>
+  <div class="mother-details-buttons">
+    <%= link_to "Editer Informations Personnelles", edit_mother_path(@mother), class: "button-standard-dark" %>
+  </div>
+</div>
 </div>
