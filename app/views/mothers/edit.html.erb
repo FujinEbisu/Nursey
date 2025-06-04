@@ -1,2 +1,12 @@
-<h1>Mothers#edit</h1>
-<p>Find me in app/views/mothers/edit.html.erb</p>
+<%= turbo_frame_tag [@mother_user, @mother] do %>
+<div class="mother-edit">
+    <h1>Editer vos détails</h1>
+    <%= simple_form_for @mother, html: { class: "form-edit-mother"} do |f| %>
+        <%= f.input :first_name %>
+        <%= f.input :last_name %>
+        <%= f.input :birthday %>
+        <p>Temps entre les tétées: <%= f.input :time_between_feed %> Heures</p>
+        <%= f.submit "Sauvegarder", class: "button-standard-dark" %>
+    <% end %>
+</div>
+<% end %>

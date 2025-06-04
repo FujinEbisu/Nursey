@@ -11,6 +11,7 @@
   <!-- Menu content shown/hidden -->
   <div class="menu-bar-display">
     <nav class="menu-content">
+      <%= link_to "Profil", mother_path(@mother), class: "menu-item" %>
       <%= link_to "Dashboard", "#", class: "menu-item" %>
       <%= link_to "Conseil", "#", class: "menu-item" %>
       <%= link_to "Historique", "#", class: "menu-item" %>
@@ -29,6 +30,6 @@
   </div>
 
   <button class="button-home" data-menu-bar-mother-target="nouvelle_tete">
-    <%= link_to 'Nouvelle Tetée', 'f' %>
-  </button> 
+    <%= link_to 'Nouvelle Tetée', new_mother_feed_path(@mother.id) %>
+  </button>
 </div>

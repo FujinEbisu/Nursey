@@ -6,7 +6,6 @@ Landing page
 <div class="home-container">
 
   <div class="home-content">
-  <%= render "components/modal_card" %>
     <div>
       <h1 class="welcome-text">Bienvenue sur Nursey</h1>
     </div>
@@ -17,6 +16,9 @@ Landing page
       <% if user_signed_in? %>
         <button class="button-standard-dark">
           <%= link_to 'Dashboard', mothers_path %>
+        </button>
+        <button class="button-standard-dark">
+          <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "menu-item" %>
         </button>
       <% else %>
         <button class="button-standard-dark">
