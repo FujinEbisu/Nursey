@@ -1,21 +1,23 @@
 <div class="card-feed">
 <div>
-<%  if feed.type == "Tirage" %>
+<%  if feed.nursy_type == "Tirage" %>
   <i class="fa-solid fa-person-dress" style="color:#FBC4AB;font-size:32px;margin-left:8px"></i>
 <% else %>
   <i class="fa-solid fa-person-breastfeeding" style="color:#FBC4AB;font-size:32px;margin-left:8px"></i>
 <% end %>
 </div>
-  <h3 class="card-child-name"><%= feed.created_at %></h3>
-  <%  if feed.type == "Tétée" %>
-    <h3 class="card-child-name"><%= @children.find(feed.child_id) %></h3>
+<div class="card-feed-title">
+  <h4 class="card-child-name"><%= feed.created_at.strftime("%m/%d/%Y") %></h3>
+  <%  if feed.nursy_type == "Tétée" %>
+    <h4 class="card-child-name"><%= feed.child.first_name %></h3>
   <% end %>
-<div class="card-child-content">
-<%= link_to edit_mother_feed(@mother, feed) do %>
-  <i class="fa-solid fa-pencil" style="font-size:24px"></i>
+  </div>
+<div class="card-feed-content">
+<%= link_to edit_mother_feed_path(feed, @mother) do %>
+  <i class="fa-solid fa-pencil" style="font-size:16px"></i>
   <% end %>
-  <%= link_to mother_feed(@mother, feed), data: { turbo_method: :delete, turbo_confirm: "voulez vous vraiment supprimer cette activité ?" } do %>
-  <i class="fa-solid fa-child-reaching" style="font-size:24px"></i>
+  <%= link_to mother_feed_path(feed, @mother), data: { turbo_method: :delete, turbo_confirm: "voulez vous vraiment supprimer cette activité ?" } do %>
+  <i class="fa-solid fa-trash" style="font-size:16px"></i>
   <% end %>
 </div>
 </div>

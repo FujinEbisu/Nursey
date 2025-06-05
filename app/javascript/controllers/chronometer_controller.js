@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="chronometer"
 export default class extends Controller {
-    static targets = ["output", "tirage", "droite", "gauche", "stop", "chooseSide", "title", "second", "output2","newtitle", "time", "change", "output3"]
+    static targets = ["output", "tirage", "droite", "gauche", "stop", "chooseSide", "title", "second", "output2","newtitle", "time", "change", "output3", "first"]
 
 
  connect() {
@@ -28,6 +28,8 @@ export default class extends Controller {
     if (button === "Tirage") {
       this.tirageTarget.classList.add("d-none")
       this.chooseSideTarget.classList.add("d-none")
+      this.firstTarget.classList.add("d-none")
+      this.secondTarget.classList.add("d-none")
       this.titleTarget.innerText = "Nouveau tirage"
     } else if (button === "Droite") {
       this.droiteTarget.classList.add("d-none")
