@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_06_04_124910) do
+ActiveRecord::Schema[7.1].define(version: 2025_06_04_145353) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -36,14 +36,14 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_04_124910) do
     t.string "type"
     t.bigint "mother_id", null: false
     t.bigint "child_id", null: false
-    t.datetime "time_left", precision: nil
-    t.datetime "time_right", precision: nil
     t.float "quantity_left"
     t.float "quantity_right"
-    t.string "mood"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "comment"
+    t.integer "mood"
+    t.time "time_left"
+    t.time "time_right"
     t.index ["child_id"], name: "index_feeds_on_child_id"
     t.index ["mother_id"], name: "index_feeds_on_mother_id"
   end
@@ -61,7 +61,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_04_124910) do
   create_table "mothers", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.datetime "birthday"
+    t.date "birthday"
     t.integer "time_between_feed", default: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

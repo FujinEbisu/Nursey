@@ -1,4 +1,13 @@
 class FeedsController < ApplicationController
+  ##### test mood #####
+  MOOD_OPTIONS = {
+    "😁" => 5,
+    "🙂" => 4,
+    "😐" => 3,
+    "😒" => 2,
+    "😡" => 1
+}
+  ##### test mood #####
   def index
     @feeds = Feed.all
   end
@@ -12,6 +21,7 @@ class FeedsController < ApplicationController
     @feed = Feed.new
     @mother = current_user.userable
     @children = @mother.children
+    @mood_options = MOOD_OPTIONS
   end
 
   def create
