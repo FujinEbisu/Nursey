@@ -32,7 +32,7 @@ class FeedsController < ApplicationController
     @feed.mother = current_user.userable
     @mother = current_user.userable
     if @feed.save
-      redirect_to mother_feeds_path(@mother), notice: 'Feed was successfully created.'
+      redirect_to mother_feeds_path(@feed.mother), notice: 'Feed was successfully created.'
     else
       @children = current_user.userable.children
       render :new, status: :unprocessable_entity
