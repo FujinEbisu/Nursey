@@ -1,2 +1,9 @@
-<h1>Feeds#index</h1>
-<p>Find me in app/views/feeds/index.html.erb</p>
+<%= render "mothers/components/navbar_mother_mini" %>
+<div class="home-header" >
+  <h1 class="feed-title">Historique</h1>
+</div>
+<div class="home-container-feed">
+ <% @feeds.each do |feed|  %>
+<%= render "card_child", child: child %>
+<% end %>
+</div>
