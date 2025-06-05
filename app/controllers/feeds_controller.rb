@@ -58,7 +58,7 @@ class FeedsController < ApplicationController
     @mother = current_user.userable
     set_feed
     @feed.destroy
-    redirect_to feeds_path, notice: 'Feed was successfully deleted.'
+    redirect_to mother_feed_path(@mother), notice: 'Feed was successfully deleted.'
   end
 
   private
@@ -68,6 +68,6 @@ class FeedsController < ApplicationController
   end
 
   def set_feed
-    @feed = Feed.find(params[:id])
+    @feed = Feed.find(params[:mother_id])
   end
 end
