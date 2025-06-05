@@ -1,0 +1,34 @@
+.dashboard-card {
+    border: 1px solid $final-darker;
+    border-radius: 15px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    @media (max-width: 768px) {
+        min-height: 95px;
+    }
+}
+
+.dashboard-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+}
+
+.dashboard-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+
+    @media (max-width: 768px) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        align-items: center;
+        justify-content: center;
+    }
+}
+

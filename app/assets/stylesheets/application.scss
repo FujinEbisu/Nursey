@@ -12,6 +12,7 @@
 @import "pages/index";
 @import "feeds/index";
 @import "children/new";
+@import "dashboards/mothers_dashboard";
 
 body {
   background-color: $final-white;
@@ -39,4 +40,11 @@ h3, h6, h4 {
 p {
   font-family: 'Nunito', sans-serif;
   font-weight: 400;
+}
+
+.no-style {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }

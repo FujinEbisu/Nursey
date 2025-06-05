@@ -1,17 +1,37 @@
 class DashboardsController < ApplicationController
-    before_action :mother, :doctor, :user, only: [:index]
+    before_action :mother, :doctor, :user, :feeds, :moods, only: [:index]
 
     def index
         
+        feed_count
     end
 
 private
+
+    def feed_count
+        @Tirage_count = 0
+        @Tetee_count = 0
+        @Feeds_count = 0
+        @Feeds.each do |feed|
+            if feed.nursy_type == "Tirage"
+                @Tirage_count += 1
+            else
+                @Tetee_count += 1
+            end
+        end
+        @Feeds_count = @Tirage_count + @Tetee_count
+    end
 
     def mother
         @mother = current_user.userable
     end
 
     def feeds
+        @Feeds = Feed.where(mother_id: @mother.id)
+    end
+
+    def moods
+        @Moods = Feed.where(mother_id: @mother.id).pluck(:mood)
     end
 
     def doctor
