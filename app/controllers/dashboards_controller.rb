@@ -2,7 +2,7 @@ class DashboardsController < ApplicationController
     before_action :mother, :doctor, :user, only: [:index]
 
     def index
-        raise
+        
     end
 
 private
