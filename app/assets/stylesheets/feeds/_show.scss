@@ -1,0 +1,159 @@
+.container-show-feed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin: 16px;
+  background-color: $final-light;
+  border-radius: 16px;
+
+  h2{
+    font-size: 24px;
+    color: $final-darker;
+    margin-bottom: 16px;
+    font-weight: bold;
+  }
+}
+
+.creation-date {
+  font-size: 14px;
+  color: #923838;
+  margin-bottom: 16px;
+}
+.temps-total-show {
+  font-size: 16px;
+  font-weight: bolder;
+  color: $final-darker;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+
+  & > p{
+    font-size: 24px;
+    color: $final-darker;
+    font-weight: bold;
+  }
+}
+#temps-total-show-value {
+  background-color: $final-white;
+  padding: 8px;
+  border-radius: 16px;
+  color: $final-darker;
+  font-size: 16px;
+  font-weight: bold;
+}
+.donnee-boob {
+  display: flex;
+  justify-content: space-around;
+  gap: 8px;
+}
+
+.left-boob-show {
+  background-color: $final-mid;
+  padding: 8px;
+  border-radius: 16px;
+  text-align: center;
+  gap:4px;
+
+  p {
+    color: $final-darker;
+    font-weight: bold;
+  }
+}
+.right-boob-show {
+  background-color: $final-mid;
+  padding: 8px;
+  border-radius: 16px;
+  text-align: center;
+  gap:4px;
+
+   p {
+    color: $final-darker;
+    font-weight: bold;
+  }
+}
+.time-left-show {
+  background-color: $final-light;
+  border-radius: 8px;
+  padding: 4px;
+  margin: 8px auto;
+}
+.time-right-show {
+  background-color: $final-light;
+  border-radius: 8px;
+  padding: 4px;
+  margin: 8px auto;
+}
+.quantity-left-show {
+  background-color: $final-light;
+  border-radius: 8px;
+  padding: 4px;
+  margin: 8px auto;
+}
+.quantity-right-show {
+  background-color: $final-light;
+  border-radius: 8px;
+  padding: 4px;
+  margin: 8px auto;
+}
+.comment-show {
+  background-color: $final-white;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 8px auto;
+  width: 100%;
+  color: #923838;
+}
+.emoji-show {
+  padding: 1px;
+  background-color: $final-white;
+  border-radius: 50%;
+  font-size: 24px;
+}
+
+.child-show {
+  color: $final-darker;
+  font-weight: bold;
+}
+
+// *** Edit ***
+.form-select.is-valid:not([multiple]):not([size]) {
+  padding-right: 8px;
+  background-position: right 0.75rem center, center right 1.5rem;
+  // display: none;
+  --bs-form-select-bg-icon : none;
+}
+
+.form-input-edit-feed {
+    width: 60px;
+    height: 40px;
+    border-radius: 8px;
+    border: none;
+    padding: 8px;
+    background-color: #FFEFE1;
+}
+
+.form-group-tetee-edit {
+  align-items: center;
+  justify-items: center;
+  margin: 8px auto;
+  margin-bottom: 8px !important;
+}
+.form-group-edit {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  margin-bottom: 2px !important;
+}
+
+.feed_comment_edit {
+  width: 100%;
+  height: 60px !important;
+  border-radius: 8px;
+  border: none;
+  padding: 8px;
+  background-color: $final-white;
+}

@@ -1,2 +1,58 @@
-<h1>Feeds#show</h1>
-<p>Find me in app/views/feeds/show.html.erb</p>
+<%= render "mothers/components/navbar_mother_mini" %>
+<div class="container-show-feed">
+  <h2>Type</h2>
+  <p class="creation-date"> Réalisé le <%= @feed.created_at.strftime("%d/%m/%Y") %> à <%= @feed.created_at.strftime("%H:%M") %></p>
+
+  <div class="temps-total-show">
+    <p>Temps total:</p>
+    <p id="temps-total-show-value">
+      <!-- Display the total time in a human-readable format -->
+      <%= distance_of_time_in_words(@feed.time_left + @feed.time_right, 0) %>
+    </p>
+  </div>
+  <div class="donnee-boob">
+    <!-- Left boob -->
+    <div class="left-boob-show">
+      <h6>Gauche</h6>
+      <!-- Time -->
+      <p>Temps:</p>
+      <p class="time-left-show">
+        <%= @feed.time_left %> min
+      </p>
+      <!-- Quantity -->
+      <p>Quantité:</p>
+      <p class="quantity-left-show">
+        <%= @feed.quantity_left %> ml
+      </p>
+    </div>
+    <!-- ********** -->
+    <!-- Right boob -->
+    <div class="right-boob-show">
+      <h6>Droite</h6>
+      <!-- Time -->
+      <p>Temps:</p>
+      <p class="time-right-show">
+        <%= @feed.time_right %> min
+      </p>
+      <!-- Quantity -->
+      <p>Quantité:</p>
+      <p class="quantity-right-show">
+        <%= @feed.quantity_right %> ml
+      </p>
+    </div>
+    <!-- ********** -->
+  </div>
+  <h3 class="mt-3"> Commentaire: </h3>
+  <p class="comment-show"><%= @feed.comment %></p>
+  <h4>Je me sentais:</h4>
+  <div class="emoji-show">
+    <%= emoji_for_mood(@feed.mood) %>
+  </div>
+  <h4 class="mt-2">Enfant:</h4>
+  <p class="child-show">
+    <%= @feed.child ? @feed.child.first_name : "Aucun enfant sélectionné" %>
+  </p>
+  <button class="button-standard-dark mt-3">
+  <%= link_to "Editer", edit_mother_feed_path(@feed) %>
+  </button>
+</div>

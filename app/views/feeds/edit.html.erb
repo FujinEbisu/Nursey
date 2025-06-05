@@ -1,2 +1,50 @@
-<h1>Feeds#edit</h1>
-<p>Find me in app/views/feeds/edit.html.erb</p>
+<%= render "mothers/components/navbar_mother_mini" %>
+<div class="container-show-feed">
+  <h1>Editer</h1>
+  <%= simple_form_for [@mother, @feed] do |f| %>
+    <%# <div class="quantity-tetee"> %>
+      <div class="donnee-boob">
+    <!-- Left boob -->
+    <div class="left-boob-show">
+      <h6>Gauche</h6>
+      <!-- Time -->
+      <p>Temps:</p>
+      <div class="time-left-show">
+        <%= f.input :time_left, wrapper_html: { class: 'form-group-edit' }, input_html: { class: 'form-input-edit-feed' }, label_html: { class: 'd-none' } %>
+      </div>
+      <!-- Quantity -->
+      <p>Quantité:</p>
+      <div class="quantity-left-show">
+        <%= f.input :quantity_left, wrapper_html: { class: 'form-group-tetee-edit' }, input_html: { class: 'form-input-modal' }, label_html: { class: 'd-none' } %>
+      </div>
+    </div>
+    <!-- ********** -->
+    <!-- Right boob -->
+    <div class="right-boob-show">
+      <h6>Droite</h6>
+      <!-- Time -->
+      <p>Temps:</p>
+      <div class="time-right-show">
+            <%= f.input :time_right, wrapper_html: { class: 'form-group-edit' }, input_html: { class: 'form-input-edit-feed' }, label_html: { class: 'd-none'} %>
+      </div>
+      <!-- Quantity -->
+      <p>Quantité:</p>
+      <div class="quantity-right-show">
+        <%= f.input :quantity_right, wrapper_html: { class: 'form-group-tetee-edit' }, input_html: { class: 'form-input-modal' }, label_html: { class: 'd-none'} %>
+      </div>
+    </div>
+    <!-- ********** -->
+  </div>
+    <%= f.input :comment, input_html: { class:'feed_comment_edit'} %>
+    <div class="form-inline">
+      <%= f.input :mood, as: :radio_buttons, collection: Feed.moods.keys.map {
+        |mood| [emoji_for_mood(mood), mood] }, item_wrapper_class: 'emoji-option', label_method: :first, value_method: :last, input_html: {class:"emoji-radio"} %>
+    </div>
+    <%= f.error :mood %>
+
+    <%= f.input :child_id, as: :select, collection: @mother.children.map { |c| [c.first_name, c.id] }, prompt: "Select child" %>
+    <div class="d-flex justify-content-center">
+      <%= f.button :submit, class: 'button-standard-dark'%>
+    </div>
+  <% end %>
+</div>
