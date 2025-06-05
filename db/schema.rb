@@ -36,7 +36,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_05_121902) do
   create_table "feeds", force: :cascade do |t|
     t.string "nursy_type"
     t.bigint "mother_id", null: false
-    t.bigint "child_id", null: false
+    t.bigint "child_id"
     t.float "quantity_left"
     t.float "quantity_right"
     t.datetime "created_at", null: false
