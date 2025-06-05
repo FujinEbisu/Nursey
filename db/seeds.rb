@@ -14,6 +14,7 @@ Mother.destroy_all
 Doctor.destroy_all
 User.destroy_all
 Child.destroy_all
+Feed.destroy_all
 puts "db destroyed"
 
 10.times do
@@ -47,6 +48,17 @@ puts "db destroyed"
     first_name: Faker::Name.first_name,
     mother_id: Mother.last.id
   )
-  puts "Created Mother, Doctor, Children and User records."
+  Feed.create!(
+    nursy_type: ['Tirage', 'Tétée'].sample,
+    mother_id: Mother.last.id,
+    child_id: Child.last.id,
+    quantity_left: Faker::Number.decimal(l_digits: 1, r_digits: 2),
+    quantity_right: Faker::Number.decimal(l_digits: 1, r_digits: 2),
+    time_left: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :default),
+    time_right: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :default),
+    mood: rand(1..5),
+    comment: Faker::Lorem.sentence(word_count: 10)
+  )
+      puts "Created Mother, Doctor, Children and User records."
 end
 puts "10 Mothers, Doctors, Children and Users created successfully."

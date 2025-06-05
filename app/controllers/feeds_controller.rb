@@ -10,6 +10,8 @@ class FeedsController < ApplicationController
   ##### test mood #####
   def index
     @feeds = Feed.all
+    @mother = current_user.userable
+    @children = @mother.children
   end
 
   def show
