@@ -1,0 +1,31 @@
+<button class="button-standard-dark" data-bs-toggle="modal" data-bs-target="#ModalMotherTirage" data-action="click->chronometer#display" data-chronometer-target="stop">Stop</button>
+<!-- MODAL DE TIRAGE -->
+
+<div class="modal fade" id="ModalMotherTirage" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+       <div class="modal-header justify-content-center">
+        <h5 class="modal-title" id="exampleModalLabel">Tirage</h5>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+        <h6 class="fw-bolder mb-2">Temps total:</h6>
+        </div>
+        <p class="text-end pe-3"> Quantité/ml:</p>
+        <%= simple_form_for [@mother, @feed] do |f| %>
+          <%= f.input :quantity_left, wrapper_html: { class: 'form-group' }, input_html: { class: 'form-input-modal' }, label: "Gauche"%>
+          <%= f.input :quantity_right, wrapper_html: { class: 'form-group' }, input_html: { class: 'form-input-modal' }, label: "Droite" %>
+          <%= f.input :comment %>
+        <div class="form-inline">
+          <%= f.input :mood, as: :radio_buttons, collection: Feed.moods.keys.map {
+            |mood| [emoji_for_mood(mood), mood] }, item_wrapper_class: 'emoji-option', label_method: :first, value_method: :last, input_html: {class:"emoji-radio"} %>
+        </div>
+        <%= f.error :mood %>
+          <div class="d-flex justify-content-center">
+            <%= f.button :submit, class: 'button-standard-dark'%>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>
+<!--End of Modal -->

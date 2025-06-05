@@ -1,22 +1,24 @@
-<!-- Button trigger modal -->
-<button class="button-standard-dark" data-bs-toggle="modal" data-bs-target="#ModalMother" data-action="click->chronometer#display" data-chronometer-target="stop">Stop</button>
-<!-- Modal -->
-<div class="modal fade" id="ModalMother" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<button class="button-standard-dark" data-bs-toggle="modal" data-bs-target="#ModalMotherTetee" data-action="click->chronometer#display" data-chronometer-target="stop">Stop</button>
+
+<!-- MODAL DE TETEE -->
+<div class="modal fade" id="ModalMotherTetee" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
        <div class="modal-header justify-content-center">
         <h5 class="modal-title" id="exampleModalLabel">Tirage</h5>
       </div>
       <div class="modal-body">
-        <!-- simple form with label on the left and input on the right -->
         <div class="row">
-        <h1>Total:</h1> <!--timer-->
+        <h6 class="fw-bolder mb-2">Temps total:</h6>
         </div>
         <%= simple_form_for [@mother, @feed] do |f| %>
-          <%= f.input :quantity_left, wrapper_html: { class: 'form-group' }, input_html: { class: 'form-input-modal' }%>
-          <%= f.input :quantity_right, wrapper_html: { class: 'form-group' }, input_html: { class: 'form-input-modal' } %>
-          <%# <%= f.input :time_left, wrapper_html: { class: 'form-group' }, input_html: { class: 'form-input-modal' }%>
-          <%# <%= f.input :time_right, wrapper_html: { class: 'form-group' }, input_html: { class: 'form-input-modal' } %>
+          <div class="quantity-tetee">
+            <p> Qt/ml:</p>
+            <%= f.input :quantity_left, wrapper_html: { class: 'form-group-tetee' }, input_html: { class: 'form-input-modal' }, label: "Gauche"%>
+            <%= f.input :quantity_right, wrapper_html: { class: 'form-group-tetee' }, input_html: { class: 'form-input-modal' }, label: "Droit" %>
+          </div>
+          <%= f.input :time_left, wrapper_html: { class: 'form-group' }, input_html: { class: 'form-input-modal' }, label: "Temps Gauche" %>
+          <%= f.input :time_right, wrapper_html: { class: 'form-group' }, input_html: { class: 'form-input-modal' }, label: "Temps Droit" %>
           <%= f.input :comment %>
         <div class="form-inline">
           <%= f.input :mood, as: :radio_buttons, collection: Feed.moods.keys.map {
