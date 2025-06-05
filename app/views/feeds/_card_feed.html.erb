@@ -8,7 +8,7 @@
 </div>
 <div class="card-feed-title">
   <h4 class="card-child-name"><%= feed.created_at.strftime("%m/%d/%Y") %></h3>
-  <%  if feed.nursy_type == "Tétée" %>
+  <%  if feed.nursy_type == "Tétée" && feed.child.present? %>
     <h4 class="card-child-name"><%= feed.child.first_name %></h3>
   <% end %>
   </div>
