@@ -47,6 +47,7 @@ puts "db destroyed"
     first_name: Faker::Name.first_name,
     mother_id: Mother.last.id
   )
-  puts "Created Mother, Doctor, Children and User records."
+
+  puts "Created Mother, Doctor, Children, User records."
 end
-puts "10 Mothers, Doctors, Children and Users created successfully."
+puts "10 Mothers, Doctors, Children, Users created successfully."

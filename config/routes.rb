@@ -16,7 +16,6 @@ Rails.application.routes.draw do
 
   resources :users
 
-
   resources :safe_places, only: [:index, :show, :new, :create] do
     resources :reviews
   end
@@ -28,4 +27,6 @@ Rails.application.routes.draw do
     resources :children, only: [:index, :new, :create]
   end
   resources :children, only: [:destroy]
+  resources :dashboards, only: [:index], as: :dashboard
+
 end
