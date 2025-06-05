@@ -38,11 +38,13 @@ class FeedsController < ApplicationController
   end
 
   def edit
+    @mother = current_user.userable
     set_feed
-    @children = current_user.children
+    @children = @mother.children
   end
 
   def update
+    @mother = current_user.userable
     set_feed
     if @feed.update(feed_params)
       redirect_to feed_path(@feed), notice: 'Feed was successfully updated.'
@@ -53,6 +55,7 @@ class FeedsController < ApplicationController
   end
 
   def destroy
+    @mother = current_user.userable
     set_feed
     @feed.destroy
     redirect_to feeds_path, notice: 'Feed was successfully deleted.'

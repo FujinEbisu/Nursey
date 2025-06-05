@@ -9,7 +9,7 @@
 
   <h3 class="card-child-name"><%= child.first_name %></h3>
 <div class="card-child-content">
-  <%= link_to child_path( child), data: { turbo_method: :delete, turbo_confirm: "Cet enfant est trop vieux ?" } do %>
+  <%= link_to child_path(child), data: { turbo_method: :delete, turbo_confirm: "Cet enfant est trop vieux ?" } do %>
   <i class="fa-solid fa-child-reaching" style="font-size:24px"></i> Supprimer
   <% end %>
 </div>
