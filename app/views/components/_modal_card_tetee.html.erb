@@ -1,4 +1,4 @@
-<button class="button-standard-dark" data-bs-toggle="modal" data-bs-target="#ModalMotherTetee" data-action="click->chronometer#display" data-chronometer-target="stop">Stop</button>
+
 
 <!-- MODAL DE TETEE -->
 <div class="modal fade" id="ModalMotherTetee" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -9,16 +9,17 @@
       </div>
       <div class="modal-body">
         <div class="row">
-        <h6 class="fw-bolder mb-2">Temps total:</h6>
+        <h6 class="fw-bolder mb-2" data-chronometer-target="totaltime1">Temps total:</h6>
         </div>
         <%= simple_form_for [@mother, @feed] do |f| %>
           <div class="quantity-tetee">
+          <%= f.input :nursy_type, as: :hidden, input_html: { value: "Tetee" } %>
             <p> Qt/ml:</p>
             <%= f.input :quantity_left, wrapper_html: { class: 'form-group-tetee' }, input_html: { class: 'form-input-modal' }, label: "Gauche"%>
             <%= f.input :quantity_right, wrapper_html: { class: 'form-group-tetee' }, input_html: { class: 'form-input-modal' }, label: "Droit" %>
           </div>
-          <%= f.input :time_left, wrapper_html: { class: 'form-group' }, input_html: { class: 'form-input-modal' }, label: "Temps Gauche" %>
-          <%= f.input :time_right, wrapper_html: { class: 'form-group' }, input_html: { class: 'form-input-modal' }, label: "Temps Droit" %>
+          <%= f.input :time_left, wrapper_html: { class: 'form-group' }, input_html: { class: 'form-input-modal', data: { chronometer_target: "inputleft"} }, label: "Temps Gauche" %>
+          <%= f.input :time_right, wrapper_html: { class: 'form-group' }, input_html: { class: 'form-input-modal', data: { chronometer_target: "inputright"} }, label: "Temps Droit" %>
           <%= f.input :comment %>
         <div class="form-inline">
           <%= f.input :mood, as: :radio_buttons, collection: Feed.moods.keys.map {
@@ -26,8 +27,7 @@
         </div>
         <%= f.error :mood %>
 
-          <%= f.input :child_id, as: :select, collection: @mother.children.map { |c| [c.first_name, c.id] }, prompt: "Select child" %>
-          <div class="d-flex justify-content-center">
+
             <%= f.button :submit, class: 'button-standard-dark'%>
           </div>
         <% end %>

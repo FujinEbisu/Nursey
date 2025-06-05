@@ -1,5 +1,4 @@
 <%= render "mothers/components/navbar_mother_mini" %>
-<%= turbo_frame_tag :new_feed do %>
 <div data-controller="chronometer">
   <div class="home-header" >
     <h1 class="feed-title" data-chronometer-target="title">Nouvelle Tetée</h1>
@@ -29,11 +28,17 @@
     </div>
 
     <div>
-      <button class="button-standard-dark mt-2" data-action="click->chronometer#display" data-chronometer-target="stop">Stop</button>
+      <button class="button-standard-dark d-none" data-bs-toggle="modal" data-bs-target="#ModalMotherTetee" data-action="click->chronometer#display" data-chronometer-target="stop">Stop</button>
     </div>
+    <div>
+     <button class="button-standard-dark " data-bs-toggle="modal" data-bs-target="#ModalMotherTirage" data-action="click->chronometer#display" data-chronometer-target="stop1">Stop</button>
     </div>
-    <% end %>
 </div>
-
+<div>
+<%= render '/components/modal_card_tirage', mother: @mother, feed: @feed %>
+</div>
+<div>
+<%= render '/components/modal_card_tetee', mother: @mother, feed: @feed %>
+</div>
 
 <%#= render "components/modal_card" %>
