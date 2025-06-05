@@ -61,4 +61,4 @@ puts "db destroyed"
   )
       puts "Created Mother, Doctor, Children and User records."
 end
-puts "10 Mothers, Doctors, Children and Users created successfully."
+puts "10 Mothers, Doctors, Children, Users created successfully."

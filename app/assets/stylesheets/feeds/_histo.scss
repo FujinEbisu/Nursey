@@ -1,0 +1,24 @@
+.card-feed {
+  width: 100%;
+  max-width: 400px;
+  background-color: $final-white;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.card-feed-content {
+ gap: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-header-feed {
+  text-align: center;
+  padding: 2rem 0 0 0;
+    align-items: end;
+}

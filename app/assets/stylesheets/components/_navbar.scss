@@ -71,3 +71,26 @@
     transform: translateY(-2px);
   }
 }
+
+.chat-button {
+  font-size: 1rem;
+  padding: 0.5rem;
+  height: 2rem;
+  width: 2rem;
+  color: $final-darker;
+  transition: all 0.3s ease;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $final-white;
+  border-radius: 10px;
+  border: 1px solid $final-darker;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $final-darker;
+    color: $final-light;
+  }
+}

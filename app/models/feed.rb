@@ -1,6 +1,6 @@
 class Feed < ApplicationRecord
   belongs_to :mother
-  belongs_to :child
+  belongs_to :child, optional: true
   enum mood: {
     happy: 5,
     content: 4,

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_06_05_100918) do
+ActiveRecord::Schema[7.1].define(version: 2025_06_05_121902) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,12 +30,13 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_05_100918) do
     t.datetime "availability"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "avatar"
   end
 
   create_table "feeds", force: :cascade do |t|
     t.string "nursy_type"
     t.bigint "mother_id", null: false
-    t.bigint "child_id", null: false
+    t.bigint "child_id"
     t.float "quantity_left"
     t.float "quantity_right"
     t.datetime "created_at", null: false
@@ -65,6 +66,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_05_100918) do
     t.integer "time_between_feed", default: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "avatar"
   end
 
   create_table "reviews", force: :cascade do |t|
