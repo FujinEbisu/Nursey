@@ -2,63 +2,97 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="chronometer"
 export default class extends Controller {
-    static targets = ["output", "tirage", "droite", "gauche", "stop", "chooseSide", "title", "second", "output2","newtitle"]
+    static targets = ["output", "tirage", "droite", "gauche", "stop", "chooseSide", "title", "second", "output2","newtitle", "time", "change", "output3"]
 
-  connect() {
-    this.startTime = Date.now()
-    this.timer = setInterval(() => this.update(), 1000)
+
+ connect() {
+    // Chrono total
+     this.startTime3 = Date.now()
+      this.timer3 = setInterval(() => this.update3(), 1000)
+      this.running3 = true
+
+
+    // Chrono 1 : 1er sein
+     this.startTime1 = Date.now()
+      this.timer1 = setInterval(() => this.update1(), 1000)
+      this.running1 = true
+
+    // Chrono 2 : 2ème sein
+    this.startTime2 = null
+    this.timer2 = null
+    this.running2 = false
   }
-
-  disconnect() {
-    clearInterval(this.timer)
-    clearInterval(this.timer2)
-  }
-
-  pad(value) {
-  return value.toString().padStart(2, '0')
-}
-
-  update() {
-    const elapsed = Math.floor((Date.now() - this.startTime) / 1000)
-    const minutes = String(Math.floor(elapsed / 60)).padStart(2, '0')
-    const seconds = String(elapsed % 60).padStart(2, '0')
-    this.outputTarget.textContent = `${minutes}:${seconds}`
-     const elapsed1 = Math.floor((Date.now() - this.startTime2) / 1000)
-    const minutes1 = String(Math.floor(elapsed1 / 60)).padStart(2, '0')
-    const seconds1 = String(elapsed1 % 60).padStart(2, '0')
-    this.output2Target.textContent = `${this.pad(minutes1)}:${this.pad(seconds1)}`
-  }
-
 
   display(event) {
     const button = event.target.innerText
     if (button === "Tirage") {
       this.tirageTarget.classList.add("d-none")
+      this.chooseSideTarget.classList.add("d-none")
       this.titleTarget.innerText = "Nouveau tirage"
     } else if (button === "Droite") {
       this.droiteTarget.classList.add("d-none")
       this.gaucheTarget.classList.add("d-none")
-      this.chooseSideTarget.classList.remove("d-none")
-      this.secondTarget.classList.remove("d-none")
-      this.newtitleTarget.innerText = "Temps seins droit"
-      const timegauche = this.outputTarget.textContent
-         this.startTime2 = Date.now()
-        this.timer2 = setInterval(() => this.update(), 1000)
-      const timedroite = this.output2Target.textContent
+      this.timeTarget.innerText = "Droite"
+      this.newtitleTarget.innerText = "droite"
+      this.changeTarget.classList.remove("d-none")
     } else if (button === "Gauche") {
       this.gaucheTarget.classList.add("d-none")
       this.droiteTarget.classList.add("d-none")
       this.stopTarget.classList.remove("d-none")
-      this.secondTarget.classList.remove("d-none")
-      this.newtitleTarget.innerText = "Temps seins gauche"
-      this.startTime2 = Date.now()
-      this.timer2 = setInterval(() => this.update(), 1000)
-      const timedroite = this.outputTarget.textContent
-      const timegauche = this.output2Target.textContent
+      this.timeTarget.innerText = "Gauche"
+      this.newtitleTarget.innerText = "droite"
     } else if (button === "Stop") {
-      const time = this.outputTarget.textContent
-      const timenext = this.output2Target.textContent
+      clearInterval(this.timer1)
+      clearInterval(this.timer2)
+      this.running1 = false
+      this.running2 = false
+
+      const time1 = this.outputTarget.textContent
+      const time2 = this.output2Target.textContent
+      const time3 = this.output3Target.textContent
+      console.log("Temps 1er sein :", time1)
+      console.log("Temps 2ème sein :", time2)
+      console.log("Temps total :", time3)
+    } else if (button === "Changer de seins") {
+      clearInterval(this.timer1)
+      this.secondTarget.classList.remove("d-none")
+      this.changeTarget.classList.add("d-none")
+      this.chooseSideTarget.classList.add("d-none")
+      this.newtitleTarget.innerText = "2ème sein"
+      const sein = this.timeTarget.innerText
+      if (sein === "Droite") {
+        this.newtitleTarget.innerText = "Gauche"
+      } else {
+        this.newtitleTarget.innerText = "Droite"
+      }
+      this.startTime2 = Date.now()
+      this.timer2 = setInterval(() => this.update2(), 1000)
     }
+  }
+
+update1() {
+    const elapsed = Math.floor((Date.now() - this.startTime1) / 1000)
+    const minutes = this.pad(Math.floor(elapsed / 60))
+    const seconds = this.pad(elapsed % 60)
+    this.outputTarget.textContent = `${minutes}:${seconds}`
+  }
+
+  update2() {
+    const elapsed = Math.floor((Date.now() - this.startTime2) / 1000)
+    const minutes = this.pad(Math.floor(elapsed / 60))
+    const seconds = this.pad(elapsed % 60)
+    this.output2Target.textContent = `${minutes}:${seconds}`
+  }
+
+  update3() {
+    const elapsed = Math.floor((Date.now() - this.startTime3) / 1000)
+    const minutes = this.pad(Math.floor(elapsed / 60))
+    const seconds = this.pad(elapsed % 60)
+    this.output3Target.textContent = `${minutes}:${seconds}`
+  }
+
+  pad(value) {
+    return value.toString().padStart(2, '0')
   }
 }
 // this.outputTarget.classList.remove("hidden")
