@@ -29,10 +29,11 @@ class FeedsController < ApplicationController
   def create
     @feed = Feed.new(feed_params)
     @feed.mother = current_user.userable
+    @mother = current_user.userable
     if @feed.save
-      redirect_to feed_path(@feed), notice: 'Feed was successfully created.'
+      redirect_to mother_feeds_path(@mother), notice: 'Feed was successfully created.'
     else
-      @children = current_user.children
+      @children = current_user.userable.children
       render :new, status: :unprocessable_entity
     end
   end
@@ -64,7 +65,7 @@ class FeedsController < ApplicationController
   private
 
   def feed_params
-    params.require(:feed).permit(:quantity_left, :quantity_right, :time_left, :time_right, :mood, :type)
+    params.require(:feed).permit(:quantity_left, :quantity_right, :time_left, :time_right, :mood, :nursy_type, :comment, :child_id)
   end
 
   def set_feed

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_06_05_100918) do
+ActiveRecord::Schema[7.1].define(version: 2025_06_05_144110) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -35,7 +35,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_05_100918) do
   create_table "feeds", force: :cascade do |t|
     t.string "nursy_type"
     t.bigint "mother_id", null: false
-    t.bigint "child_id", null: false
+    t.bigint "child_id"
     t.float "quantity_left"
     t.float "quantity_right"
     t.datetime "created_at", null: false
