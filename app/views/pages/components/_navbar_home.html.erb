@@ -14,7 +14,11 @@ Each SPAN are the 3 lines of the menu bar
   <!-- Menu content that will be shown/hidden -->
   <div class="menu-bar-display">
     <nav class="menu-content">
+      <% if user_signed_in? %>
+        <%= link_to "Accueil", mothers_path, class: "menu-item" %>
+      <% else %>
       <%= link_to "Connexion", new_user_session_path, class: "menu-item" %>
+      <% end %>
       <%= link_to "Blog", "#", class: "menu-item" %>
       <%= link_to "Chat", "#", class: "menu-item" %>
       <%= link_to "A propos de Nursey", "#", class: "menu-item" %>

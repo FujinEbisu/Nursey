@@ -6,11 +6,15 @@
       <span></span>
     </button>
     <div class="no-style">
+    <%= link_to new_message_path, data: { turbo_frame: "messages_modal" } do %>
       <div class="chat-button">
         <i class="fa-solid fa-comment-dots"></i>
       </div>
+    <% end %>
+    <%= link_to mother_path(@mother) do %>
       <%= image_tag "https://res.cloudinary.com/dc7iookgc/image/upload/c_crop,w_450,h_450,ar_1:1/v1748785341/profile_jy5ww4.jpg", class: "avatar" %>
-      </div>
+    <% end %>
+    </div>
   </div>
 
   <!-- Menu content shown/hidden -->
@@ -22,7 +26,7 @@
         <%= link_to "Page d'accueil", mothers_path, class: "menu-item" %>
       <% end %>
         <%= link_to "Dashboard", dashboard_index_path, class: "menu-item" %>    
-      <%= link_to "Historique", "#", class: "menu-item" %>
+      <%= link_to "Historique", mother_feeds_path(@mother), class: "menu-item" %>
 
       <% if user_signed_in? %>
         <%= link_to "Déconnexion", destroy_user_session_path, data: { turbo_method: :delete }, class: "menu-item" %>
