@@ -10,7 +10,7 @@
         <div class="row">
           <h6 class="fw-bolder mb-2" data-chronometer-target="totaltime">Temps total: </h6>
         </div>
-        <%= simple_form_for [@mother, @feed] do |f| %>
+        <%= simple_form_for [@mother, @feed], namespace: "modal_2"  do |f| %>
           <%= f.input :nursy_type, as: :hidden, input_html: { value: "Tetee" } %>
           <%= f.input :time_left, wrapper_html: { class: 'form-group' }, input_html: { class: 'form-input-modal', data: { chronometer_target: "inputleft1"} }, label: "Gauche"%>
           <%= f.input :time_right, wrapper_html: { class: 'form-group' }, input_html: { class: 'form-input-modal', data: { chronometer_target: "inputright1"} }, label: "Droite" %>
