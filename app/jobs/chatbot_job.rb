@@ -25,7 +25,7 @@ class ChatbotJob < ApplicationJob
   end
 
   def questions_formatted_for_openai
-    questions = @question.user.questions
+    questions = @question.mother.questions
     results = []
     results << { role: "system", content: "Tu est un expert en allaitement maternel. Tu réponds en français. Tu est là pour répondre aux questions des mamans. Si tu ne sais pas répondre, tu dis que tu ne sais pas et que tu conseilles de la metre en relation avec un expert en allaitement maternel." }
     questions.each do |question|

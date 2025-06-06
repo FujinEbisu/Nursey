@@ -1,14 +1,15 @@
 class QuestionsController < ApplicationController
 
+
     def index
-        @questions = mother.questions
-        @question = Question.new
+      @questions = current_user.questions
+      @question = Question.new
     end
 
     def create
-        @questions = mother.questions # needed in case of validation error
+        @questions = @mother.questions # needed in case of validation error
         @question = Question.new(question_params)
-        @question.user = mother
+        @question.user = current_user
     if @question.save
       respond_to do |format|
         format.turbo_stream do
@@ -24,11 +25,19 @@ class QuestionsController < ApplicationController
 
   private
 
+  def current_user
+    @current_user = current_user
+  end
+
   def question_params
-    params.require(:question).permit(:user_question)
+    params.require(:question).permit(:mother_question)
   end
 
     def mother
-        @mother = Mother.find(params[:mother_id])
+      @mother = current_user.userable if current_user.userable.is_a?(Mother)
+    end
+
+    def doctor
+      @doctor = current_user.userable if current_user.userable.is_a?(Doctor)
     end
 end
