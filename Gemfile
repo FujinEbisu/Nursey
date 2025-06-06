@@ -52,6 +52,10 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
 gem "cloudinary"
 gem 'faker'
+gem "solid_cable", "~> 1.0.3"
+gem "solid_queue"
+gem "ruby-openai"
+
 
 group :development, :test do
   gem "dotenv-rails"

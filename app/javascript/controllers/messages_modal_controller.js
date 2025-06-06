@@ -2,13 +2,20 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="messages-modal"
 export default class extends Controller {
+
   connect() {
+    document.body.style.height = "100vh"
+    document.body.style.overflow = "hidden"
   }
 
-  close(e) {
-    e.preventDefault();
-
-    const messageContainer = document.querySelector(".message-container");
-    messageContainer.classList.add("d-none");
+  disconnect() {
+    document.body.style.overflow = ""
   }
+
+  close() {
+
+    this.element.remove();
+  }
+
+
 }

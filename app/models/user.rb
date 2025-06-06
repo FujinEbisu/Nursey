@@ -7,4 +7,5 @@ class User < ApplicationRecord
   belongs_to :userable, polymorphic: true, optional: true
   attr_accessor :first_name, :last_name, :speciality, :availibity, :birthday
 
+  has_many :questions, dependent: :destroy
 end
