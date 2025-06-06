@@ -41,15 +41,17 @@ class FeedsController < ApplicationController
 
   def edit
     @mother = current_user.userable
-    set_feed
+     @feed = Feed.find(params[:mother_id])
     @children = @mother.children
   end
 
   def update
+
     @mother = current_user.userable
-    set_feed
+    @feed = Feed.find(params[:id])
+
     if @feed.update(feed_params)
-      redirect_to mother_feed_path(@feed), notice: 'Feed was successfully updated.'
+      redirect_to mother_feeds_path(@feed), notice: 'Feed was successfully updated.'
     else
       @children = current_user.children
       render :edit, status: :unprocessable_entity
@@ -70,6 +72,6 @@ class FeedsController < ApplicationController
   end
 
   def set_feed
-    @feed = Feed.find(params[:mother_id])
+    @feed = Feed.find(params[:id])
   end
 end

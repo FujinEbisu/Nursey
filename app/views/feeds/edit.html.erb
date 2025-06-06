@@ -28,10 +28,12 @@
             <%= f.input :time_right, wrapper_html: { class: 'form-group-edit' }, input_html: { class: 'form-input-edit-feed' }, label_html: { class: 'd-none'} %>
       </div>
       <!-- Quantity -->
+      <% if @feed.nursy_type == "Tirage" raise %>
       <p>Quantité:</p>
       <div class="quantity-right-show">
         <%= f.input :quantity_right, wrapper_html: { class: 'form-group-tetee-edit' }, input_html: { class: 'form-input-modal' }, label_html: { class: 'd-none'} %>
       </div>
+      <% end %>
     </div>
     <!-- ********** -->
   </div>
@@ -41,10 +43,11 @@
         |mood| [emoji_for_mood(mood), mood] }, item_wrapper_class: 'emoji-option', label_method: :first, value_method: :last, input_html: {class:"emoji-radio"} %>
     </div>
     <%= f.error :mood %>
-
-    <%= f.input :child_id, as: :select, collection: @mother.children.map { |c| [c.first_name, c.id] }, prompt: "Select child" %>
+    <% if :nursy_type == "Tetee" %>
+      <%= f.input :child_id, as: :select, collection: @mother.children.map { |c| [c.first_name, c.id] }, prompt: "Select child" %>
+    <% end %>
     <div class="d-flex justify-content-center">
-      <%= f.button :submit, class: 'button-standard-dark'%>
+      <%= f.button :submit, class: 'button-standard-dark', value: 'Valider' %>
     </div>
   <% end %>
 </div>
