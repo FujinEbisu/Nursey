@@ -16,7 +16,7 @@
 <%= link_to edit_mother_feed_path(@mother, feed) do %>
   <i class="fa-solid fa-pencil" style="font-size:16px"></i>
   <% end %>
-  <%= link_to mother_feed_path(feed, @mother), data: { turbo_method: :delete, turbo_confirm: "voulez vous vraiment supprimer cette activité ?" } do %>
+  <%= link_to mother_feed_path(feed, @mother), data: { turbo_method: :delete, turbo_confirm: "voulez vous vraiment supprimer cette entrée ?" } do %>
   <i class="fa-solid fa-trash" style="font-size:16px"></i>
   <% end %>
 </div>

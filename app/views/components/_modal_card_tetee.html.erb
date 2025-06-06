@@ -11,7 +11,7 @@
         <div class="row">
         <h6 class="fw-bolder mb-2" data-chronometer-target="totaltime1">Temps total:</h6>
         </div>
-        <%= simple_form_for [@mother, @feed] do |f| %>
+        <%= simple_form_for [@mother, @feed], namespace: "modal_1"  do |f| %>
           <div class="quantity-tetee">
           <%= f.input :nursy_type, as: :hidden, input_html: { value: "Tirage" } %>
             <p> Qt/ml:</p>
