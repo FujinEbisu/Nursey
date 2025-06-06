@@ -1,6 +1,7 @@
 <!-- Message window -->
-
-  <div class="message-content" data-controller="messages-modal" data-messages-modal-target="messageWindow">
+ <%= turbo_frame_tag "messages_modal" do %>
+    <div class="message-container" data-controller="messages-modal" data-action="click->messages-modal#close">
+    <div class="message-content">
     <p class="message-text-incoming">Message de incoming 1</p>
     <p class="message-text-outgoing">Message de outgoing 2</p>
     <p class="message-text-incoming">Message de incoming 3</p>
@@ -21,4 +22,17 @@
     <p class="message-text-outgoing">Message de outgoing 18</p>
     <p class="message-text-incoming">Message de incoming 19</p>
     <p class="message-text-outgoing">Message de outgoing 20</p>
-  </div>
+    </div>
+    
+    <%= form_with url: messages_path, method: :post do |f| %>
+        <div style="display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 0.2rem;">
+          <%= f.text_field :content, placeholder: "Message", class: "message-input-field" %>
+          <%= f.submit "Envoyer", class: "button-standard" %>
+        </div>
+      <% end %>
+       <%= link_to "Fermer", "#", data: { 
+                                    controller: "messages-modal", 
+                                    action: "messages-modal#close" }, class: "button-close" %>
+    </div>
+    </div>
+<% end %>

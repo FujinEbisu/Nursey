@@ -32,7 +32,7 @@ class FeedsController < ApplicationController
     @feed.mother = current_user.userable
     @mother = current_user.userable
     if @feed.save
-      redirect_to mother_feeds_path(@feed.mother), notice: 'Feed was successfully created.'
+      redirect_to mother_feeds_path(@feed.mother), notice: 'La Tetée a bien été créée.'
     else
       @children = current_user.userable.children
       render :new, status: :unprocessable_entity
@@ -49,7 +49,7 @@ class FeedsController < ApplicationController
     @mother = current_user.userable
     set_feed
     if @feed.update(feed_params)
-      redirect_to mother_feed_path(@feed), notice: 'Feed was successfully updated.'
+      redirect_to mother_feed_path(@feed), notice: 'La Tetée a bien été modifiée.'
     else
       @children = current_user.children
       render :edit, status: :unprocessable_entity
@@ -60,7 +60,7 @@ class FeedsController < ApplicationController
     @mother = current_user.userable
     set_feed
     @feed.destroy
-    redirect_to mother_feed_path(@mother), notice: 'Feed was successfully deleted.'
+    redirect_to mother_feed_path(@mother), notice: 'La Tetée a bien été supprimée.'
   end
 
   private

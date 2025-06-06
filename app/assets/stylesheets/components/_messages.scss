@@ -1,17 +1,27 @@
 .message-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: calc(90vh - 8vh);
-    padding: 0 2.3rem;
-    margin-top: 1rem;
-    flex-wrap: wrap;
-    align-content: center;
-    border: 1px solid red;
+  position: fixed;
+  z-index: 1000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  flex-wrap: wrap;
+  align-content: center;
+  background-color: $final-darker;
+  border-radius: 2rem;
+  border: 5px solid $final-dark;
 
-      @media (max-width: 768px) {
-      }
-    }
+  &.d-none {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    /* Add responsive styles here if needed */
+  }
+}
 
 .message-content {
   display: flex;
@@ -19,21 +29,18 @@
   align-items: space-between;
   height: 45vh;
   width: 75vw;
-  border: 2px solid $final-darker;
   overflow-y: scroll;
+  background-color: $final-white;
   scrollbar-width: none;
   border-radius: 0.5rem;
   color: $final-darker;
-  background-color: #ffefe179;
-  backdrop-filter: blur(2px);
-  box-shadow: 15px 15px 30px rgba(200, 200, 200, 0.7),
-             -15px -15px 30px rgba(225, 225, 225, 0.7);
+  border: 4px solid $final-mid;
 }
 
 .message-text-incoming {
   border: 1px solid $final-darker;
   max-width: 1/3 * 100%;
-  padding: 0.5rem ;
+  padding: 0.5rem;
   align-content: safe;
   align-self: flex-start;
   margin: 0.5rem;
@@ -43,7 +50,6 @@
   font-size: 0.8rem;
   font-weight: 600;
   font-family: "Nunito", sans-serif;
-
 }
 
 .message-text-outgoing {
@@ -59,5 +65,29 @@
   font-size: 0.8rem;
   font-weight: 600;
   font-family: "Nunito", sans-serif;
+}
 
+.button-close {
+  padding: 0.3rem 0.5rem;
+  margin-bottom: 1rem;
+  width: fit-content;
+  background-color: $final-dark;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  color: $final-white;
+
+  &:hover {
+    background-color: $final-dark;
+  }
+}
+
+.message-input-field {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
 }
