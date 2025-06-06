@@ -13,7 +13,7 @@
   <% end %>
   </div>
 <div class="card-feed-content">
-<%= link_to edit_mother_feed_path(feed, @mother) do %>
+<%= link_to edit_mother_feed_path(@mother, feed) do %>
   <i class="fa-solid fa-pencil" style="font-size:16px"></i>
   <% end %>
   <%= link_to mother_feed_path(feed, @mother), data: { turbo_method: :delete, turbo_confirm: "voulez vous vraiment supprimer cette activité ?" } do %>
