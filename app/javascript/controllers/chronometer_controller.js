@@ -2,7 +2,9 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="chronometer"
 export default class extends Controller {
-    static targets = ["output", "tirage", "droite", "gauche", "stop", "chooseSide", "title", "second", "output2","newtitle", "time", "change", "output3", "first", "stop1", "totaltime", "inputleft", "inputright","totaltime1", "inputleft1", "inputright1"]
+    static targets = ["output", "tirage", "droite", "gauche", "stop", "chooseSide",
+       "title", "second", "output2","newtitle", "time", "change", "output3", "first",
+        "stop1", "totaltime", "inputleft", "inputright","totaltime1", "inputleft1", "inputright1"]
 
 
  connect() {
@@ -35,14 +37,18 @@ export default class extends Controller {
       this.titleTarget.innerText = "Nouveau tirage"
     } else if (button === "Droite") {
       this.droiteTarget.classList.add("d-none")
+      this.tirageTarget.classList.add("d-none")
       this.gaucheTarget.classList.add("d-none")
+      this.stop1Target.classList.remove("d-none")
       this.timeTarget.innerText = "Droite"
       this.newtitleTarget.innerText = "Gauche"
       this.changeTarget.classList.remove("d-none")
     } else if (button === "Gauche") {
       this.gaucheTarget.classList.add("d-none")
+      this.tirageTarget.classList.add("d-none")
       this.droiteTarget.classList.add("d-none")
       this.changeTarget.classList.remove("d-none")
+       this.stop1Target.classList.remove("d-none")
       this.timeTarget.innerText = "Gauche"
       this.newtitleTarget.innerText = "Droite"
     } else if (button === "Stop") {

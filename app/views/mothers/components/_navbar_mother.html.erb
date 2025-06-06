@@ -12,8 +12,14 @@
       </div>
     <% end %>
     <%= link_to mother_path(@mother) do %>
-      <%= image_tag "https://res.cloudinary.com/dc7iookgc/image/upload/c_crop,w_450,h_450,ar_1:1/v1748785341/profile_jy5ww4.jpg", class: "avatar" %>
-    <% end %>
+        <% if @mother.avatar.attached? %>
+        <div id="avatar">
+          <%= cl_image_tag @mother.avatar.key,  gravity: "auto", height: 600, width: 600, crop: :fill, class: "avatar" %>
+        </div>
+        <% else %>
+          <%= image_tag "https://res.cloudinary.com/dc7iookgc/image/upload/v1747992835/samples/two-ladies.jpg", class: "avatar" %>
+        <% end %>
+    <% end %>    
     </div>
     </div>
   <!-- Menu content shown/hidden -->
@@ -37,7 +43,5 @@
     <h1 class="welcome-text">Bienvenue <%= @mother.first_name %></h1>
   </div>
 
-  <button class="button-home" data-menu-bar-mother-target="nouvelle_tete">
-    <%= link_to 'Nouvelle Tetée', new_mother_feed_path(@mother.id) %>
-  </button>
+<%= link_to 'Nouvelle Tétée', new_mother_feed_path(@mother.id), class: "button-home", data: { menu_bar_mother_target: "nouvelle_tete" } %>
 </div>

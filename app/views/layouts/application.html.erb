@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.7.0/css/all.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+   
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
@@ -17,5 +17,5 @@
   <%= turbo_frame_tag "messages_modal" %>
   <%= yield %>
   </body>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </html>
