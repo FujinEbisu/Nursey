@@ -16,7 +16,7 @@ zone de generation de données a metre dans le controller plus tard
 zone de generation de données a metre dans le controller plus tard
 -->
 
-<h1 style="text-align: center;">Vos données en un clin d oeil</h1>
+<h1 style="text-align: center; padding: 1rem; align-self: center;">Vos données</h1>
 <div class="dashboard-container">
   <div class="dashboard-card">
     <h4><i class="fa-solid fa-person-breastfeeding"></i></h4>
@@ -38,17 +38,14 @@ zone de generation de données a metre dans le controller plus tard
 
   <% if avg_mood == 2 || avg_mood == 3 %>
   <div class="dashboard-card">
-    <h4><i class="fa-solid fa-hand-holding-heart"></i></h4>
     <h6 style="font-size: 0.7rem;">Nous vous conseillons de prendre un peu de temps pour vous poser et de vous détendre</h6>
   </div>
   <% elsif avg_mood == 1 %>
   <%= link_to new_message_path, class: "dashboard-card" do %>
-    <h4><i class="fa-solid fa-hand-holding-medical"></i></i></h5>
     <h6 style="font-size: 0.7rem;">Contactez un expert pour vous aider, il suffit de cliquer <strong>ICI</strong></h6>
   <% end %>
   <% else avg_mood >= 4 %>
     <div class="dashboard-card">
-    <h4><%= mood_icon %></h4>
     <h6 style="font-size: 0.7rem;">Vous fetez bien, continuez comme ca !</h6>
   </div>
   <% end %>

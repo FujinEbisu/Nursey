@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Nursey</title>
+    <meta name="description" content="Nursey est une application de suivi de l'alimentation de votre bébé. En toute simplicité.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,7 +13,9 @@
   </head>
 
   <body>
-    <%= render "shared/flashes" %>
-    <%= yield %>
+  <%= render "shared/flashes" %>
+  <%= turbo_frame_tag "messages_modal" %>
+  <%= yield %>
   </body>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </html>

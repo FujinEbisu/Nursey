@@ -11,11 +11,9 @@ export default class extends Controller {
         this.close();
       }
     });
-    console.log("mothers menu bar controller connected");
   }
 
   toggle() {
-    console.log("mothers menu bar controller toggled");
     // Toggle the main navbar active state
     this.element.classList.toggle('active');
     
