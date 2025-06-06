@@ -16,6 +16,41 @@
           <%= @mother.first_name %> <%= @mother.last_name %>
         </h3>
       </div>
+      <div class="mother-details-info">
+        <div class="pill-container">
+          <h6>Date de naissance: </h6>
+          <p><%= @mother.birthday.strftime("%d/%m/%Y") %></p>
+        </div>
+     <!--   <div class="pill-container">
+          <h6>Poids à la naissance: </h6>
+          <p><%#= @mother.birth_weight %> kg</p>
+        </div>
+        <div class="pill-container">
+          <h6>Taille à la naissance: </h6>
+          <p><%#= @mother.birth_height %> cm</p>
+        </div>-->
+       <div class="pill-container-child ">
+       <div class="d-flex flex-row gap-2">
+  <h6>Mes enfant(s)</h6>
+    <%= link_to new_mother_child_path(@mother) do %>
+      <i class="fa-solid fa-plus"></i>
+    <% end %>
+    </div>
+    <div class="mother-details-child">
+  <% @mother.children.each do |child| %>
+    <div class="d-flex flex-column align-items-center">
+      <%= child.first_name %>
+      <% if child.sexe == "fille" %>
+        <i class="fa-solid fa-child-dress" style="font-size:24px"></i>
+      <% elsif child.sexe == "garcon" %>
+        <i class="fa-solid fa-child" style="font-size:24px"></i>
+      <% else %>
+        <i class="fa-solid fa-baby" style="font-size:24px"></i>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+</div>
       <div class="pill-container">
       <p>Temps entre tétées: </p>
       <h4><%= @mother.time_between_feed %> heures </h4>
@@ -24,7 +59,7 @@
       <div class="mother-details-feeds">
       <div class="pill-container">
         <h6>Nombre de tétées: </h6>
-        <p><%= @mother.feeds.count %></p>
+        <p><%= @feeds.count %></p>
       </div>
       <div class="pill-container">
         <h6>Total de litres tirés: </h6>
@@ -32,8 +67,9 @@
       </div>
     </div>
   <% end %>
-  <div class="mother-details-buttons">
+  <div class="mother-details-buttons d-flex justify-content-center">
     <%= link_to "Editer Informations Personnelles", edit_mother_path(@mother), class: "button-standard-dark" %>
   </div>
+</div>
 </div>
 </div>

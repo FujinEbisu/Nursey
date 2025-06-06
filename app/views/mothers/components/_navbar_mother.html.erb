@@ -43,7 +43,5 @@
     <h1 class="welcome-text">Bienvenue <%= @mother.first_name %></h1>
   </div>
 
-  <button class="button-home" data-menu-bar-mother-target="nouvelle_tete">
-    <%= link_to 'Nouvelle Tetée', new_mother_feed_path(@mother.id) %>
-  </button>
+<%= link_to 'Nouvelle Tétée', new_mother_feed_path(@mother.id), class: "button-home", data: { menu_bar_mother_target: "nouvelle_tete" } %>
 </div>

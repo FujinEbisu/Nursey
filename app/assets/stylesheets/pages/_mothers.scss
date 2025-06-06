@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: calc(90vh - 8vh);
+  height: calc(60vh - 8vh);
   padding: 0 2.3rem;
       margin-top: 1rem;
       flex-wrap: wrap;
@@ -26,11 +26,11 @@
     align-content: space-around;
     justify-content: space-between;
     align-items: center;
-  
+
     &.active {
       height: 98vh;
       transition: height 0.3s ease;
-      
+
       .menu-bar-display {
         opacity: 1;
         pointer-events: all;
@@ -41,7 +41,7 @@
 .nav-bar-mother-mini {
   padding: 10px;
   border-radius: 0 0 25px 25px;
-  background-color: $final-light;
+  background-color: $final-mid;
   transition: height 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -49,7 +49,7 @@
   &.active {
     height: 98vh;
     transition: height 0.3s ease;
-    
+
     .menu-bar-display {
       opacity: 1;
       pointer-events: all;
@@ -154,7 +154,7 @@
  align-items: center;
  justify-content: center;
  gap: 1rem;
- border: 3px solid $final-light; 
+ border: 3px solid $final-light;
 }
 
 .notification-container h6 {
@@ -168,4 +168,26 @@
   justify-content: space-between;
   gap: 1rem;
   width: 100%;
+}
+
+.mother-details-child {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  color: $final-darker;
+}
+
+
+.pill-container-child {
+ border-radius: 25px;
+ padding: 1rem;
+ margin: 1rem;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ gap: 1rem;
+ border: 3px solid $final-light;
 }
