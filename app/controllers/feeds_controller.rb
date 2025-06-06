@@ -9,7 +9,7 @@ class FeedsController < ApplicationController
 }
   ##### test mood #####
   def index
-    @feeds = Feed.all
+    @feeds = Feed.all.where(mother: current_user.userable)
     @mother = current_user.userable
     @children = @mother.children
   end
