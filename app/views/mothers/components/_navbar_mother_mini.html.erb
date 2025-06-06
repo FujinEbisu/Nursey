@@ -12,7 +12,6 @@
       </div>
     <% end %>
     <%= link_to mother_path(@mother) do %>
-      <%= turbo_stream_from "mother_#{@mother.id}_avatar" %>
         <% if @mother.avatar.attached? %>
         <div id="avatar">
           <%= cl_image_tag @mother.avatar.key,  gravity: "auto", height: 600, width: 600, crop: :fill, class: "avatar" %>

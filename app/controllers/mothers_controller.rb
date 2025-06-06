@@ -1,6 +1,5 @@
 class MothersController < ApplicationController
     before_action :define_mother, :mother_user, only: [:index, :show, :edit, :update, :destroy]
-    after_commit :broadcast_avatar, on: :create
 
   def index
   end
@@ -51,13 +50,5 @@ class MothersController < ApplicationController
     @mother_user = current_user
   end
 
-  def broadcast_avatar
-    if @mother.avatar.attached?
-      broadcast_append_to "mother_#{@mother.id}_avatar",
-                          partial: "mothers/avatar",
-                          target: "avatar",
-                          locals: { mother: @mother }
-    end
-  end
 end
 
