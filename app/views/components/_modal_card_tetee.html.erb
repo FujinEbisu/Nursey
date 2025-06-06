@@ -26,9 +26,9 @@
             |mood| [emoji_for_mood(mood), mood] }, item_wrapper_class: 'emoji-option', label_method: :first, value_method: :last, input_html: {class:"emoji-radio"} %>
         </div>
         <%= f.error :mood %>
-
-
+        <div class="d-flex justify-content-center">
             <%= f.button :submit, class: 'button-standard-dark'%>
+          </div>
           </div>
         <% end %>
       <%# <div class="modal-footer border-top-0">

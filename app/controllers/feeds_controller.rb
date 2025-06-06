@@ -70,6 +70,6 @@ class FeedsController < ApplicationController
   end
 
   def set_feed
-    @feed = Feed.find(params[:mother_id])
+    @feed = Feed.find(params[:id])
   end
 end
