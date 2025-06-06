@@ -3,9 +3,12 @@
   <%= turbo_frame_tag "edit-mother-details" do %>
     <div class="mother-details">
       <div class="mother-details-avatar">
-        <%= image_tag "https://res.cloudinary.com/dc7iookgc/image/upload/c_crop,w_600,h_600,ar_1:1/v1748785341/profile_jy5ww4.jpg", class: "avatar-large" %>
+        <% if @mother.avatar.attached? %>
+          <%= cl_image_tag @mother.avatar.key,  gravity: "auto", height: 600, width: 600, crop: "auto", class: "avatar-large" %>
+        <% else %>
+          <%= image_tag "https://res.cloudinary.com/dc7iookgc/image/upload/v1747992835/samples/two-ladies.jpg", class: "avatar-large" %>
+        <% end %>
       </div>
-
       <% quantite = @mother.feeds.sum(:quantity_left) + @mother.feeds.sum(:quantity_right) %>
 
       <div class="mother-details-name">

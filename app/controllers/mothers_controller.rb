@@ -1,5 +1,6 @@
 class MothersController < ApplicationController
-  before_action :define_mother, :mother_user, only: [:index, :show, :edit, :update, :destroy]
+    before_action :define_mother, :mother_user, only: [:index, :show, :edit, :update, :destroy]
+    after_commit :broadcast_avatar, on: :create
 
   def index
   end
@@ -14,7 +15,7 @@ class MothersController < ApplicationController
   def create
     @mother = Mother.new(mother_params)
     if @mother.save
-      redirect_to mother_path(@mother), notice: 'Mother was successfully created.'
+      redirect_to mother_path(@mother), notice: 'Votre compte a bien été créé.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -39,7 +40,7 @@ class MothersController < ApplicationController
   private 
 
   def mother_params
-    params.require(:mother).permit(:first_name, :last_name, :birthday, :time_between_feed)
+    params.require(:mother).permit(:first_name, :last_name, :birthday, :time_between_feed, :avatar)
   end
 
   def define_mother
@@ -49,4 +50,14 @@ class MothersController < ApplicationController
   def mother_user
     @mother_user = current_user
   end
+
+  def broadcast_avatar
+    if @mother.avatar.attached?
+      broadcast_append_to "mother_#{@mother.id}_avatar",
+                          partial: "mothers/avatar",
+                          target: "avatar",
+                          locals: { mother: @mother }
+    end
+  end
 end
+
