@@ -1,13 +1,13 @@
 <%= render "mothers/components/navbar_mother_mini" %>
 <div class="container-show-feed">
-  <h2>Type</h2>
+  <h2><%= @feed.nursy_type %></h2>
   <p class="creation-date"> Réalisé le <%= @feed.created_at.strftime("%d/%m/%Y") %> à <%= @feed.created_at.strftime("%H:%M") %></p>
 
   <div class="temps-total-show">
     <p>Temps total:</p>
     <p id="temps-total-show-value">
       <!-- Display the total time in a human-readable format -->
-      <%= distance_of_time_in_words(@feed.time_left + @feed.time_right, 0) %>
+      <%= minutes_and_seconds(@feed.time_left + @feed.time_right) %>
     </p>
   </div>
   <div class="donnee-boob">
@@ -17,13 +17,15 @@
       <!-- Time -->
       <p>Temps:</p>
       <p class="time-left-show">
-        <%= @feed.time_left %> min
+        <%= minutes_and_seconds(@feed.time_left) %>
       </p>
       <!-- Quantity -->
+      <%  if @feed.nursy_type == "Tirage" %>
       <p>Quantité:</p>
       <p class="quantity-left-show">
         <%= @feed.quantity_left %> ml
       </p>
+      <% end %>
     </div>
     <!-- ********** -->
     <!-- Right boob -->
@@ -32,13 +34,15 @@
       <!-- Time -->
       <p>Temps:</p>
       <p class="time-right-show">
-        <%= @feed.time_right %> min
+        <%= minutes_and_seconds(@feed.time_right) %>
       </p>
       <!-- Quantity -->
+      <%  if @feed.nursy_type == "Tirage" %>
       <p>Quantité:</p>
       <p class="quantity-right-show">
         <%= @feed.quantity_right %> ml
       </p>
+      <% end %>
     </div>
     <!-- ********** -->
   </div>
@@ -48,10 +52,12 @@
   <div class="emoji-show">
     <%= emoji_for_mood(@feed.mood) %>
   </div>
+  <% if @feed.nursy_type == "Tetee" %>
   <h4 class="mt-2">Enfant:</h4>
   <p class="child-show">
     <%= @feed.child ? @feed.child.first_name : "Aucun enfant sélectionné" %>
   </p>
+  <% end %>
   <button class="button-standard-dark mt-3">
   <%= link_to "Editer", edit_mother_feed_path(@feed) %>
   </button>

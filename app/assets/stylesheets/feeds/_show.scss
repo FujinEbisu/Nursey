@@ -48,6 +48,7 @@
   display: flex;
   justify-content: space-around;
   gap: 8px;
+  width: 100%;
 }
 
 .left-boob-show {
@@ -56,6 +57,7 @@
   border-radius: 16px;
   text-align: center;
   gap:4px;
+  width: 100%;
 
   p {
     color: $final-darker;
@@ -68,6 +70,7 @@
   border-radius: 16px;
   text-align: center;
   gap:4px;
+  width: 100%;
 
    p {
     color: $final-darker;
@@ -127,7 +130,7 @@
 }
 
 .form-input-edit-feed {
-    width: 60px;
+    width: 55px;
     height: 40px;
     border-radius: 8px;
     border: none;
@@ -156,4 +159,8 @@
   border: none;
   padding: 8px;
   background-color: $final-white;
+}
+
+.form-control.is-valid {
+  padding-right: 0;
 }

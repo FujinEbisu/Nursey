@@ -41,7 +41,7 @@ class FeedsController < ApplicationController
 
   def edit
     @mother = current_user.userable
-     @feed = Feed.find(params[:mother_id])
+    @feed = Feed.find(params[:id])
     @children = @mother.children
   end
 
