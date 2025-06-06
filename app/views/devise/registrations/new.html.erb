@@ -28,7 +28,7 @@
                 required: true,
                 input_html: { autocomplete: "last-name" },
                 label: "Nom" %>
-    <%= f.input :userable_type, as: :select, collection: ["Doctor", "Mother"], input_html: {id: 'user_type_select', data: { formulaire_target: "type", action: "change->formulaire#display" }}, label: "Ditez-nous qui vous êtes" %>
+    <%= f.input :userable_type, as: :select, collection: {"Docteur" => "Doctor", "Maman" => "Mother"}, input_html: {id: 'user_type_select', data: { formulaire_target: "type", action: "change->formulaire#display" }}, label: "Ditez-nous qui vous êtes" %>
     <div data-formulaire-target="doctor" class="d-none">
       <%= f.input :speciality, label: "Spécialité" %>
       <%= f.input :availibity, label: "Disponibilité" %>

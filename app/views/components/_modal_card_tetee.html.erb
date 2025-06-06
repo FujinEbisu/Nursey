@@ -13,7 +13,7 @@
         </div>
         <%= simple_form_for [@mother, @feed] do |f| %>
           <div class="quantity-tetee">
-          <%= f.input :nursy_type, as: :hidden, input_html: { value: "Tetee" } %>
+          <%= f.input :nursy_type, as: :hidden, input_html: { value: "Tirage" } %>
             <p> Qt/ml:</p>
             <%= f.input :quantity_left, wrapper_html: { class: 'form-group-tetee' }, input_html: { class: 'form-input-modal' }, label: "Gauche"%>
             <%= f.input :quantity_right, wrapper_html: { class: 'form-group-tetee' }, input_html: { class: 'form-input-modal' }, label: "Droit" %>
