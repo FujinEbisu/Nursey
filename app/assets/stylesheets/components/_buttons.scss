@@ -131,6 +131,7 @@
 
 .nav-bar.active .menu__icon span:nth-child(1) {
   transform: translateY(7.5px) rotate(-45deg);
+  
 }
 
 .nav-bar.active .menu__icon span:nth-child(2) {
@@ -145,6 +146,7 @@
 // Add these rules for the nav-bar-mother
 .nav-bar-mother.active .menu__icon span:nth-child(1) {
   transform: translateY(7.5px) rotate(-45deg);
+
 }
 
 .nav-bar-mother.active .menu__icon span:nth-child(2) {

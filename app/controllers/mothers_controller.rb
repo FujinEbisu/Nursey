@@ -5,6 +5,7 @@ class MothersController < ApplicationController
   end
 
   def show
+    @feeds = Feed.all.where(mother: current_user.userable)
   end
 
   def new
@@ -36,7 +37,7 @@ class MothersController < ApplicationController
   def destroy
   end
 
-  private 
+  private
 
   def mother_params
     params.require(:mother).permit(:first_name, :last_name, :birthday, :time_between_feed)

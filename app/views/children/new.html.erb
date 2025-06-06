@@ -1,4 +1,5 @@
-<%= render "mothers/components/navbar_mother_mini" %>
+<%= turbo_frame_tag "edit-mother-details" do %>
+
 <div class="home-header" >
   <h1 class="feed-title">Ajoutez votre enfant</h1>
 </div>
@@ -6,3 +7,4 @@
   <p>Vous pouvez ajouter un enfant pour suivre ses tétées.</p>
 <%= render "form_child", mother: @mother, child: @child %>
 </div>
+<% end %>
