@@ -5,6 +5,7 @@
         <div class="mother-edit-form">
         <%= f.input :first_name, label: 'Prénom', placeholder: 'Prénom' %>
         <%= f.input :last_name, label: 'Nom', placeholder: 'Nom' %>
+        <%= f.input :avatar, as: :file, label: "Avatar" %>
         </div>
         <%= f.input :birthday, label: 'Date de naissance', as: :date, html5: true, placeholder: 'Date de naissance' %>
         <p><%= f.input :time_between_feed, label: 'Temps entre les tétées en heures', as: :integer, placeholder: 'Temps entre les tétées en heures' %></p>
