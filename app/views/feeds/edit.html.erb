@@ -13,10 +13,12 @@
         <%= f.input :time_left, wrapper_html: { class: 'form-group-edit' }, input_html: { class: 'form-input-edit-feed' }, label_html: { class: 'd-none' } %>
       </div>
       <!-- Quantity -->
+      <%  if @feed.nursy_type == "Tirage" %>
       <p>Quantité:</p>
       <div class="quantity-left-show">
         <%= f.input :quantity_left, wrapper_html: { class: 'form-group-tetee-edit' }, input_html: { class: 'form-input-modal' }, label_html: { class: 'd-none' } %>
       </div>
+      <% end %>
     </div>
     <!-- ********** -->
     <!-- Right boob -->
@@ -28,23 +30,26 @@
             <%= f.input :time_right, wrapper_html: { class: 'form-group-edit' }, input_html: { class: 'form-input-edit-feed' }, label_html: { class: 'd-none'} %>
       </div>
       <!-- Quantity -->
+      <%  if @feed.nursy_type == "Tirage" %>
       <p>Quantité:</p>
       <div class="quantity-right-show">
         <%= f.input :quantity_right, wrapper_html: { class: 'form-group-tetee-edit' }, input_html: { class: 'form-input-modal' }, label_html: { class: 'd-none'} %>
       </div>
+      <% end %>
     </div>
     <!-- ********** -->
   </div>
-    <%= f.input :comment, input_html: { class:'feed_comment_edit'} %>
+    <%= f.input :comment, input_html: { class:'feed_comment_edit'}, label: 'Commentaire', wrapper_html: { class: 'mt-3'} %>
     <div class="form-inline">
       <%= f.input :mood, as: :radio_buttons, collection: Feed.moods.keys.map {
         |mood| [emoji_for_mood(mood), mood] }, item_wrapper_class: 'emoji-option', label_method: :first, value_method: :last, input_html: {class:"emoji-radio"} %>
     </div>
     <%= f.error :mood %>
-
-    <%= f.input :child_id, as: :select, collection: @mother.children.map { |c| [c.first_name, c.id] }, prompt: "Select child" %>
+    <% if @feed.nursy_type == "Tetee" %>
+      <%= f.input :child_id, as: :select, collection: @mother.children.map { |c| [c.first_name, c.id] }, prompt: "Select child" %>
+    <% end %>
     <div class="d-flex justify-content-center">
-      <%= f.button :submit, class: 'button-standard-dark'%>
+      <%= f.button :submit, class: 'button-standard-dark', value: 'Valider' %>
     </div>
   <% end %>
 </div>
