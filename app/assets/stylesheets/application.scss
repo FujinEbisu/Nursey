@@ -116,3 +116,40 @@ p {
 .swal2-confirm {
   background-color: var(--bg-darker) !important; /* rouge */
 }
+
+
+.flatpickr-calendar {
+  background-color: #fef9f2;
+border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: none !important;
+}
+
+/* Couleur des jours sélectionnés */
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange {
+  background: $final-dark;
+  color: $final-white;
+  border: none;
+}
+
+/* Survol des jours */
+.flatpickr-day:hover {
+  background: #fde3a7;
+  color: #333;
+}
+
+/* Couleur des jours désactivés */
+.flatpickr-day.disabled {
+  background: #eee;
+  color: #bbb;
+  cursor: not-allowed;
+}
+
+/* Barre de titre (mois + année) */
+.flatpickr-months {
+  background-color: $final-dark;
+  color: white
+}
