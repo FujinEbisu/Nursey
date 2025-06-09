@@ -7,11 +7,10 @@
 <div class="container-chatbot">
   <h1>Chat avec nous</h1>
   <div class="message-container">
-    <div class="message-content" id="questions">
+    <div class="message-content" id="questions" data-controller="messages-modal" data-messages-modal-target="container" >
       <% @questions.each do |question| %>
         <%= render "questions/question", question: question %>
       <% end %>
-    </div>
     </div>
     <div id="new-question-form">
       <%= render "form", question: @question %>

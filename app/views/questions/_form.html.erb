@@ -5,6 +5,19 @@
       <%= f.input :mother_question, label: false, wrapper: false %>
       <%= f.label :mother_question, "Dites nous ce que vous voulez parler" %>
     </div>
-    <%= f.submit "Envoyer", id: "new-question-button", class: "button-standard-dark" %>
+    <%= f.submit "Envoyer", id: "new-question-button", class: "button-standard disabled" %>
   </div>
 <% end %>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const formFloating = document.querySelector('.form-floating');
+    const newQuestionButton = document.getElementById('new-question-button');
+
+    if (formFloating.value === '') {
+      newQuestionButton.classList.add('disabled');
+    } else {
+      newQuestionButton.classList.remove('disabled');
+    }
+  });
+</script>
