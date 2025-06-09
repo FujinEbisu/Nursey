@@ -25,9 +25,9 @@
 .sign-links a {
   font-family: 'Nunito', sans-serif;
   font-weight: 900;
-  color: $final-darker;
+  color: var(--text-darker);
 }
 
 .sign-links a:hover {
-  color: $final-darker;
+  color: var(--text-darker);
 }
