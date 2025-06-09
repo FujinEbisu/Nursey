@@ -1,5 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
+// import { French } from "flatpickr/dist/l10n/fr.ts"
 import flatpickr from "flatpickr";
+
 
 // Connects to data-controller="datepickrdr"
 export default class extends Controller {
@@ -13,6 +15,7 @@ export default class extends Controller {
           defaultDate: this.datesValue,
           minDate: "today",
           mode: "multiple",
+          inline: true,
 
     })
   }
