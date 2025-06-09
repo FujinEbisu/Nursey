@@ -42,7 +42,7 @@ class MessagesController < ApplicationController
   end
 
   def history
-    # @messages = Message.all.where(doctor: current_user.userable && message.status == "closed")
+    @messages = Message.all.where(doctor: current_user.userable && message.status == "closed")
   end
   private
 
