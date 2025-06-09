@@ -1,4 +1,4 @@
-<div class="card-feed">
+<div class="card-feed" data-controller="feed">
 <div>
 <%  if feed.nursy_type == "Tirage" %>
   <i class="fa-solid fa-person-dress" style="color:#FBC4AB;font-size:32px;margin-left:8px"></i>
@@ -16,7 +16,7 @@
 <%= link_to edit_mother_feed_path(@mother, feed) do %>
   <i class="fa-solid fa-pencil" style="font-size:16px"></i>
   <% end %>
-  <%= link_to mother_feed_path(@mother, feed), data: { turbo_method: :delete, turbo_confirm: "voulez vous vraiment supprimer cette activité ?" } do %>
+  <%= link_to mother_feed_path(@mother, feed), data: { turbo_method: :delete, turbo_confirm: "true", action: "click->feed#supprimer" } do %>
   <i class="fa-solid fa-trash" style="font-size:16px"></i>
   <% end %>
 </div>

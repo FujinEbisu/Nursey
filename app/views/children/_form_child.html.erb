@@ -5,6 +5,6 @@
     <%= f.submit "Ajouter", class: 'button-standard'%>
 <% end %>
 <div class="form-actions">
-  <%= link_to "Annuler", mother_children_path(@mother), class: "button-standard" %>
+  <%= link_to "Annuler", mother_children_path(@mother), class: "button-standard", data: { turbo: false } %>
 </div>
 </div>

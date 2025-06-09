@@ -12,6 +12,8 @@ class DoctorsController < ApplicationController
 
   def create
     @doctor = Doctor.new(doctor_params)
+    raise
+    @doctor.availability = @availability
     if @doctor.save
       redirect_to doctor_path(@doctor), notice: 'Doctor was successfully created.'
     else
