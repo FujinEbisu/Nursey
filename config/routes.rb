@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :questions, only: [:index, :create]
 
   resources :users
-
+  
   resources :safe_places, only: [:index, :show, :new, :create] do
     resources :reviews
   end
