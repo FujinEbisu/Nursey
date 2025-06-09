@@ -1,6 +1,19 @@
+<!-- Chat window -->
+
 <div id="<%= dom_id(question) %>" class="question">
   <%= turbo_stream_from dom_id(question) %>
+  
+  
+  <p class="message-text-outgoing">
+  <span style="font-size: x-small; font-weight: 200; font-family: 'Poppins', sans-serif; color: $final-darker;">
+  <%= question.created_at.strftime("%H:%M") %> </span>
+  <%= question.mother_question %></p>
+  
 
-  <p class="user-question"><%= question.content %></p>
-  <p class="ai-answer"><%= question.ai_answer || "..." %></p>
+<span class="message-text-incoming">
+  <%= sanitize(question.ai_answer, 
+      tags: %w[strong em b i ul ol li p br span], 
+      attributes: %w[class]) || "..." %>
+      <span style="font-size: x-small; font-weight: 200; font-family: 'Poppins', sans-serif; color: $final-darker;"><%= question.updated_at.strftime("%H:%M") %></span>
+</span>
 </div>

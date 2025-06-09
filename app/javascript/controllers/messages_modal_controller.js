@@ -2,10 +2,12 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="messages-modal"
 export default class extends Controller {
+  static targets = ["container"]
 
   connect() {
     document.body.style.height = "100vh"
     document.body.style.overflow = "hidden"
+    this.containerTarget.scrollTo({ top: this.containerTarget.scrollHeight, behavior: "smooth" })
   }
 
   disconnect() {
@@ -13,9 +15,6 @@ export default class extends Controller {
   }
 
   close() {
-
     this.element.remove();
   }
-
-
 }
