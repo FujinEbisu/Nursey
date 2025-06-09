@@ -2,11 +2,15 @@ class MessagesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_mother
   before_action :set_message, only: [:show, :update]
-  before_action :set_doctor, only: [:show, :update]
+  before_action :set_doctor, only: [:index, :show, :update]
 
 
   def index
-    @messages = @mother.messages
+    if current_user.userable_type == "Mother"
+      @messages = Message.all.where(mother: current_user.userable)
+    else
+      @messages = Message.all.where(doctor: current_user.userable)
+    end
   end
 
   def show
@@ -37,6 +41,9 @@ class MessagesController < ApplicationController
     end
   end
 
+  def history
+    # @messages = Message.all.where(doctor: current_user.userable && message.status == "closed")
+  end
   private
 
   def set_mother
