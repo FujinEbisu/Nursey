@@ -16,19 +16,22 @@ Rails.application.routes.draw do
   resources :questions, only: [:index, :create]
 
   resources :users
-
+  
   resources :safe_places, only: [:index, :show, :new, :create] do
     resources :reviews
   end
 
   get 'messages/history', to: 'messages#history'
   resources :messages, only: [:index, :new, :show, :create, :update]
-  resources :doctors
+  resources :doctors do
+    resources :availabilities, only: [:create, :edit, :update]
+  end
   resources :mothers, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     resources :feeds
     resources :children, only: [:index, :new, :create]
   end
   resources :children, only: [:destroy]
   resources :dashboards, only: [:index], as: :dashboard
+
 
 end

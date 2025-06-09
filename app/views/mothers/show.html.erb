@@ -1,5 +1,5 @@
 <%= render "mothers/components/navbar_mother_mini" %>
-<div class="mothers-container" style="margin-top: 4rem;">
+<div class="mothers-container">
   <%= turbo_frame_tag "edit-mother-details" do %>
     <div class="mother-details">
       <div class="mother-details-avatar">
@@ -67,8 +67,13 @@
       </div>
     </div>
   <% end %>
-  <div class="mother-details-buttons d-flex justify-content-center">
+  <div class="mother-details-buttons d-flex justify-content-center align-items-center gap-2 mx-3">
     <%= link_to "Editer Informations Personnelles", edit_mother_path(@mother), class: "button-standard-dark" %>
+    <%= link_to "Effacer mon profil", registration_path(current_user), data: { 
+                                                                    turbo_method: :delete, 
+                                                                    turbo_confirm: "Êtes-vous sûr de vouloir effacer votre profil ? Cette action est irréversible.", 
+                                                                    class: "button-standard-dark",
+                                                                    turbo_frame: "_top" } %>
   </div>
 </div>
 </div>

@@ -1,9 +1,5 @@
 .message-container {
-  position: fixed;
-  z-index: 1000;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -26,7 +22,6 @@
 .message-content {
   display: flex;
   flex-direction: column;
-  align-items: space-between;
   height: 45vh;
   width: 75vw;
   overflow-y: scroll;
@@ -39,7 +34,7 @@
 
 .message-text-incoming {
   border: 1px solid var(--bg-darker);
-  max-width: 1/3 * 100%;
+  max-width: 1/2 * 100%;
   padding: 0.5rem;
   align-content: safe;
   align-self: flex-start;
@@ -47,23 +42,23 @@
   border-radius: 0.5rem 0.5rem 0.5rem 0;
   background-color: var(--bg-light);
   color: var(--text-darkerer);
-  font-size: 0.8rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 400;
   font-family: "Nunito", sans-serif;
 }
 
 .message-text-outgoing {
   border: 1px solid var(--bg-white);
   border-radius: 0.5rem 0.5rem 0 0.5rem;
-  max-width: 1/3 * 100%;
+  max-width: 1/2 * 100%;
   padding: 0.5rem;
   align-content: safe;
   align-self: flex-end;
   margin: 0.5rem;
   color: var(--text-white);
   background-color: var(--bg-darker);
-  font-size: 0.8rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 400;
   font-family: "Nunito", sans-serif;
 }
 
@@ -90,4 +85,24 @@
   padding: 0.5rem;
   border: none;
   border-radius: 0.5rem;
+}
+
+.container-chatbot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+#new-question-form {
+  width: 75vw;
+  margin-top: 1rem;
+}
+
+.question {
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  justify-content: space-between;
 }

@@ -7,14 +7,14 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body class="<%= theme_class %>">
   <%= render "shared/flashes" %>
-  <%= turbo_frame_tag "messages_modal" %>
+  <%= turbo_frame_tag "redirect_chat_window" %>
   <%= yield %>
   </body>
 

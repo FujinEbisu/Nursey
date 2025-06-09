@@ -102,3 +102,17 @@ p {
   justify-content: center;
   gap: 1rem;
 }
+
+.swal2-popup {
+  background-color: $final-white; /* gris foncé */
+  color: $final-darker;             /* texte clair */
+}
+
+.swal2-title {
+  color: $final-darker;
+  font-family: 'Poppins', sans-serif /* jaune */
+}
+
+.swal2-confirm {
+  background-color: $final-darker !important; /* rouge */
+}

@@ -1,7 +1,7 @@
 <%= render "doctors/navbar_component/navbar_doctor_mini" %>
-<div class="mothers-container" style="margin-top: 4rem;">
+<div class="mothers-container">
   <%= turbo_frame_tag "edit-mother-details" do %>
-    <div class="mother-details">
+    <div class="doctor-details">
       <div class="mother-details-avatar">
         <% if @doctor.avatar.attached? %>
           <%= cl_image_tag @doctor.avatar.key,  gravity: "auto", height: 600, width: 600, crop: "auto", class: "avatar-large" %>
@@ -13,6 +13,7 @@
 
       <div class="mother-details-name">
         <h3>
+
           <%= @doctor.first_name %> <%= @doctor.last_name %>
         </h3>
       </div>
@@ -20,7 +21,14 @@
         <div class="pill-container">
           <h6>Disponibilité: </h6>
           <!-- put the availability here -->
-          <p><%= @doctor.availability ? "Disponible" : "Indisponible" %></p>
+          <%= simple_form_for [@doctor, @new_date] do |f| %>
+<div class="form-header">
+    <%= f.input :date, label: "Disponibilité",  as: :string, include_blank: false, input_html: { data: { controller: "datepickrdr", datepickrdr_dates_value: @datelock.uniq.to_json, turbo: false }}%>
+    <%= f.submit "Ajouter", class: 'button-standard'%>
+<% end %>
+</div>
+
+          <p><%= @doctor.availabilities ? "Disponible" : "Indisponible" %></p>
 
         </div>
       </div>
