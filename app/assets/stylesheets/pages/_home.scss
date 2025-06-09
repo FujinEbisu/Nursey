@@ -15,20 +15,7 @@
   width: 100%;
 }
 
-.button-container-mothers {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
 
-  @media (max-width: 768px) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    width: 100%;
-
-  }
-}
 
 .welcome-text {
     font-family: 'Poppins', sans-serif;
