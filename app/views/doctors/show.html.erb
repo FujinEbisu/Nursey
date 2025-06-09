@@ -1,6 +1,6 @@
 <%= render "doctors/navbar_component/navbar_doctor_mini" %>
 <div class="mothers-container">
-  <%= turbo_frame_tag "edit-mother-details" do %>
+
     <div class="doctor-details">
       <div class="mother-details-avatar">
         <% if @doctor.avatar.attached? %>
@@ -18,20 +18,20 @@
         </h3>
       </div>
       <div class="mother-details-info">
-        <div class="pill-container">
+        <div class="pill-container-doctor">
           <h6>Disponibilité: </h6>
+          <div>
           <!-- put the availability here -->
           <%= simple_form_for [@doctor, @new_date] do |f| %>
 <div class="form-header">
-    <%= f.input :date, label: "Disponibilité",  as: :string, include_blank: false, input_html: { data: { controller: "datepickrdr", datepickrdr_dates_value: @datelock.uniq.to_json, turbo: false }}%>
+    <%= f.input :date, label: "Disponibilité",  as: :string, include_blank: false, label: false, input_html: { data: { controller: "datepickrdr", datepickrdr_dates_value: @datelock.uniq.to_json }}%>
     <%= f.submit "Ajouter", class: 'button-standard'%>
 <% end %>
 </div>
+</div>
 
-          <p><%= @doctor.availabilities ? "Disponible" : "Indisponible" %></p>
 
         </div>
       </div>
     </div>
-    <% end %>
 </div>
