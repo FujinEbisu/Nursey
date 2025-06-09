@@ -13,17 +13,16 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  
+  resources :questions, only: [:index, :create]
+
   resources :users
 
   resources :safe_places, only: [:index, :show, :new, :create] do
     resources :reviews
   end
 
-  resources :messages, only: [:index, :new, :show, :create, :update] do
-    resources :questions, only: [:index, :create]
-  end
-
+  get 'messages/history', to: 'messages#history'
+  resources :messages, only: [:index, :new, :show, :create, :update]
   resources :doctors
   resources :mothers, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     resources :feeds

@@ -1,2 +1,29 @@
-<h1>Doctors#show</h1>
-<p>Find me in app/views/doctors/show.html.erb</p>
+<%= render "doctors/navbar_component/navbar_doctor_mini" %>
+<div class="mothers-container" style="margin-top: 4rem;">
+  <%= turbo_frame_tag "edit-mother-details" do %>
+    <div class="mother-details">
+      <div class="mother-details-avatar">
+        <% if @doctor.avatar.attached? %>
+          <%= cl_image_tag @doctor.avatar.key,  gravity: "auto", height: 600, width: 600, crop: "auto", class: "avatar-large" %>
+        <% else %>
+          <%= image_tag "https://res.cloudinary.com/dc7iookgc/image/upload/v1747992835/samples/two-ladies.jpg", class: "avatar-large" %>
+        <% end %>
+      </div>
+
+
+      <div class="mother-details-name">
+        <h3>
+          <%= @doctor.first_name %> <%= @doctor.last_name %>
+        </h3>
+      </div>
+      <div class="mother-details-info">
+        <div class="pill-container">
+          <h6>Disponibilité: </h6>
+          <!-- put the availability here -->
+          <p><%= @doctor.availability ? "Disponible" : "Indisponible" %></p>
+
+        </div>
+      </div>
+    </div>
+    <% end %>
+</div>
