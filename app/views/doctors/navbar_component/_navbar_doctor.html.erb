@@ -6,30 +6,29 @@
       <span></span>
     </button>
     <div class="no-style">
-    <%= link_to "#", data: { turbo_frame: "redirect_chat_window" } do %>
+    <%= link_to new_message_path, data: { turbo_frame: "messages_modal" } do %>
       <div class="chat-button">
         <i class="fa-solid fa-comment-dots"></i>
       </div>
     <% end %>
-    <%= link_to mother_path(@mother) do %>
-        <% if @mother.avatar.attached? %>
+    <%= link_to doctor_path(@doctor) do %>
+        <% if @doctor.avatar.attached? %>
         <div id="avatar">
-          <%= cl_image_tag @mother.avatar.key,  gravity: "auto", height: 600, width: 600, crop: :fill, class: "avatar" %>
+          <%= cl_image_tag @doctor.avatar.key,  gravity: "auto", height: 600, width: 600, crop: :fill, class: "avatar" %>
         </div>
         <% else %>
           <%= image_tag "https://res.cloudinary.com/dc7iookgc/image/upload/v1747992835/samples/two-ladies.jpg", class: "avatar" %>
         <% end %>
-    <% end %>    
+    <% end %>
     </div>
     </div>
   <!-- Menu content shown/hidden -->
   <div class="menu-bar-display">
     <nav class="menu-content">
-      <% if current_page?(mothers_path) %>
-      <%= link_to "Profil", mother_path(@mother), class: "menu-item" %>
+      <% if current_page?(doctors_path) %>
+      <%= link_to "Profil", doctor_path(@doctor), class: "menu-item" %>
       <% end %>
-      <%= link_to "Dashboard", dashboard_index_path, class: "menu-item" %>
-      <%= link_to "Historique", mother_feeds_path(@mother), class: "menu-item" %>
+      <%= link_to "Historique", mother_feeds_path(@doctor), class: "menu-item" %>
       <% if user_signed_in? %>
         <%= link_to "Déconnexion", destroy_user_session_path, data: {turbo_method: :delete}, class: "menu-item" %>
       <% else %>
@@ -40,8 +39,8 @@
 
   <div class="user_welcome" data-menu-bar-mother-target="user_welcome">
     <!--  change email for name -->
-    <h1 class="welcome-text">Bienvenue <%= @mother.first_name %></h1>
+    <h1 class="welcome-text">Bienvenue <%= @doctor.first_name %></h1>
   </div>
 
-<%= link_to 'Nouvelle Tétée', new_mother_feed_path(@mother.id), class: "button-home", data: { menu_bar_mother_target: "nouvelle_tete" } %>
+<%= link_to 'Discussions', messages_path, class: "button-home", data: { menu_bar_mother_target: "nouvelle_tete" } %>
 </div>

@@ -9,12 +9,12 @@
 #   end
 require 'faker'
 
-
+Feed.destroy_all
 Mother.destroy_all
 Doctor.destroy_all
 User.destroy_all
 Child.destroy_all
-Feed.destroy_all
+Message.destroy_all
 puts "db destroyed"
 
 10.times do
@@ -59,6 +59,11 @@ puts "db destroyed"
     mood: rand(1..5),
     comment: Faker::Lorem.sentence(word_count: 10)
   )
-      puts "Created Mother, Doctor, Children and User records."
+  Message.create!(
+    content: Faker::Lorem.sentence(word_count: 10),
+    mother_id: Mother.last.id,
+    doctor_id: Doctor.last.id
+  )
+  puts "Created Mother, Doctor, Children and User records and a few messages."
 end
-puts "10 Mothers, Doctors, Children, Users created successfully."
+puts "10 Mothers, Doctors, Children, Users, Messages created successfully."

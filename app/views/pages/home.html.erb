@@ -11,9 +11,12 @@ Landing page
       <p>Faciliter votre vie de jeune maman</p>
     </div>
     <div class="button-container">
-      <% if user_signed_in? %>
-          <%= link_to "Page d'accueil", mothers_path, class: "button-standard-dark" %>
-          <%= link_to "Déconnexion", destroy_user_session_path, data: {turbo_method: :delete}, class: "button-standard-dark" %>
+      <% if user_signed_in? && current_user.userable_type == "Mother" %>
+        <%= link_to "Page d'accueil", mothers_path, class: "button-standard-dark" %>
+        <%= link_to "Déconnexion", destroy_user_session_path, data: {turbo_method: :delete}, class: "button-standard-dark" %>
+      <% elsif user_signed_in? %>
+        <%= link_to "Page d'accueil", doctors_path, class: "button-standard-dark" %>
+        <%= link_to "Déconnexion", destroy_user_session_path, data: {turbo_method: :delete}, class: "button-standard-dark" %>
       <% else %>
         <button class="button-standard-dark">
           <%= link_to 'Inscription', new_user_registration_path %>

@@ -14,7 +14,7 @@ module FeedsHelper
   def minutes_and_seconds(time_value)
     return "" unless time_value.present?
 
-    total_seconds = (time_value.hour * 60) + time_value.min
+    # total_seconds = (time_value.hour * 60) + time_value.min
     minutes = time_value.hour
     seconds = time_value.min
     "#{minutes} min #{seconds} s"
