@@ -12,10 +12,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     build_resource(sign_up_params)
+    @date = []
+    @availability = params[:user]["availibity"].split(',')
     if params[:user][:userable_type] == 'Doctor'
-      userid = Doctor.create!(set_params_doctor)
+      userid = Doctor.new(set_params_doctor)
+      @availability.each do |avail|
+        @newdate = Availability.create
+        @newdate.doctor = userid
+        @newdate.date = avail
+        @newdate.save
+      end
+      userid.save
     elsif params[:user][:userable_type] == 'Mother'
       userid = Mother.create!(set_params_mother)
+      userid.birthday = @date
+      userid.save
     end
     resource.userable_id = userid.id
     resource.save
@@ -67,8 +78,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     params[:user][:userable_attributes] = {
       first_name: params[:user][:first_name],
       last_name: params[:user][:last_name],
-      speciality: params[:user][:speciality],
-      availability: params[:user][:availibity]
+      speciality: params[:user][:speciality]
     }
   end
 

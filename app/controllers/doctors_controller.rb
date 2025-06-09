@@ -7,6 +7,30 @@ class DoctorsController < ApplicationController
 
   def show
     @doctor = Doctor.find(params[:id])
+    # @exists = []
+    # @availability = []
+    # @doctor.availabilities.each do |exist|
+    #   @exists << exist.date
+    # end
+    # @availability = params
+    # @exist = Availability.where(doctor_id: @doctor.id).pluck(:date)
+    # # new_dates = @availability - @exist
+    #   @availability.each do |avail|
+    #   @newdate = Availability.new
+    #     @newdate.doctor = @doctor
+    #     @newdate.date = avail
+    #     @newdate.save
+    #  end
+    @new_date = Availability.new
+
+    @datelock = []
+    @exists = Availability.where(doctor_id: @doctor.id)
+    if @exists.any?
+      @exists.map do |exist|
+        @datelock << exist.date.strftime("%Y-%m-%d")
+      end
+    end
+
   end
 
   def new
@@ -15,6 +39,7 @@ class DoctorsController < ApplicationController
 
   def create
     @doctor = Doctor.new(doctor_params)
+    @doctor.availability = @availability
     if @doctor.save
       redirect_to doctor_path(@doctor), notice: 'Doctor was successfully created.'
     else
