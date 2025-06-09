@@ -6,7 +6,7 @@ class ChatbotJob < ApplicationJob
     chatgpt_response = client.chat(
       parameters: {
         model: "gpt-4o-mini",
-        messages: questions_formatted_for_openai # to code as private method
+        messages: questions_formatted_for_openai
       }
     )
     new_content = chatgpt_response["choices"][0]["message"]["content"]
@@ -25,11 +25,29 @@ class ChatbotJob < ApplicationJob
   end
 
   def questions_formatted_for_openai
-    questions = @question.mother.questions
+    questions = @question.user.questions
     results = []
-    results << { role: "system", content: "Tu est un expert en allaitement maternel. Tu réponds en français. Tu est là pour répondre aux questions des mamans. Si tu ne sais pas répondre, tu dis que tu ne sais pas et que tu conseilles de la metre en relation avec un expert en allaitement maternel." }
+    results << { role: "system", content:
+                                         "Tu es un expert en allaitement maternel. Tu réponds uniquement en français.
+
+RÈGLES STRICTES :
+- Tu réponds UNIQUEMENT aux questions sur l'allaitement maternel
+- Tes réponses doivent être courtes et concises (maximum 10 secondes de lecture)
+- Tu utilises le format HTML pour la mise en forme (pas de markdown)
+- Pour les titres ou mots importants, utilise <strong></strong> au lieu de **
+- Pour les listes, utilise <ul><li></li></ul> ou <ol><li></li></ol>
+
+RÉPONSES SELON LE CAS :
+1. Si la question concerne l'allaitement maternel : réponds avec des conseils pratiques en HTML
+2. Si la question ne concerne PAS l'allaitement maternel : réponds exactement 'Je ne suis pas apte à répondre à ce genre de demande. Pour d'autres questions médicales, consultez un professionnel de santé.'
+3. Si tu détectes des symptômes graves (fièvre, infection, douleur intense) : termine toujours par 'Pour une évaluation médicale, je recommande de consulter un médecin immédiatement.'
+
+
+Ton rôle est d'être un premier niveau de support, pas un diagnostic médical complet."
+  }
+
     questions.each do |question|
-      results << { role: "user", content: question.user_question }
+      results << { role: "user", content: question.mother_question }
       results << { role: "assistant", content: question.ai_answer || "" }
     end
     return results

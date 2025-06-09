@@ -19,9 +19,10 @@ Rails.application.routes.draw do
   resources :safe_places, only: [:index, :show, :new, :create] do
     resources :reviews
   end
-  resources :questions, only: [:index, :create]
   
+  resources :questions, only: [:index, :create]
   resources :messages, only: [:index, :new, :show, :create, :update]
+  
   resources :doctors
   resources :mothers, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     resources :feeds

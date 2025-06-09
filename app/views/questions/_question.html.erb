@@ -1,18 +1,7 @@
+<!-- Chat window -->
+
 <div id="<%= dom_id(question) %>" class="question">
   <%= turbo_stream_from dom_id(question) %>
-<!-- Message window -->
- <%= turbo_frame_tag "messages_modal" do %>
-    <div class="message-container" data-controller="messages-modal" data-messages-modal-target="messageContainer">
-    <div class="message-content">
-    <p class="message-text-incoming"> <%= question.mother_question %></p>
-    <p class="message-text-outgoing"> <%= question.ai_answer || "..." %></p>
-    </div>
-    
-    <%= render "form", question: @question %>
-
-       <%= link_to "Fermer", "#", data: { 
-                                    controller: "messages-modal", 
-                                    action: "messages-modal#close",
-                                   }, class: "button-close" %>
-    </div>
-<% end %>
+  <p class="message-text-outgoing"><%= question.mother_question %></p>
+  <p class="message-text-incoming"><%= question.ai_answer || "..." %></p>
+</div>

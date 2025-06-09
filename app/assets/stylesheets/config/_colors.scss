@@ -8,8 +8,29 @@ $orange: #E67E22;
 $green: #1EDD88;
 $gray: #0E0000;
 $light-gray: #F4F4F4;
+
+// Default colors
+$light-gray: #F4F4F4;
 $final-white: #FFEFE1;
 $final-light: #FBC4AB;
 $final-mid: #F8AD9D;
 $final-dark: #F4978E;
 $final-darker: #E1585A;
+
+// Mother colors
+body.mother {
+  --final-white: #FFEFE1;
+  --final-light: #FBC4AB;
+  --final-mid: #F8AD9D;
+  --final-dark: #F4978E;
+  --final-darker: #E1585A;
+}
+
+// Doctor colors
+body.doctor {
+    --final-white: #E8F4FD;
+    --final-light: #B3D9F2;
+    --final-mid: #7FC3E8;
+    --final-dark: #2C5282; // Navy blue
+    --final-darker: #1A365D;
+  }

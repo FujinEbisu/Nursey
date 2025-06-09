@@ -1,12 +1,10 @@
-<%= simple_form_for question,
-  html: { data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" }} do |f|
-%>
-    <div class="input-group mb-3 w-100">
-      <div class="form-floating">
-        <%= f.input :user_question, label: false, wrapper: false %>
-        <%= f.label :user_question, "Your question" %>
-      </div>
-      <%= f.submit "Ask", id: "new-question-button", class: "btn btn-primary" %>
+<%= simple_form_for question, url: questions_path,
+      html: { data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" } } do |f| %>
+  <div class="input-group mb-3 w-100">
+    <div class="form-floating">
+      <%= f.input :mother_question, label: false, wrapper: false %>
+      <%= f.label :mother_question, "Dites nous ce que vous voulez parler" %>
     </div>
-  <% end %>
+    <%= f.submit "Envoyer", id: "new-question-button", class: "button-standard-dark" %>
+  </div>
 <% end %>

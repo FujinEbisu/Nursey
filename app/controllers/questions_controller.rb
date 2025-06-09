@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+before_action :set_mother, :set_doctor, only: [:index]
 
 
     def index
@@ -7,7 +8,7 @@ class QuestionsController < ApplicationController
     end
 
     def create
-        @questions = @mother.questions # needed in case of validation error
+        @questions = current_user.questions # needed in case of validation error
         @question = Question.new(question_params)
         @question.user = current_user
     if @question.save
@@ -21,23 +22,19 @@ class QuestionsController < ApplicationController
     else
      render :index, status: :unprocessable_entity
     end
-  end
+end
 
   private
-
-  def current_user
-    @current_user = current_user
-  end
 
   def question_params
     params.require(:question).permit(:mother_question)
   end
 
-    def mother
+    def set_mother
       @mother = current_user.userable if current_user.userable.is_a?(Mother)
     end
 
-    def doctor
+    def set_doctor
       @doctor = current_user.userable if current_user.userable.is_a?(Doctor)
     end
 end

@@ -1,22 +1,14 @@
 <!-- Message window -->
- <%= turbo_frame_tag "messages_modal" do %>
-    <div class="message-container" data-controller="messages-modal" data-messages-modal-target="messageContainer">
-    <div class="message-content">
+ <%= turbo_frame_tag "redirect_chat_window" do %>
+   <h1>Ditez nous avec qui vous voulez parler ?</h1>
+<div class="message-window">
+<button class="button-standard">
+    <%= link_to "Chat avec un médecin", messages_path %>
+</button>
 
-    <p class="message-text-incoming"> <%= question.content %></p>
-    <p class="message-text-outgoing"> <%= question.ai_answer || "..." %></p>
-    
-    </div>
-    
-    <%= form_with url: messages_path, method: :post do |f| %>
-        <div style="display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 0.2rem;">
-          <%= f.text_field :content, placeholder: "Message", class: "message-input-field" %>
-          <%= f.submit "Envoyer", class: "button-standard" %>
-        </div>
-      <% end %>
-       <%= link_to "Fermer", "#", data: { 
-                                    controller: "messages-modal", 
-                                    action: "messages-modal#close",
-                                   }, class: "button-close" %>
-    </div>
+<button class="button-standard">
+    <%= link_to "Chat avec l'assistant", questions_path %>
+</button>
+</div>
+
 <% end %>
