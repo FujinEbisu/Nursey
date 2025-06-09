@@ -14,13 +14,14 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resources :questions, only: [:index, :create]
-  
+
   resources :users
 
   resources :safe_places, only: [:index, :show, :new, :create] do
     resources :reviews
   end
 
+  get 'messages/history', to: 'messages#history'
   resources :messages, only: [:index, :new, :show, :create, :update]
   resources :doctors
   resources :mothers, only: [:index, :show, :new, :create, :edit, :update, :destroy] do

@@ -1,9 +1,12 @@
 class DoctorsController < ApplicationController
+  before_action :define_doctor, :doctor_user, only: [:index, :show, :edit, :update, :destroy]
+
   def index
 
   end
 
   def show
+    @doctor = Doctor.find(params[:id])
   end
 
   def new
@@ -43,7 +46,15 @@ class DoctorsController < ApplicationController
   private
 
   def doctor_params
-    params.require(:doctor).permit(:name, :specialty, :availability)
+    params.require(:doctor).permit(:first_name, :last_name, :specialty, :availability)
+  end
+
+  def define_doctor
+    @doctor = current_user.userable
+  end
+
+  def doctor_user
+    @doctor_user = current_user
   end
 
   def set_doctor
