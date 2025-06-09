@@ -1,7 +1,7 @@
 .mothers-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  // justify-content: center;
   height: calc(100vh - 8vh);
   padding: 0 2.3rem;
       margin-top: 1rem;
@@ -115,6 +115,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 24rem;
 
   h1 {
     font-family: 'Poppins', sans-serif;
@@ -205,3 +206,40 @@
  gap: 1rem;
  border: 3px solid $final-light;
 }
+
+.doctor-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: $final-darker;
+    padding: 1rem;
+  }
+
+  h3, h6, h4 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    color: $final-darker;
+  }
+
+  .mother-details-name {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .mother-details-feeds {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+

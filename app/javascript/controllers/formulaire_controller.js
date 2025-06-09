@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="formulaire"
 export default class extends Controller {
-  static targets = ["mother", "doctor", "type"]
+  static targets = ["mother", "doctor", "type",]
   connect() {
 
   }
