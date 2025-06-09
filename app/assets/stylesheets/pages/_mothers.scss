@@ -216,14 +216,14 @@
     font-family: 'Poppins', sans-serif;
     font-size: 2.5rem;
     font-weight: 900;
-    color: $final-darker;
+    color: var(--text-darker);
     padding: 1rem;
   }
 
   h3, h6, h4 {
     font-family: 'Nunito', sans-serif;
     font-weight: 900;
-    color: $final-darker;
+    color: var(--text-darker);
   }
 
   .mother-details-name {
@@ -242,4 +242,3 @@
     justify-content: space-between;
   }
 }
-

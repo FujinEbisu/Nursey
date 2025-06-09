@@ -104,15 +104,15 @@ p {
 }
 
 .swal2-popup {
-  background-color: $final-white; /* gris foncé */
-  color: $final-darker;             /* texte clair */
+  background-color: var(--bg-white); /* gris foncé */
+  color: var(--text-darker);             /* texte clair */
 }
 
 .swal2-title {
-  color: $final-darker;
+  color: var(--text-darker);
   font-family: 'Poppins', sans-serif /* jaune */
 }
 
 .swal2-confirm {
-  background-color: $final-darker !important; /* rouge */
+  background-color: var(--bg-darker) !important; /* rouge */
 }
