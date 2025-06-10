@@ -31,9 +31,9 @@
     justify-content: space-around;
     align-items: center;
     padding: 25px;
-    background-color: $final-mid;
+    background-color: var(--bg-mid);
     height: 50vh;
-    box-shadow: 0 4px 4px rgba(251, 196, 171, 0.25);
+    box-shadow: 0 4px 4px rgba(var(--bg-mid), 0.25);
     border-radius: 0 0 25px 25px;
     flex-wrap: wrap;
     flex-direction: column;
@@ -55,7 +55,7 @@
 .nav-bar-mother-mini {
   padding: 10px;
   border-radius: 0 0 25px 25px;
-  background-color: $final-mid;
+  background-color: var(--bg-mid);
   transition: height 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -120,14 +120,14 @@
     font-family: 'Poppins', sans-serif;
     font-size: 2.5rem;
     font-weight: 900;
-    color: $final-darker;
+    color: var(--text-darker);
     padding: 1rem;
   }
 
   h3, h6, h4 {
     font-family: 'Nunito', sans-serif;
     font-weight: 900;
-    color: $final-darker;
+    color: var(--text-darker);
   }
 
   .mother-details-name {
@@ -154,7 +154,7 @@
   justify-content: center;
   width: 100%;
   height: 100%;
-  background-color: $final-light;
+  background-color: var(--bg-light);
   border-radius: 25px;
   padding: 1rem;
 }
@@ -168,7 +168,7 @@
  align-items: center;
  justify-content: center;
  gap: 1rem;
- border: 3px solid $final-light;
+ border: 3px solid var(--bg-light);
 }
 
 .notification-container h6 {
@@ -190,7 +190,7 @@
   align-items: center;
   justify-content: space-around;
   width: 100%;
-  color: $final-darker;
+  color: var(--text-darker);
 }
 
 
@@ -203,7 +203,7 @@
  align-items: center;
  justify-content: center;
  gap: 1rem;
- border: 3px solid $final-light;
+ border: 3px solid var(--bg-light);
 }
 
 .doctor-details {
@@ -215,14 +215,14 @@
     font-family: 'Poppins', sans-serif;
     font-size: 2.5rem;
     font-weight: 900;
-    color: $final-darker;
+    color: var(--text-darker);
     padding: 1rem;
   }
 
   h3, h6, h4 {
     font-family: 'Nunito', sans-serif;
     font-weight: 900;
-    color: $final-darker;
+    color: var(--text-darker);
   }
 
   .mother-details-name {
@@ -240,5 +240,15 @@
     align-items: center;
     justify-content: space-between;
   }
-}
 
+  .pill-container-doctor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--bg-light);
+    border-radius: 25px;
+    padding: 1rem;
+    width: 100%;
+}
+}
