@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :questions, only: [:index, :create]
 
   resources :users
-  
+
   resources :safe_places, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     resources :reviews
   end
@@ -25,11 +25,14 @@ Rails.application.routes.draw do
   resources :messages, only: [:index, :new, :show, :create, :update]
   resources :doctors do
     resources :availabilities, only: [:create, :edit, :update]
+    resources :chats, only: [:create]
   end
   resources :mothers, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     resources :feeds
     resources :children, only: [:index, :new, :create]
-  end
+      end
+      resources :chats, only: [:index, :show, :new, :create, :destroy]
+
   resources :children, only: [:destroy]
   resources :dashboards, only: [:index], as: :dashboard
 

@@ -16,14 +16,27 @@ class MessagesController < ApplicationController
   def show
   end
 
+  def doctors
+    @today = Date.today
+    @doctors = Doctor.all.where("availabilities.date >= ?", @today)
+  end
+
   def new
     @message = Message.new
   end
 
   def create
-    @message = Message.new(message_params)
-    @message.mother = @mother
-
+    if current_user.userable.is_a?(Mother)
+      @chat = Chat.find(params[:chat_id])
+      @message = Message.new(message_params)
+      @message.mother = current_user.userable
+      @message.chat = @chat
+    elsif current_user.userable.is_a?(Doctor)
+      @chat = Chat.find(params[:chat_id])
+      @message = Message.new(message_params)
+      @message.doctor = current_user.userable
+      @message.chat = @chat
+    end
     if @message.save
       redirect_to messages_path, notice: 'Message was successfully created.'
     else
@@ -51,7 +64,7 @@ class MessagesController < ApplicationController
   end
 
   def message_params
-    params.require(:message).permit(:content)
+    params.require(:message).permit(:content, :status, :mother_id, :doctor_id, :chat_id)
   end
 
   def set_message

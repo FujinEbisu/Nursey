@@ -18,14 +18,14 @@
         </div>
         <% else %>
           <%= image_tag "https://res.cloudinary.com/dc7iookgc/image/upload/v1747992835/samples/two-ladies.jpg", class: "avatar" %>
-        <% end %>    
+        <% end %>
         <% end %>
     </div>
   </div>
 
   <!-- Menu content shown/hidden -->
-  <div class="menu-bar-display">
-    <nav class="menu-content">
+  <div class="menu-bar-display" data-menu-bar-mother-target="user_welcome">
+    <nav class="menu-content"  >
       <% if current_page?(mothers_path) %>
         <%= link_to "Profil", mother_path(@mother), class: "menu-item" %>
       <% else %>
