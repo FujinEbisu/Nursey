@@ -1,8 +1,29 @@
-<div class="safe-places-container">
-  <div class="safe-places-card">
-    <div style="width: 100%; height: 600px;"
-      data-controller="map"
-      data-map-markers-value="<%= @markers.to_json %>"
-      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+<%= render "mothers/components/navbar_mother_mini" %>
+
+<div class="container">
+
+  <div class="map-container">
+  <div class="map"
+       data-controller="map"
+         data-map-markers-value="<%= @markers.to_json %>"
+         data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  </div>
+  
+  <div class="safe-places-container">
+    <% @safe_places.each do |safe_place| %>
+      <% avg_rating = safe_place.average_rating %>
+      <% rating_count = safe_place.rating_count %>
+      <div class="safe-places-card">
+        <div class="safe-places-card-title">
+          <%= safe_place.name %>
+        </div>
+        <div class="safe-places-card-rating">
+          <%= avg_rating %> <%=  avg_rating == 0 ? "⭐" * avg_rating : "⭐" * avg_rating %> (<%= rating_count %> avis)
+        </div>
+        <div class="safe-places-card-link">
+          <%= link_to "Voir", safe_place_path(safe_place) %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
