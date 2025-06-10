@@ -1,23 +1,17 @@
 <%= simple_form_for question, url: questions_path,
       html: { data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" } } do |f| %>
   <div class="input-group mb-3 w-100">
-    <div class="form-floating">
-      <%= f.input :mother_question, label: false, wrapper: false %>
-      <%= f.label :mother_question, "Dites nous ce que vous voulez parler" %>
-    </div>
-    <%= f.submit "Envoyer", id: "new-question-button", class: "button-standard disabled" %>
+    <%= f.input :mother_question, 
+        label: false, 
+        wrapper: false, 
+        placeholder: "Dites nous ce que vous voulez parler", 
+        class: "form-control static-input",
+        input_html: { 
+          data: { 
+            action: "keydown->reset-form#handleEnter" 
+          },
+          rows: 1
+        } %>
+    <%= f.submit "Envoyer", id: "new-question-button", class: "button-standard" %>
   </div>
 <% end %>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const formFloating = document.querySelector('.form-floating');
-    const newQuestionButton = document.getElementById('new-question-button');
-
-    if (formFloating.value === '') {
-      newQuestionButton.classList.add('disabled');
-    } else {
-      newQuestionButton.classList.remove('disabled');
-    }
-  });
-</script>
