@@ -106,3 +106,22 @@
       border: 1px solid $final-dark;
       color: $final-darker;
     }
+
+
+    .safe-places-card-options {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 0.2rem;
+  }
+
+    .info-window-pill {
+      padding: 4px;
+      border-radius: 12px;
+      border: 1px solid $final-dark;
+      color: $final-darker;
+      width: fit-content;
+    }
+
+

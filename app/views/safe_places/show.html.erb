@@ -1,40 +1,45 @@
 <%= render "mothers/components/navbar_mother_mini" %>
 
-
 <div class="show-safeplace-container">
-
   <div class="map-container-show">
     <div class="map"
          data-controller="map"
          data-map-markers-value="<%= @markers.to_json %>"
          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   </div>
+  
   <div class="safeplace-info-container">
-<h1><%= @safe_place.name %></h1>
-<div class="safeplace-info-container-content">
-<p><%= @safe_place.adress %></p>
+    <h1><%= @safe_place.name %></h1>
+    
+    <div class="safeplace-info-container-content">
+      <p><%= @safe_place.adress %></p>
       <% avg_rating = @safe_place.average_rating %>
       <% rating_count = @safe_place.rating_count %>
-<p><strong><%= avg_rating %> <%=  avg_rating == 0 ? "⭐" * avg_rating : "⭐" * avg_rating %> (<%= rating_count %> avis)</strong></p>
-</div>
-<div class="pills">
-  <% @safe_place.options.each do |option| %>
-    <p class="pill"><%= option %></p>
-  <% end %>
-</div>
-<h2>Reviews</h2>
-<% @safe_place.reviews.each do |review| %>
-  <div class="review">
-    <p><%= review.comment %></p>
-    <p><%= review.rating %></p>
+      <p><strong><%= avg_rating %> <%=  avg_rating == 0 ? "⭐" * avg_rating : "⭐" * avg_rating %> (<%= rating_count %> avis)</strong></p>
+    </div>
+    
+    <div class="pills">
+      <% @safe_place.options.each do |option| %>
+        <p class="pill"><%= option %></p>
+      <% end %>
+    </div>
+    
+    <h2>Avis</h2>
+    <div class="safe-places-reviews">
+      <% @safe_place.reviews.each do |review| %>
+        <div class="review">
+          <p><%= review.rating %> <%= "⭐" * review.rating %></p>
+          <p style="font-weight: bold;"><%= review.comment %></p>
+        </div>
+      <% end %>
+    </div>
+    
+    <div class="buttons-container">
+      <div class="button-container">
+        <%= link_to "Back", safe_places_path, class: "button-standard" %>
+      </div>
+      <%= link_to "Edit", edit_safe_place_path(@safe_place) %>
+      <%= link_to "Delete", safe_place_path(@safe_place), method: :delete, data: { confirm: "Are you sure?" } %>
+    </div>
   </div>
-<% end %>
-<div class="buttons-container">
-<div class="button-container">
-<%= link_to "Back", safe_places_path, class: "button-standard" %>
-</div>
-<%= link_to "Edit", edit_safe_place_path(@safe_place) %>
-<%= link_to "Delete", safe_place_path(@safe_place), method: :delete, data: { confirm: "Are you sure?" } %>
-</div>
-</div>
 </div>

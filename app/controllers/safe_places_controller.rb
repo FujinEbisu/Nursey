@@ -1,6 +1,7 @@
 class SafePlacesController < ApplicationController
   before_action :set_safe_place, only: [:show, :edit, :update, :destroy]
   before_action :define_mother, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  
   def index
     @safe_places = SafePlace.all
     @markers = @safe_places.geocoded.map do |safe_place|
