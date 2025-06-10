@@ -10,4 +10,13 @@ class SafePlace < ApplicationRecord
   validates :options, presence: true
 
   OPTIONS = ["Chaise haute", "Espace allaitement", "Espace change", "Espace jeux", "Espace biberons", "Espace sieste enfants", "Bière pour papa"]
+
+  def average_rating
+    return 0 if reviews.empty?
+    reviews.average(:rating).round(1)
+  end
+
+  def rating_count
+    reviews.count
+  end
 end

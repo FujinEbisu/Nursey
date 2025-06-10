@@ -3,6 +3,6 @@
 <%= simple_form_for @safe_place do |f| %>
 <%= f.input :name %>
 <%= f.input :adress %>
-<%= f.input :options %>
-<%= f.submit "Update Safe Place" %>
+<%= f.input :options, collection: SafePlace::OPTIONS, as: :check_boxes %>
+<%= f.submit "Modifier" %>
 <% end %>
