@@ -1,13 +1,12 @@
 <%= render "mothers/components/navbar_mother" %>
 
-<% if current_user&.sign_in_count == 1 && current_user&.userable_type == "Mother" %>
-  <%= render "mothers/components/first_login" %>
-<% end %>
 
 <div class="mothers-container" style="margin-top: 1rem;">
   <div class="pill-container-child ">
-    <div class="d-flex flex-row gap-2">
-      <h6>Mes enfant(s)</h6>
+    <div class="d-flex flex-row gap-2 align-items-center">
+      <%= link_to mother_children_path(@mother) do %>
+        <h6>Mes enfant(s)</h6>
+      <% end %>
       <%= link_to new_mother_child_path(@mother) do %>
         <i class="fa-solid fa-plus"></i>
       <% end %>

@@ -25,7 +25,7 @@ class MessagesController < ApplicationController
     @message.mother = @mother
 
     if @message.save
-      redirect_to messages_path, notice: 'Message was successfully created.'
+      redirect_to messages_path, notice: 'Message envoyé avec succès.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -35,7 +35,7 @@ class MessagesController < ApplicationController
     set_message
     @doctor = current_user unless current_user.doctor.nil?
     if @message.update(message_params)
-      redirect_to messages_path, notice: 'Message was successfully updated.'
+      redirect_to messages_path, notice: 'Message mis à jour avec succès.'
     else
       render :edit, status: :unprocessable_entity
     end

@@ -6,4 +6,8 @@
  <% @children.each do |child|  %>
 <%= render "card_child", child: child %>
 <% end %>
+<div class="button-container">
+  <%= link_to "Ajouter un enfant", new_mother_child_path(@mother), class: "button-standard" %>
 </div>
+</div>
+
