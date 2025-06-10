@@ -28,7 +28,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @userid.birthday = @date
       @userid.save
     end
-    resource.userable_id = userid.idx
+    resource.userable_id = @userid.id
     resource.save
     yield resource if block_given?
     if resource.persisted?
