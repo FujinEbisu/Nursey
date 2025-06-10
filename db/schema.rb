@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_06_10_102657) do
+ActiveRecord::Schema[7.1].define(version: 2025_06_10_152834) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -101,6 +101,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_10_102657) do
     t.datetime "updated_at", null: false
     t.boolean "closed", default: false
     t.bigint "chat_id", null: false
+    t.string "sender"
     t.index ["chat_id"], name: "index_messages_on_chat_id"
     t.index ["doctor_id"], name: "index_messages_on_doctor_id"
     t.index ["mother_id"], name: "index_messages_on_mother_id"

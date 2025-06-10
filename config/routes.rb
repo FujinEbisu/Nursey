@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-
+mount ActionCable.server => '/cable'
   devise_for :users, controllers: {
     registrations: "users/registrations"
   }
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
+  
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   end
 
   get 'messages/history', to: 'messages#history'
-  resources :messages, only: [:index, :new, :show, :create, :update]
+
   resources :doctors do
     resources :availabilities, only: [:create, :edit, :update]
     resources :chats, only: [:create]
@@ -31,7 +31,9 @@ Rails.application.routes.draw do
     resources :feeds
     resources :children, only: [:index, :new, :create]
       end
-      resources :chats, only: [:index, :show, :new, :create, :destroy]
+      resources :chats, only: [:index, :show, :new, :destroy] do
+        resources :messages, only: [:index, :new, :show, :create, :update]
+      end
 
   resources :children, only: [:destroy]
   resources :dashboards, only: [:index], as: :dashboard

@@ -2,29 +2,46 @@ class ChatsController < ApplicationController
 
   def index
     if current_user.userable_type == "Mother"
-    @chats = Chat.all.wherere(mother: current_user.userable)
+    @chats = Chat.all.where(mother: current_user.userable)
     else
       @chats = Chat.all.where(doctor: current_user.userable)
     end
   end
 
-def show
+  def show
+    @message = Message.new
+    if current_user.userable_type == "Doctor"
+    @doctor = current_user.userable
     @chat = Chat.find(params[:id])
-end
+    @mother = Mother.find(@chat.mother_id)
+    elsif current_user.userable_type == "Mother"
+    @mother = current_user.userable
+    @chat = Chat.find(params[:id])
+    @doctor = @chat.doctor
+    end
+  end
 
   def new
     @chat = Chat.new
+    @mother = current_user.userable
     @today = Date.today
-    @doctors = Doctor.all.where("availabilities.date >= ?", @today)
+    @doctors = Doctor.all
+    @dispo = []
+    @doctors.each do |doctor|
+      doctor.availabilities.each do |availability|
+        if availability.date == @today
+          @dispo << doctor
+        end
+      end
+    end
   end
 
   def create
-    @chat = Chat.new(chat_params)
-    @chat.mother = current_user.userable if current_user.userable.is_a?(Mother)
-    @chat.doctor = current_user.userable if current_user.userable.is_a?(Doctor)
-
+    @chat = Chat.new
+    @chat.mother = current_user.userable
+    @chat.doctor = Doctor.find(params[:doctor_id])
     if @chat.save
-      redirect_to chats_path, notice: 'Chat was successfully created.'
+      redirect_to chat_path(@chat), notice: 'Chat was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end

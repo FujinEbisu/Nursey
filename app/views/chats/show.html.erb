@@ -1,33 +1,26 @@
 <% if current_user.userable_type == "Mother" %>
   <%= render "mothers/components/navbar_mother_mini" %>
-  <div class="container-chatbot">
+
+<div class="container chat">
   <h1>Chat avec nous</h1>
-  <div class="message-container">
-    <div class="message-content" id="questions" data-controller="messages-modal" data-messages-modal-target="container" >
-      <% @messages.each do |message| %>
-        <%= render "messages/message", message: message %>
-      <% end %>
-    </div>
-    <div id="new-question-form">
-      <%= render "form_mother", message: @message %>
-      <div id="scroll-anchor"></div>
-    </div>
-  </div>
+  <%= turbo_stream_from "chat_#{@chat.id}_messages" %>
+  <div id="messages" class="messages">
+  <% @chat.messages.each do |message| %>
+    <%= render "chats/message", message: message, user: current_user.userable_type %>
+  <% end %>
+</div>
+<%= render "chats/form_message" %>
 </div>
 <% elsif current_user.userable_type == "Doctor"%>
-  <%= render "mothers/components/navbar_mother_mini" %>
-  <div class="container-chatbot">
+  <%= render "doctors/navbar_component/navbar_doctor_mini" %>
+<div class="container chat">
   <h1>Chattez avec x</h1>
-  <div class="message-container">
-    <div class="message-content" id="questions" data-controller="messages-modal" data-messages-modal-target="container" >
-      <% @messages.each do |message| %>
-        <%= render "messages/message", message: message %>
-      <% end %>
-    </div>
-    <div id="new-question-form">
-      <%= render "form_doctor", message: @message %>
-      <div id="scroll-anchor"></div>
-    </div>
-  </div>
+   <%= turbo_stream_from "chat_#{@chat.id}_messages" %>
+  <div id="messages" class="messages">
+  <% @chat.messages.each do |message| %>
+    <%= render "chats/message", message: message, user: current_user.userable_type %>
+  <% end %>
+</div>
+<%= render "chats/form_message"%>
 </div>
 <% end %>
