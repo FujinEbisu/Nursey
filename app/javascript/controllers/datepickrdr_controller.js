@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
-// import { French } from "flatpickr/dist/l10n/fr.ts"
+import { French } from "flatpickr/dist/l10n/fr.js"
 import flatpickr from "flatpickr";
 
 
@@ -16,6 +16,7 @@ export default class extends Controller {
           minDate: "today",
           mode: "multiple",
           inline: true,
+          "locale": French,
 
     })
   }
