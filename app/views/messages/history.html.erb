@@ -1,1 +1,16 @@
-<h1>This is messages#history</h1>
+<%= render "doctors/navbar_component/navbar_doctor_mini" %>
+<div class="container-history">
+<h1>Votre historique de messages</h1>
+<% if @messages.present? %>
+  <div class="messages-list">
+    <% @messages.each do |message| %>
+      <div class="message-item">
+        <p><strong><%= message.sender_name %>:</strong> <%= message.content %></p>
+        <p class="timestamp"><%= message.created_at.strftime("%d/%m/%Y %H:%M") %></p>
+      </div>
+    <% end %>
+</div>
+<% else %>
+  <h3>Aucun message trouvé.</h3>
+<% end %>
+</div>

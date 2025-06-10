@@ -35,7 +35,7 @@
     text-align: center;
     font-weight: 900;
     font-size: 48px;
-    color: $final-darker;
+    color: var(--text-darker);
 
     @media (max-width: 768px) {
         font-size: 48px;
@@ -47,7 +47,7 @@
     text-align: center;
     font-weight: 400;
     font-size: 20px;
-    color: $final-darker;
+    color: var(--text-darker);
     margin-bottom: 1rem;
 
     @media (max-width: 768px) {
