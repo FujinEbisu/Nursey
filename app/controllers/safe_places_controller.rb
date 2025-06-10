@@ -1,9 +1,18 @@
 class SafePlacesController < ApplicationController
   before_action :set_safe_place, only: [:show, :edit, :update, :destroy]
   before_action :define_mother, only: [:index, :show, :new, :create, :edit, :update, :destroy]
-  
+  before_action :location_params, only: [:index]
+
   def index
-    @safe_places = SafePlace.all
+    # Get safe places near user's location if location is available
+    if @user_latitude && @user_longitude
+      # Find safe places within 10km radius, ordered by distance
+      @safe_places = SafePlace.near([@user_latitude, @user_longitude], 1000, order: :distance)
+    else
+      # Fallback to showing all safe places if location is not available
+      @safe_places = SafePlace.all
+    end
+    
     @markers = @safe_places.geocoded.map do |safe_place|
       {
         lat: safe_place.latitude,
@@ -67,4 +76,16 @@ class SafePlacesController < ApplicationController
   def define_mother
     @mother = current_user.userable
   end
+
+  def location_params
+    @user_latitude = request.location&.latitude
+    @user_longitude = request.location&.longitude
+    
+    # Fallback: Try to get location from browser geolocation if available
+    if params[:latitude].present? && params[:longitude].present?
+      @user_latitude = params[:latitude].to_f
+      @user_longitude = params[:longitude].to_f
+    end
+  end
+
 end

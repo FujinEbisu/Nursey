@@ -1,20 +1,10 @@
 <%= render "mothers/components/navbar_mother" %>
+
+<% if current_user&.sign_in_count == 1 && current_user&.userable_type == "Mother" %>
+  <%= render "mothers/components/first_login" %>
+<% end %>
+
 <div class="mothers-container" style="margin-top: 1rem;">
-  <% if @mother_user.sign_in_count == 1 %>
-  <div class="first-pill">
-    <h4>Félicitations pour votre nouveau-né !</h4>
-    <h6>Voici quelques conseils pour débuter l'allaitement :</h6>
-    <div class="d-flex flex-column align-items-center">
-      <ul style="list-style-type: none; padding: 0; margin: 4px;">
-        <li><strong>Positionnement :</strong> Assurez-vous que votre bébé est bien positionné, la bouche grande ouverte sur le mamelon.</li>
-        <li><strong>Fréquence :</strong> Allaiter à la demande, généralement 8 à 12 fois par jour.</li>
-        <li><strong>Hydratation :</strong> Buvez beaucoup d'eau pour rester hydratée.</li>
-        <li><strong>Soutien :</strong> N'hésitez pas à demander de l'aide si vous avez des difficultés.</li>
-      </ul>
-      <em>N'oubliez pas de vous reposer lorsque c'est possible.</em>
-    </div>
-  </div>
-  <% end %>
   <div class="pill-container-child ">
     <div class="d-flex flex-row gap-2">
       <h6>Mes enfant(s)</h6>
