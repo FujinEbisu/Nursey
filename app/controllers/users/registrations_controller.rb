@@ -12,7 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     build_resource(sign_up_params)
-    @date = []
+    @date =  params[:user][:birthday]
     @availability = params[:user]["availibity"].split(',')
     if params[:user][:userable_type] == 'Doctor'
       userid = Doctor.new(set_params_doctor)
@@ -24,11 +24,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
       end
       userid.save
     elsif params[:user][:userable_type] == 'Mother'
-      userid = Mother.create!(set_params_mother)
-      userid.birthday = @date
-      userid.save
+      @userid = Mother.new(set_params_mother)
+      @userid.birthday = @date
+      @userid.save
     end
-    resource.userable_id = userid.id
+    resource.userable_id = userid.idx
     resource.save
     yield resource if block_given?
     if resource.persisted?

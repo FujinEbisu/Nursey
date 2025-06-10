@@ -8,7 +8,7 @@ export default class extends Controller {
     flatpickr(this.element, {
       dateFormat: "Y-m-d",
       defaultDate: new Date(),
-      minDate: "today",
+
 
 })
 

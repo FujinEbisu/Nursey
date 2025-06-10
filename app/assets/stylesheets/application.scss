@@ -133,15 +133,15 @@ border: 1px solid #ccc;
 .flatpickr-day.selected,
 .flatpickr-day.startRange,
 .flatpickr-day.endRange {
-  background: $final-dark;
+  background: #507DBC;
   color: $final-white;
   border: none;
 }
 
 /* Survol des jours */
 .flatpickr-day:hover {
-  background: #fde3a7;
-  color: #333;
+  background: #8DB7DF;
+  color: white;
 }
 
 /* Couleur des jours désactivés */
@@ -153,6 +153,6 @@ border: 1px solid #ccc;
 
 /* Barre de titre (mois + année) */
 .flatpickr-months {
-  background-color: $final-dark;
-  color: white
+  background-color: #507DBC;
+  color: rgb(185, 26, 26)
 }
