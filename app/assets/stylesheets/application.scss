@@ -152,7 +152,9 @@ border: 1px solid #ccc;
 }
 
 /* Barre de titre (mois + année) */
-.flatpickr-months {
+.flatpickr-months .flatpickr-month {
   background-color: #507DBC;
-  color: rgb(185, 26, 26)
+  color: white;
 }
+
+
