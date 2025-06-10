@@ -10,9 +10,18 @@
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <script type="importmap">
+      {
+        "imports": {
+          "@hotwired/stimulus": "https://unpkg.com/@hotwired/stimulus/dist/stimulus.js",
+          "chart.js": "https://ga.jspm.io/npm:chart.js@4.2.0/dist/chart.js",
+          "@kurkle/color": "https://ga.jspm.io/npm:@kurkle/color@0.3.2/dist/color.esm.js"
+        }
+      }
+    </script>
   </head>
 
-  <body>
+  <body class="<%= theme_class %>">
   <%= render "shared/flashes" %>
   <%= turbo_frame_tag "redirect_chat_window" %>
   <%= yield %>

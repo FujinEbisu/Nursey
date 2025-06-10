@@ -7,18 +7,20 @@ class AvailabilitiesController < ApplicationController
     @availability = params[:availability][:date]
     @availability = @availability.split(',').map(&:strip) if @availability.is_a?(String)
     @new_dates = @availability - @datelock
-    success = true
+    @deldates = @datelock - @availability
+    @deldates.each do |date|
+      @lol = Availability.find_by(date: date, doctor_id: @doctor.id)
+      @lol.destroy
+    end
     @new_dates.each do |date|
       @lol = Availability.new
       @lol.date = date
       @lol.doctor = @doctor
-      success = false unless @lol.save
-    end
-    if success
+        unless @lol.save
+          render :new, status: :unprocessable_entity
+        end
+      end
       redirect_to doctor_path(@doctor), notice: 'Availability was successfully created.'
-    else
-      render :new, status: :unprocessable_entity
-    end
   end
 
   def update

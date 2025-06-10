@@ -12,31 +12,86 @@
 @import "pages/index";
 @import "feeds/index";
 @import "children/new";
+@import "doctor/index";
 @import "dashboards/mothers_dashboard";
 @import url("https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css");
 @import "safe_places/index";
 @import url("https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css");
+
+// CSS Variables
+:root {
+  // Background colors
+  --bg-white: #FFEFE1;
+  --bg-light: #FBC4AB;
+  --bg-mid: #F8AD9D;
+  --bg-dark: #F4978E;
+  --bg-darker: #E1585A;
+  // Text colors
+  --text-white: #FFEFE1;
+  --text-light: #FBC4AB;
+  --text-mid: #F8AD9D;
+  --text-dark: #F4978E;
+  --text-darker: #E1585A;
+  --text-darkerer: #531011;
+
+}
+
+.mother-theme {
+   // Background colors
+  --bg-white: #FFEFE1;
+  --bg-light: #FBC4AB;
+  --bg-mid: #F8AD9D;
+  --bg-dark: #F4978E;
+  --bg-darker: #E1585A;
+  // Text colors
+  --text-white: #FFEFE1;
+  --text-light: #FBC4AB;
+  --text-mid: #F8AD9D;
+  --text-dark: #F4978E;
+  --text-darker: #E1585A;
+  --text-darkerer: #531011;
+
+}
+.doctor-theme {
+   // Background colors
+  --bg-white: #DAE3E5;
+  --bg-light: #BBD1EA;
+  --bg-mid: #8DB7DF;
+  --bg-dark: #507DBC;
+  --bg-darker: #1D3F6F;
+  // Text colors
+  --text-white: #DAE3E5;
+  --text-light: #BBD1EA;
+  --text-mid: #8DB7DF;
+  --text-dark: #507DBC;
+  --text-darker: #1D3F6F;
+  --text-darkerer: #141642;
+
+}
+
+// Global styles
+
 body {
-  background-color: $final-white;
+  background-color: var(--bg-white);
 }
 
 a {
   text-decoration: none;
-  color: $final-darker;
+  color: var(--text-darker);
 }
 
 h1 {
   font-family: 'Poppins', sans-serif;
   font-size: 2.5rem;
   font-weight: 900;
-  color: $final-darker;
+  color: var(--text-darker);
   padding: 1rem;
 }
 
 h3, h6, h4 {
   font-family: 'Nunito', sans-serif;
   font-weight: 900;
-  color: $final-darker;
+  color: var(--text-darker);
 }
 
 p {
@@ -52,15 +107,52 @@ p {
 }
 
 .swal2-popup {
-  background-color: $final-white; /* gris foncé */
-  color: $final-darker;             /* texte clair */
+  background-color: var(--bg-white); /* gris foncé */
+  color: var(--text-darker);             /* texte clair */
 }
 
 .swal2-title {
-  color: $final-darker;
+  color: var(--text-darker);
   font-family: 'Poppins', sans-serif /* jaune */
 }
 
 .swal2-confirm {
-  background-color: $final-darker !important; /* rouge */
+  background-color: var(--bg-darker) !important; /* rouge */
+}
+
+
+.flatpickr-calendar {
+  background-color: #fef9f2;
+border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: none !important;
+}
+
+/* Couleur des jours sélectionnés */
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange {
+  background: $final-dark;
+  color: $final-white;
+  border: none;
+}
+
+/* Survol des jours */
+.flatpickr-day:hover {
+  background: #fde3a7;
+  color: #333;
+}
+
+/* Couleur des jours désactivés */
+.flatpickr-day.disabled {
+  background: #eee;
+  color: #bbb;
+  cursor: not-allowed;
+}
+
+/* Barre de titre (mois + année) */
+.flatpickr-months {
+  background-color: $final-dark;
+  color: white
 }
