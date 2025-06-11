@@ -3,7 +3,7 @@
   <h1 class="feed-title">Les médecins disponibles</h1>
 </div>
 <div class="home-container-feed">
- <% @dispo.each do |doctor| %>
- <%=  render "chats/card_doctor", doctor: doctor %>
-<% end %>
+  <% @dispo.each do |doctor| %>
+  <%=  render "chats/card_doctor", doctor: doctor %>
+  <% end %>
 </div>

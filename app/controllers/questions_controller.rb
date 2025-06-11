@@ -5,6 +5,18 @@ before_action :set_mother, :set_doctor, only: [:index]
     def index
       @questions = current_user.questions.order(created_at: :asc)
       @question = Question.new
+      @chat = Chat.new
+    @mother = current_user.userable
+    @today = Date.today
+    @doctors = Doctor.all
+    @dispo = []
+    @doctors.each do |doctor|
+      doctor.availabilities.each do |availability|
+        if availability.date == @today
+          @dispo << doctor
+        end
+      end
+    end
     end
 
     def create

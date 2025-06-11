@@ -11,7 +11,7 @@ class ChatbotJob < ApplicationJob
     )
 
     ai_content = chatgpt_response["choices"][0]["message"]["content"]
-    
+
     question.update(ai_answer: ai_content)
     Turbo::StreamsChannel.broadcast_update_to(
       "question_#{@question.id}",
@@ -40,14 +40,14 @@ class ChatbotJob < ApplicationJob
       - Tu utilises le format HTML pour la mise en forme (pas de markdown)
       - Pour les titres ou mots importants, utilise <strong></strong> au lieu de **
       - Pour les listes, utilise <ul><li></li></ul> ou <ol><li></li></ol>
-      - Pour les liens vers des docteurs, utilise <a href='#' data-action='click->chatbot-links#openDoctorModal'>Consulter un docteur</a>
+      - Pour les liens vers des docteurs, utilise <a href='/chats/new'>Consulter un docteur</a>
       - Pour les images, utilise <img src=''></img>
 
 
       RÉPONSES SELON LE CAS :
       1. Si la question concerne l'allaitement maternel, la maternité, ou les soins du bébé : réponds avec des conseils pratiques en HTML
       2. Si la question ne concerne PAS la maternité, l'allaitement ou les soins du bébé : réponds exactement 'Je ne suis pas apte à répondre à ce genre de demande. Pour d'autres questions médicales, consultez un professionnel de santé.'
-      3. Si tu détectes des symptômes graves (fièvre, infection, douleur INTENSE) : et indique que ces conseils ne sont pas un diagnostic médical, donne des possibilités de solutions et termine toujours par 'Contactez un professionnel de santé pour une consultation, consultez un docteur disponible' avec le lien <a href='#' data-action='click->chatbot-links#openDoctorModal'>Consulter un docteur</a>
+      3. Si tu détectes des symptômes graves (fièvre, infection, douleur INTENSE) : et indique que ces conseils ne sont pas un diagnostic médical, donne des possibilités de solutions et termine toujours par 'Contactez un professionnel de santé pour une consultation, consultez un docteur disponible' avec le lien <a href='/chats/new'>Consulter un docteur</a>
 
       EXEMPLES DE QUESTIONS ACCEPTÉES :
       - Questions sur l'allaitement (positions, fréquence, problèmes)
