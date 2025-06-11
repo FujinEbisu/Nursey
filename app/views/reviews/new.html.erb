@@ -1,2 +1,11 @@
-<h1>Reviews#new</h1>
-<p>Find me in app/views/reviews/new.html.erb</p>
+<%= render "mothers/components/navbar_mother_mini" %>
+<div class="container text-center">
+  <h1>Ajouter un avis</h1>
+  <%= simple_form_for [@safe_place, @review] do |f| %>
+    <div class="form-review-wrap">
+<%= f.input :rating, as: :integer, label: "Note (de 1 à 5)" %>
+      <%= f.input :comment, as: :text, label: "Votre avis" %>
+    </div>
+    <%= f.button :submit, "Envoyer", class: "button-standard-dark" %>
+  <% end %>
+</div>

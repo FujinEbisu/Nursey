@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  before_action :define_mother, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+
   def index
     @safe_place = SafePlace.find(params[:safe_place_id])
     @reviews = @safe_place.reviews
@@ -18,10 +20,9 @@ class ReviewsController < ApplicationController
     set_safe_place
     @review = Review.new(review_params)
     @review.safe_place = @safe_place
-    @review.user = current_user
-
+    @review.mother = @mother
     if @review.save
-      redirect_to safe_place_reviews_path(@safe_place), notice: 'Review was successfully created.'
+      redirect_to safe_place_path(@safe_place), notice: 'Review was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -46,13 +47,13 @@ class ReviewsController < ApplicationController
     set_safe_place
     set_review
     @review.destroy
-    redirect_to safe_place_reviews_path(@safe_place), notice: 'Review was successfully deleted.'
+    redirect_to safe_place_path(@safe_place), notice: 'Review was successfully deleted.'
   end
 
   private
 
   def review_params
-    params.require(:review).permit(:content, :rating, :safe_place_id)
+    params.require(:review).permit(:comment, :rating )
   end
 
   def set_safe_place
@@ -61,5 +62,9 @@ class ReviewsController < ApplicationController
 
   def set_review
     @review = Review.find(params[:id])
+  end
+
+  def define_mother
+    @mother = current_user.userable
   end
 end
