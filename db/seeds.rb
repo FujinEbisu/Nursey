@@ -113,7 +113,7 @@ SafePlace.all.each do |safe_place|
   rand(2..5).times do
     Review.create!(
       comment: Faker::Restaurant.review,
-      rating: [3.5, 4.0, 4.5, 5.0, 2.5, 3.0].sample, # Mostly positive ratings
+      rating: [3, 4, 4, 5, 5, 2].sample, # Mostly positive ratings (integers only)
       safe_place_id: safe_place.id,
       mother_id: Mother.all.sample.id
     )
