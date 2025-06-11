@@ -3,10 +3,14 @@
 <div class="container">
 
   <div class="map-container">
-  <div class="map"
-       data-controller="map"
+    <div class="map"
+         data-controller="map"
          data-map-markers-value="<%= @markers.to_json %>"
-         data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+         data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+         <% if @user_latitude && @user_longitude %>
+           data-map-user-location-value="<%= [@user_longitude, @user_latitude].to_json %>"
+         <% end %>>
+    </div>
   </div>
   
   <div class="safe-places-container">

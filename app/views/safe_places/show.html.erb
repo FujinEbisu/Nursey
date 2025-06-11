@@ -24,8 +24,8 @@
       <% end %>
     </div>
     
-    <h2>Avis</h2>
     <div class="safe-places-reviews">
+    <h3>Avis</h3>
       <% @safe_place.reviews.each do |review| %>
         <div class="review">
           <p><%= review.rating %> <%= "⭐" * review.rating %></p>
@@ -35,11 +35,7 @@
     </div>
     
     <div class="buttons-container">
-      <div class="button-container">
-        <%= link_to "Back", safe_places_path, class: "button-standard" %>
-      </div>
-      <%= link_to "Edit", edit_safe_place_path(@safe_place) %>
-      <%= link_to "Delete", safe_place_path(@safe_place), method: :delete, data: { confirm: "Are you sure?" } %>
+      <%= link_to "Retour aux lieux", safe_places_path, class: "button-standard" %>
     </div>
   </div>
 </div>

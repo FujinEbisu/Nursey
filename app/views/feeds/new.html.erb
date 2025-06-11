@@ -4,16 +4,16 @@
     <h1 class="feed-title" data-chronometer-target="title">Nouvelle Tetée</h1>
   </div>
   <div class="home-container-feed" >
-  <div class="chronometer" >
-    <h4 data-chronometer-target="">Temps total</h4>
+    <div class="chronometer" >
+      <h4 data-chronometer-target="">Temps total</h4>
       <span data-chronometer-target="output3">00:00</span>
     </div>
     <div class="chronometer" data-chronometer-target="first">
-    <h4 data-chronometer-target="time">1er seins</h4>
+      <h4 data-chronometer-target="time">1er seins</h4>
       <span data-chronometer-target="output">00:00</span>
     </div>
     <div class="chronometer d-none" data-chronometer-target="second">
-    <h4 data-chronometer-target="newtitle"> time</h4>
+      <h4 data-chronometer-target="newtitle"> time</h4>
       <span data-chronometer-target="output2" >00:00</span>
     </div>
     <div class="mt-5">
@@ -24,21 +24,21 @@
       <button class="button-standard" data-action="click->chronometer#display" data-chronometer-target="gauche">Gauche</button>
 
       <button class="button-standard d-none" data-action="click->chronometer#display"  data-chronometer-target="change">Changer de seins</button>
-
     </div>
 
     <div>
       <button class="button-standard-dark d-none" data-bs-toggle="modal" data-bs-target="#ModalMotherTetee" data-action="click->chronometer#display" data-chronometer-target="stop">Stop</button>
     </div>
     <div>
-     <button class="button-standard-dark d-none" data-bs-toggle="modal" data-bs-target="#ModalMotherTirage" data-action="click->chronometer#display" data-chronometer-target="stop1">Stop</button>
+      <button class="button-standard-dark d-none" data-bs-toggle="modal" data-bs-target="#ModalMotherTirage" data-action="click->chronometer#display" data-chronometer-target="stop1">Stop</button>
     </div>
-</div>
-<div>
-<%= render '/components/modal_card_tirage', mother: @mother, feed: @feed %>
-</div>
-<div>
-<%= render '/components/modal_card_tetee', mother: @mother, feed: @feed %>
-</div>
+  </div>
+  <div>
+    <%= render '/components/modal_card_tirage', mother: @mother, feed: @feed %>
+  </div>
+  <div>
+    <%= render '/components/modal_card_tetee', mother: @mother, feed: @feed %>
+  </div>
 
-<%#= render "components/modal_card" %>
+  <%#= render "components/modal_card" %>
+</div>

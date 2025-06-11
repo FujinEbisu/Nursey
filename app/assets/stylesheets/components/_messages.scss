@@ -84,6 +84,10 @@
   padding: 0.5rem;
   border: none;
   border-radius: 0.5rem;
+  
+  @media (max-width: 768px) {
+    height: 15%;
+  }
 }
 
 .container-chatbot {
@@ -91,7 +95,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
 }
 
 #new-question-form {

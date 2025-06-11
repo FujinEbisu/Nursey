@@ -1,40 +1,32 @@
 <%= render "mothers/components/navbar_mother" %>
-  <div class="mothers-container" style="margin-top: 1rem;">
-  <div class="first-pill">
-  <h4>Félicitations pour votre nouveau-né !</h4>
-  <h6>Voici quelques conseils pour débuter l'allaitement :</h6>
-  <div class="d-flex flex-column align-items-center">
-  <ul style="list-style-type: none; padding: 0; margin: 4px;">
-    <li><strong>Positionnement :</strong> Assurez-vous que votre bébé est bien positionné, la bouche grande ouverte sur le mamelon.</li>
-    <li><strong>Fréquence :</strong> Allaiter à la demande, généralement 8 à 12 fois par jour.</li>
-    <li><strong>Hydratation :</strong> Buvez beaucoup d'eau pour rester hydratée.</li>
-    <li><strong>Soutien :</strong> N'hésitez pas à demander de l'aide si vous avez des difficultés.</li>
-  </ul>
-    <em>N'oubliez pas de vous reposer lorsque c'est possible.</em>
-  </div>
-  </div>
+
+
+<div class="mothers-container" style="margin-top: 1rem;">
   <div class="pill-container-child ">
-       <div class="d-flex flex-row gap-2">
-  <h6>Mes enfant(s)</h6>
-    <%= link_to new_mother_child_path(@mother) do %>
-      <i class="fa-solid fa-plus"></i>
-    <% end %>
-    </div>
-    <div class="mother-details-child">
-  <% @mother.children.each do |child| %>
-    <div class="d-flex flex-column align-items-center">
-      <%= child.first_name %>
-      <% if child.sexe == "fille" %>
-        <i class="fa-solid fa-child-dress" style="font-size:24px"></i>
-      <% elsif child.sexe == "garcon" %>
-        <i class="fa-solid fa-child" style="font-size:24px"></i>
-      <% else %>
-        <i class="fa-solid fa-baby" style="font-size:24px"></i>
+    <div class="d-flex flex-row gap-2 align-items-center">
+      <%= link_to mother_children_path(@mother) do %>
+        <h6>Mes enfant(s)</h6>
+      <% end %>
+      <%= link_to new_mother_child_path(@mother) do %>
+        <i class="fa-solid fa-plus"></i>
       <% end %>
     </div>
-  <% end %>
-</div>
-</div>
+    <div class="mother-details-child">
+      <% @mother.children.each do |child| %>
+        <div class="d-flex flex-column align-items-center">
+          <%= child.first_name %>
+          <% if child.sexe == "fille" %>
+            <i class="fa-solid fa-child-dress" style="font-size:24px"></i>
+          <% elsif child.sexe == "garcon" %>
+            <i class="fa-solid fa-child" style="font-size:24px"></i>
+          <% else %>
+            <i class="fa-solid fa-baby" style="font-size:24px"></i>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  
   <div class="button-container-mothers">
   <%= link_to mother_feeds_path(@mother), class: "button-standard" do %>
     <i class="fa-solid fa-clock-rotate-left"></i> Historique

@@ -23,7 +23,7 @@
           <div>
           <!-- put the availability here -->
           <%= simple_form_for [@doctor, @new_date] do |f| %>
-<div class="form-header1">
+<div class="form-header-doctor">
     <%= f.input :date, label: "Disponibilité",  as: :string, include_blank: false, label: false, input_html: { class: "d-none mt-3", data: { controller: "datepickrdr", datepickrdr_dates_value: @datelock.uniq.to_json }}%>
     <%= f.submit "Ajouter", class: 'button-standard'%>
 <% end %>
