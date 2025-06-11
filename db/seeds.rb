@@ -10,11 +10,10 @@
 require 'faker'
 
 Feed.destroy_all
-Mother.destroy_all
 Doctor.destroy_all
-User.destroy_all
 Child.destroy_all
 Message.destroy_all
+Chat.destroy_all
 SafePlace.destroy_all
 puts "db destroyed"
 
@@ -27,21 +26,20 @@ puts "db destroyed"
   Doctor.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    speciality: Faker::Job.field,
-    availability: Faker::Time.forward(days: 23, period: :morning)
+    speciality: Faker::Job.field
   )
     User.create!(
       email: Faker::Internet.email,
       password: "azerty",
       password_confirmation: "azerty",
-      userable_type: ['Mother', 'Doctor'].sample,
+      userable_type: 'Mother',
       userable_id: (Mother.last.id)
     )
     User.create!(
       email: Faker::Internet.email,
       password: "azerty",
       password_confirmation: "azerty",
-      userable_type: ['Mother', 'Doctor'].sample,
+      userable_type: 'Doctor',
       userable_id: (Doctor.last.id)
     )
 
@@ -60,10 +58,19 @@ puts "db destroyed"
     mood: rand(1..5),
     comment: Faker::Lorem.sentence(word_count: 10)
   )
+  
+  Chat.create!(
+    mother_id: Mother.last.id,
+    doctor_id: Doctor.last.id,
+    status: "ouvert"
+  )
+  
   Message.create!(
     content: Faker::Lorem.sentence(word_count: 10),
     mother_id: Mother.last.id,
-    doctor_id: Doctor.last.id
+    doctor_id: Doctor.last.id,
+    chat_id: Chat.last.id,
+    sender: ["Mother", "Doctor"].sample
   )
 
   puts "Created Mother, Doctor, Children and User records and a few messages."
@@ -96,5 +103,20 @@ safe_places_attributes.each do |attrs|
     )
   )
 end
+
+# Create reviews for safe places
+SafePlace.all.each do |safe_place|
+  # Create 2-5 reviews per safe place
+  rand(2..5).times do
+    Review.create!(
+      comment: Faker::Restaurant.review,
+      rating: [3.5, 4.0, 4.5, 5.0, 2.5, 3.0].sample, # Mostly positive ratings
+      safe_place_id: safe_place.id,
+      mother_id: Mother.all.sample.id
+    )
+  end
+end
+
 puts "15 SafePlaces créés avec succès."
+puts "Reviews created for all SafePlaces."
 puts "10 Mothers, Doctors, Children, Users, Messages created successfully."
