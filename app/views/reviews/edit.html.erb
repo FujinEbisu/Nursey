@@ -1,2 +1,16 @@
-<h1>Reviews#edit</h1>
-<p>Find me in app/views/reviews/edit.html.erb</p>
+<%= render "mothers/components/navbar_mother_mini" %>
+<div class="container text-center">
+  <h1 class= "h1-darker">Éditer un avis</h1>
+  <%= simple_form_for [@safe_place, @review] do |f| %>
+    <div class="form-review-wrap">
+      <%# f.input :rating, as: :integer, label: "Note (de 1 à 5)" %>
+      <h4>Note :</h4>
+      <div class="form-inline">
+        <%= f.input :rating, as: :radio_buttons, collection: Review.ratings.keys.map {
+          |rating| [stars_for_rating(rating), rating] }, item_wrapper_class: 'rating-option', label_method: :first, value_method: :last, input_html: {class:"rating-radio"} %>
+      </div>
+      <%= f.input :comment, as: :text, label: "Votre avis" %>
+    </div>
+    <%= f.button :submit, "Sauvegarder", class: "button-standard-dark" %>
+  <% end %>
+</div>

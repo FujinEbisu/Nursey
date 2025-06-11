@@ -17,7 +17,7 @@ export default class extends Controller {
       style: "mapbox://styles/mapbox/streets-v10",
       zoom: 12
     })
-    
+
     // Get user's current location first, then add markers
     this.#getCurrentLocation()
   }
@@ -28,19 +28,19 @@ export default class extends Controller {
         (position) => {
           const latitude = position.coords.latitude
           const longitude = position.coords.longitude
-          
+
           // Store user location
           this.userLocation = [longitude, latitude]
-          
+
           // Add user location marker
           this.#addUserLocationMarker(longitude, latitude)
-          
+
           // Add other markers
           this.#addMarkersToMap()
-          
+
           // Fit map to show user location and nearby places
           this.#fitMapToUserAndMarkers()
-          
+
           // Optionally refresh the page with precise location for backend filtering
           this.#updatePageWithLocation(latitude, longitude)
         },
@@ -48,7 +48,7 @@ export default class extends Controller {
           console.log("Geolocation error:", error.message)
           // Fallback to showing markers without user location
           this.#addMarkersToMap()
-          
+
           if (this.userLocationValue && this.userLocationValue.length > 0) {
             this.#fitMapToUserLocation()
           } else {
@@ -64,7 +64,7 @@ export default class extends Controller {
     } else {
       // Geolocation not supported, fallback to existing behavior
       this.#addMarkersToMap()
-      
+
       if (this.userLocationValue && this.userLocationValue.length > 0) {
         this.#fitMapToUserLocation()
       } else {
@@ -86,7 +86,7 @@ export default class extends Controller {
         box-shadow: 0 2px 4px rgba(0,0,0,0.3);
       "></div>
     `
-    
+
     new mapboxgl.Marker(userMarkerElement)
       .setLngLat([lng, lat])
       .addTo(this.map)
@@ -95,7 +95,7 @@ export default class extends Controller {
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
-      
+
       // Create a HTML element for your custom marker
       const customMarker = document.createElement("div")
       customMarker.innerHTML = marker.marker_html
@@ -125,15 +125,15 @@ export default class extends Controller {
 
   #fitMapToUserAndMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
-    
+
     // Add user location to bounds
     if (this.userLocation) {
       bounds.extend(this.userLocation)
     }
-    
+
     // Add all markers to bounds
     this.markersValue.forEach(marker => bounds.extend([marker.lng, marker.lat]))
-    
+
     // Fit map to show everything
     this.map.fitBounds(bounds, { padding: 20, maxZoom: 12, duration: 0 })
   }
@@ -141,12 +141,12 @@ export default class extends Controller {
   #updatePageWithLocation(latitude, longitude) {
     // Only refresh if we don't already have location params
     const urlParams = new URLSearchParams(window.location.search)
-    
+
     if (!urlParams.has('latitude') || !urlParams.has('longitude')) {
       const url = new URL(window.location.href)
       url.searchParams.set('latitude', latitude)
       url.searchParams.set('longitude', longitude)
-      
+
       // Use Turbo to navigate instead of window.location for better UX
       if (window.Turbo) {
         window.Turbo.visit(url.toString())

@@ -4,13 +4,13 @@
     flex-direction: column;
     align-items: center;
     padding: 1rem;
-    
+
 }
 
 .safeplace-info-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     width: 100%;
     padding: 1rem;
@@ -40,24 +40,13 @@
     }
   }
 
-.buttons-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-
-    gap: 1rem;
-    width: 100%;
-    padding: 1rem;
-
-    .button-container {
+.button-container {
         display: flex;
         flex-direction: row;
         align-items: flex-start;
         justify-content: flex-start;
-        gap: 1rem;
-    }
-}
+        width: 80%;
+  }
 
 .safe-places-reviews {
     padding: 1rem;
@@ -70,6 +59,7 @@
     scroll-behavior: smooth;
     scrollbar-width: none;
     height: 350px;
+    width: 100%;
 
 
     .review {
@@ -81,4 +71,22 @@
       border-radius: 8px;
       width: 100%;
     }
+}
+
+.avis {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin-bottom: 8px;
+  align-items: center;
+}
+
+.review-in-show {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.icon-review-show {
+  display: flex;
+  gap: 8px;
 }
