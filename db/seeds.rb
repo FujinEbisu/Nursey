@@ -9,12 +9,15 @@
 #   end
 require 'faker'
 
-Feed.destroy_all
-Doctor.destroy_all
-Child.destroy_all
-Message.destroy_all
-Chat.destroy_all
-SafePlace.destroy_all
+# Delete in correct order to avoid foreign key violations
+Review.destroy_all      # Reviews reference SafePlaces and Mothers
+Message.destroy_all     # Messages reference Doctors, Mothers, and Chats
+Chat.destroy_all        # Chats reference Doctors and Mothers
+Feed.destroy_all        # Feeds reference Mothers and Children
+Child.destroy_all       # Children reference Mothers
+Doctor.destroy_all      # Now safe to delete
+Mother.destroy_all      # Now safe to delete (but we recreate them anyway)
+SafePlace.destroy_all   # Now safe to delete
 puts "db destroyed"
 
 10.times do
