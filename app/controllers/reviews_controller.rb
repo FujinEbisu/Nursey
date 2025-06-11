@@ -1,5 +1,14 @@
 class ReviewsController < ApplicationController
   before_action :define_mother, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  # *** test star rating ***
+  STAR_OPTIONS = {
+    "1" => 1,
+    "2" => 2,
+    "3" => 3,
+    "4" => 4,
+    "5" => 5
+  }
+  # *************************
 
   def index
     @safe_place = SafePlace.find(params[:safe_place_id])
@@ -14,6 +23,7 @@ class ReviewsController < ApplicationController
   def new
     set_safe_place
     @review = Review.new
+    @star_options = STAR_OPTIONS
   end
 
   def create
