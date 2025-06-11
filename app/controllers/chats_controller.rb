@@ -48,6 +48,16 @@ class ChatsController < ApplicationController
     end
   end
 
+  def update_status
+  @chat = Chat.find(params[:id])
+    
+  if @chat.update(status: params[:status])
+    redirect_to chats_path, notice: "Statut mis à jour."
+  else
+    redirect_to chats_path, alert: "Erreur lors de la mise à jour du statut."
+  end
+end
+
 
   private
   def chat_params

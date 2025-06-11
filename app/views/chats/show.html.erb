@@ -22,5 +22,13 @@
   <% end %>
 </div>
 <%= render "chats/form_message"%>
+<div class="d-flex justify-content-center">
+<%= button_to update_status_chat_path(@chat),
+  method: :patch,
+  params: { status: "archivé" },
+  class: "chat-button" do %>
+  <i class="fa-solid fa-box-archive">Archiver</i>
+<% end %>
+</div>
 </div>
 <% end %>
