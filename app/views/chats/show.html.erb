@@ -1,0 +1,26 @@
+<% if current_user.userable_type == "Mother" %>
+  <%= render "mothers/components/navbar_mother_mini" %>
+
+<div class="container chat">
+  <h1>Chat avec nous</h1>
+  <%= turbo_stream_from "chat_#{@chat.id}_messages" %>
+  <div id="messages" class="messages">
+  <% @chat.messages.each do |message| %>
+    <%= render "chats/message", message: message, user: current_user.userable_type %>
+  <% end %>
+</div>
+<%= render "chats/form_message" %>
+</div>
+<% elsif current_user.userable_type == "Doctor"%>
+  <%= render "doctors/navbar_component/navbar_doctor_mini" %>
+<div class="container chat">
+  <h1>Chattez avec <%= @chat.mother.first_name.capitalize %></h1>
+   <%= turbo_stream_from "chat_#{@chat.id}_messages" %>
+  <div id="messages" class="messages">
+  <% @chat.messages.each do |message| %>
+    <%= render "chats/message", message: message, user: current_user.userable_type %>
+  <% end %>
+</div>
+<%= render "chats/form_message"%>
+</div>
+<% end %>

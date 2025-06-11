@@ -1,0 +1,21 @@
+<div class="card-doctor">
+  <div class="card-header">
+   <% if chat.doctor.avatar.attached? %>
+   <div id="avatar">
+          <%= cl_image_tag chat.doctor.avatar.key,  gravity: "auto", height: 600, width: 600, crop: "auto", class: "avatar" %>
+    </div>
+        <% else %>
+          <%= image_tag "https://res.cloudinary.com/dc7iookgc/image/upload/v1747992835/samples/two-ladies.jpg", class: "avatar" %>
+        <% end %>
+      </div>
+    <div class="doctor-info">
+      <h5 class="card-title"><%= chat.doctor.last_name.capitalize %></h5>
+      <p class="card-text"><%= chat.doctor.speciality.capitalize %></p>
+    </div>
+    <div>
+    <%= link_to chat_path(chat), method: :post, data: { turbo: false } do %>
+    <i class="fa-solid fa-eye"></i>
+    <% end %>
+  </div>
+</div>
+</div>

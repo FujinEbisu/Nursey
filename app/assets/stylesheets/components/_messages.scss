@@ -22,18 +22,17 @@
 .message-content {
   display: flex;
   flex-direction: column;
-  height: 45vh;
   width: 75vw;
   overflow-y: scroll;
-  background-color: var(--bg-white);
+  background-color: white;
   scrollbar-width: none;
   border-radius: 0.5rem;
-  color: $final-darker;
+  color: var(--bg-mid);
   border: 4px solid var(--bg-mid);
 }
 
 .message-text-incoming {
-  border: 1px solid var(--bg-darker);
+  border: 1px solid var(--bg-light);
   max-width: 1/2 * 100%;
   padding: 0.5rem;
   align-content: safe;
