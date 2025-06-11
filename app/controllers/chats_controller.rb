@@ -5,6 +5,7 @@ class ChatsController < ApplicationController
     @chats = Chat.all.where(mother: current_user.userable)
     else
       @chats = Chat.all.where(doctor: current_user.userable)
+      @doctor = current_user.userable
     end
   end
 

@@ -8,9 +8,10 @@ export default class extends Controller {
  }
   connect() {
     // triggered when a new message is added to the page
-    const currentUserId = parseInt(document.body.dataset.currentUserId, 10);
-    const typeUser = parseInt(document.body.dataset.currentUserType, 10);
+    const typeUser = document.body.dataset.currentUserType
+      console.log(this.userTypeValue)
     if (this.userTypeValue === typeUser) {
+
       this.element.classList.add('sent');
       this.element.classList.remove('received');
     } else {
