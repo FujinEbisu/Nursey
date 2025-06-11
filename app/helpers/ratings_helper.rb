@@ -8,6 +8,6 @@ module RatingsHelper
   }.freeze
 
   def stars_for_rating(rating)
-    STAR_RATINGS[rating.to_i] || '⭐'
+    STAR_RATINGS[rating.to_s] || '⭐'
   end
 end

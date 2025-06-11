@@ -33,7 +33,7 @@
       <% @safe_place.reviews.each do |review| %>
         <div class="review">
         <div class="review-in-show">
-          <p><%= review.rating %> <%= "⭐" * review.rating.to_f %></p>
+          <p><%= review.rating %> <%= "⭐" * review.rating.to_i %></p>
           <div class="icon-review-show">
             <% if user_signed_in? && current_user.userable == review.mother %>
               <%= link_to safe_place_review_path(@safe_place, review), data: { turbo_method: :delete, confirm: "Supprimer cet avis?", action: "click->feed#supprimer"} do %>
