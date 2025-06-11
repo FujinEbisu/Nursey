@@ -7,35 +7,47 @@
          data-map-markers-value="<%= @markers.to_json %>"
          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   </div>
-  
+  <div class="button-container">
+    <%= link_to "< Retour", safe_places_path, class: "button-standard" %>
+  </div>
   <div class="safeplace-info-container">
     <h1><%= @safe_place.name %></h1>
-    
+
     <div class="safeplace-info-container-content">
       <p><%= @safe_place.adress %></p>
       <% avg_rating = @safe_place.average_rating %>
-      <% rating_count = @safe_place.rating_count %>
+      <% rating_count = @safe_place.rating_count%>
       <p><strong><%= avg_rating %> <%=  avg_rating == 0 ? "⭐" * avg_rating : "⭐" * avg_rating %> (<%= rating_count %> avis)</strong></p>
     </div>
-    
+
     <div class="pills">
       <% @safe_place.options.each do |option| %>
         <p class="pill"><%= option %></p>
       <% end %>
     </div>
-    
-    <div class="safe-places-reviews">
+    <div class="avis">
     <h3>Avis</h3>
+      <%= link_to "Ajouter un avis", new_safe_place_review_path(@safe_place.id), class: "button-standard" %>
+    </div>
+    <div class="safe-places-reviews">
       <% @safe_place.reviews.each do |review| %>
         <div class="review">
-          <p><%= review.rating %> <%= "⭐" * review.rating %></p>
+        <div class="review-in-show">
+          <p><%= review.rating %> <%= "⭐" * review.rating.to_i %></p>
+          <div class="icon-review-show">
+            <% if user_signed_in? && current_user.userable == review.mother %>
+              <%= link_to safe_place_review_path(@safe_place, review), data: { turbo_method: :delete, confirm: "Supprimer cet avis?", action: "click->feed#supprimer"} do %>
+                <i class="fa-solid fa-trash" style="font-size:16px"></i>
+              <% end %>
+              <%= link_to edit_safe_place_review_path(@safe_place, review) do %>
+                <i class="fa-solid fa-pencil" style="font-size:16px"></i>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
           <p style="font-weight: bold;"><%= review.comment %></p>
         </div>
       <% end %>
-    </div>
-    
-    <div class="buttons-container">
-      <%= link_to "Retour aux lieux", safe_places_path, class: "button-standard" %>
     </div>
   </div>
 </div>

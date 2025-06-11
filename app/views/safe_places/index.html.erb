@@ -12,7 +12,9 @@
          <% end %>>
     </div>
   </div>
-  
+  <div class="add-safe-place">
+  <%= link_to "Ajouter un lieu", new_safe_place_path(@safe_place), class: "button-standard" %>
+  </div>
   <div class="safe-places-container">
     <% @safe_places.each do |safe_place| %>
       <% avg_rating = safe_place.average_rating %>
