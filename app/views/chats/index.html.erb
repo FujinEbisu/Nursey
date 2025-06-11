@@ -16,7 +16,7 @@
 <%= turbo_stream_from "chat_#{@doctor.id}" %>
 <div class="home-container-feed" id="chats">
  <% @chats.each do |chat| %>
- <%=  render "chats/card_message_mother", read: false, chat: chat %>
+ <%=  render "chats/card_message_mother", chat: chat %>
 <% end %>
 </div>
 </div>

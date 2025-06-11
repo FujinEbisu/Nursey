@@ -15,6 +15,7 @@ class ChatsController < ApplicationController
     @doctor = current_user.userable
     @chat = Chat.find(params[:id])
     @mother = Mother.find(@chat.mother_id)
+    @chat.update(unread: false)
     elsif current_user.userable_type == "Mother"
     @mother = current_user.userable
     @chat = Chat.find(params[:id])

@@ -5,6 +5,8 @@ class Chat < ApplicationRecord
 
    after_create_commit :broadcast_chat
 
+
+
   private
 
   def broadcast_chat
