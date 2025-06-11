@@ -21,10 +21,10 @@
       </p>
       <!-- Quantity -->
       <%  if @feed.nursy_type == "Tirage" %>
-      <p>Quantité:</p>
-      <p class="quantity-left-show">
-        <%= @feed.quantity_left %> ml
-      </p>
+        <p>Quantité:</p>
+        <p class="quantity-left-show">
+          <%= @feed.quantity_left %> ml
+        </p>
       <% end %>
     </div>
     <!-- ********** -->
@@ -38,10 +38,10 @@
       </p>
       <!-- Quantity -->
       <%  if @feed.nursy_type == "Tirage" %>
-      <p>Quantité:</p>
-      <p class="quantity-right-show">
-        <%= @feed.quantity_right %> ml
-      </p>
+        <p>Quantité:</p>
+        <p class="quantity-right-show">
+          <%= @feed.quantity_right %> ml
+        </p>
       <% end %>
     </div>
     <!-- ********** -->
@@ -53,12 +53,13 @@
     <%= emoji_for_mood(@feed.mood) %>
   </div>
   <% if @feed.nursy_type == "Tetee" %>
-  <h4 class="mt-2">Enfant:</h4>
-  <p class="child-show">
-    <%= @feed.child ? @feed.child.first_name : "Aucun enfant sélectionné" %>
-  </p>
+    <h4 class="mt-2">Enfant:</h4>
+    <p class="child-show">
+      <%= @feed.child ? @feed.child.first_name : "Aucun enfant sélectionné" %>
+    </p>
   <% end %>
-  <button class="button-standard-dark mt-3">
-  <%= link_to "Editer", edit_mother_feed_path(@feed) %>
-  </button>
+  <div class="d-flex mt-3 align-items-center justify-content-center gap-3">
+    <%= link_to "Retour", mother_feeds_path(@mother), class: 'link' %>
+    <%= link_to "Editer", edit_mother_feed_path(@feed), class: 'button-standard-dark' %>
+  </div>
 </div>

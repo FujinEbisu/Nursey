@@ -96,7 +96,12 @@
 }
 
 .user_welcome {
-  transition: opacity 0.3s ease;
+  transition: opacity 0.1s ease;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 
   &.active {
     display: none;
