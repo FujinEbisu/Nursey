@@ -5,7 +5,7 @@
 <% end %>
 
 <div class="container-chatbot">
-  <h1>Chat avec nous</h1>
+  <h1>Votre assistant maternel</h1>
   <div class="message-container">
     <div class="message-content" id="questions" data-controller="messages-modal" data-messages-modal-target="container" >
       <% @questions.each do |question| %>
@@ -17,8 +17,11 @@
       <div id="scroll-anchor"></div>
     </div>
   </div>
-</div>
 
-<div class="button-container">
-  <%= link_to "Parler avec un expert", "#", class: "button-standard" %>
+  <div class="button-container">
+    <%= link_to "Parler avec un expert", "#", class: "button-standard" %>
+  </div>
+
+  <p class="advising-text">Ce ci n'est pas un professionnel de santé, mais un assistant maternel qui vous aide à répondre à vos questions sur l'allaitement maternel, la maternité, et les soins du bébé.</p>
+
 </div>

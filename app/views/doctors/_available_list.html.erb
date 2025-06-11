@@ -1,0 +1,28 @@
+<div class="doctors-available-list">
+  <% if doctors.any? %>
+    <% doctors.each do |doctor| %>
+      <div class="doctor-card">
+        <div class="doctor-info">
+          <h4><%= doctor.first_name %> <%= doctor.last_name %></h4>
+          <p class="specialty"><%= doctor.speciality %></p>
+        </div>
+        <div class="doctor-availability">
+          <p><strong>Disponibilités:</strong></p>
+          <div class="availability-dates">
+            <% doctor.availabilities.where('date >= ?', Date.current).limit(3).each do |availability| %>
+              <span class="availability-date"><%= availability.date.strftime("%d/%m") %></span>
+            <% end %>
+          </div>
+        </div>
+        <div class="doctor-actions">
+          <%= link_to "Contacter", messages_path, class: "button-standard" %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="no-doctors">
+      <p>Aucun docteur disponible pour le moment.</p>
+      <p>Veuillez réessayer plus tard.</p>
+    </div>
+  <% end %>
+</div>

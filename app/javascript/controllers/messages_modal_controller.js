@@ -5,9 +5,6 @@ export default class extends Controller {
   static targets = ["container"]
 
   connect() {
-    document.body.style.height = "100vh"
-    document.body.style.overflow = "hidden"
-    this.containerTarget.scrollTo({ top: this.containerTarget.scrollHeight })
   }
 
   disconnect() {

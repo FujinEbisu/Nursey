@@ -3,12 +3,12 @@ before_action :set_mother, :set_doctor, only: [:index]
 
 
     def index
-      @questions = current_user.questions
+      @questions = current_user.questions.order(created_at: :asc)
       @question = Question.new
     end
 
     def create
-        @questions = current_user.questions # needed in case of validation error
+        @questions = current_user.questions.order(created_at: :asc)
         @question = Question.new(question_params)
         @question.user = current_user
     if @question.save

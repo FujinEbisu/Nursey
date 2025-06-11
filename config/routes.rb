@@ -26,6 +26,9 @@ mount ActionCable.server => '/cable'
   resources :doctors do
     resources :availabilities, only: [:create, :edit, :update]
     resources :chats, only: [:create]
+    collection do
+      get :available
+    end
   end
   resources :mothers, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     resources :feeds
