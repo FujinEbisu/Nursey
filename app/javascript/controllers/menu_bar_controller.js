@@ -11,7 +11,6 @@ export default class extends Controller {
         this.close();
       }
     });
-    console.log("Menu bar controller connected");
   }
 
   toggle() {

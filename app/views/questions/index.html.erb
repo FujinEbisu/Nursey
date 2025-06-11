@@ -1,13 +1,9 @@
-<% if current_user.userable == @mother %>
-  <%= render "mothers/components/navbar_mother_mini" %>
-<% else %>
-  <%= render "#" %>
-<% end %>
+<%= render "mothers/components/navbar_mother_mini" %>
 
 <div class="container-chatbot">
   <h1>Votre assistant maternel</h1>
   <div class="message-container">
-    <div class="message-content" id="questions" data-controller="messages-modal" data-messages-modal-target="container" >
+    <div class="message-content-assistant" id="questions" data-controller="messages-modal" data-messages-modal-target="container" >
       <% @questions.each do |question| %>
         <%= render "questions/question", question: question %>
       <% end %>
