@@ -4,7 +4,7 @@ class ChatsController < ApplicationController
     if current_user.userable_type == "Mother"
     @chats = Chat.all.where(mother: current_user.userable)
     else
-      @chats = Chat.all.where(doctor: current_user.userable)
+      @chats = Chat.all.where(doctor: current_user.userable, status: "ouvert")
       @doctor = current_user.userable
     end
   end
@@ -15,6 +15,7 @@ class ChatsController < ApplicationController
     @doctor = current_user.userable
     @chat = Chat.find(params[:id])
     @mother = Mother.find(@chat.mother_id)
+    @chat.update(unread: false)
     elsif current_user.userable_type == "Mother"
     @mother = current_user.userable
     @chat = Chat.find(params[:id])
@@ -46,6 +47,21 @@ class ChatsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def update_status
+  @chat = Chat.find(params[:id])
+
+  if @chat.update(status: params[:status])
+    redirect_to chats_path, notice: "Statut mis à jour."
+  else
+    redirect_to chats_path, alert: "Erreur lors de la mise à jour du statut."
+  end
+  end
+
+  def history
+    @archived = Chat.all.where(doctor: current_user.userable, status: "archivé")
+    @doctor = current_user.userable
   end
 
 

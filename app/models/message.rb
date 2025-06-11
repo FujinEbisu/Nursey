@@ -12,5 +12,11 @@ class Message < ApplicationRecord
                         partial: "chats/message",
                         target: "messages",
                         locals: { message: self, user: sender }
+    chat.update(unread: true)
+    broadcast_replace_to "chat_#{doctor.id}",
+                        partial: "chats/card_message_mother",
+                        target: "newmessage-#{chat.id}",
+                        locals: { chat: chat }
   end
+
 end
