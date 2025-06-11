@@ -7,7 +7,9 @@
          data-map-markers-value="<%= @markers.to_json %>"
          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   </div>
-
+  <div class="button-container">
+    <%= link_to "< Retour", safe_places_path, class: "button-standard" %>
+  </div>
   <div class="safeplace-info-container">
     <h1><%= @safe_place.name %></h1>
 
@@ -47,14 +49,6 @@
           <p style="font-weight: bold;"><%= review.comment %></p>
         </div>
       <% end %>
-    </div>
-
-    <div class="buttons-container">
-      <div class="button-container">
-        <%= link_to "Back", safe_places_path, class: "button-standard" %>
-      </div>
-      <%= link_to "Editer", edit_safe_place_path(@safe_place) %>
-      <%= link_to "Supprimer", safe_place_path(@safe_place), method: :delete, data: { confirm: "Êtes vous sûr?" } %>
     </div>
   </div>
 </div>

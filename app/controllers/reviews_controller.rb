@@ -22,7 +22,7 @@ class ReviewsController < ApplicationController
     @review.safe_place = @safe_place
     @review.mother = @mother
     if @review.save
-      redirect_to safe_place_path(@safe_place), notice: 'Review was successfully created.'
+      redirect_to safe_place_path(@safe_place), notice: 'Avis ajouté.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -37,7 +37,7 @@ class ReviewsController < ApplicationController
     set_safe_place
     set_review
     if @review.update(review_params)
-      redirect_to safe_place_review_path(@safe_place, @review), notice: 'Review was successfully updated.'
+      redirect_to safe_place_path(@safe_place), notice: 'Avis mis à jour.'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -47,13 +47,13 @@ class ReviewsController < ApplicationController
     set_safe_place
     set_review
     @review.destroy
-    redirect_to safe_place_path(@safe_place), notice: 'Review was successfully deleted.'
+    redirect_to safe_place_path(@safe_place), notice: 'Avis supprimé.'
   end
 
   private
 
   def review_params
-    params.require(:review).permit(:comment, :rating )
+    params.require(:review).permit(:comment, :rating)
   end
 
   def set_safe_place

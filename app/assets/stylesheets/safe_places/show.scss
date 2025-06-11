@@ -41,24 +41,13 @@
     }
   }
 
-.buttons-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-
-    gap: 1rem;
-    width: 100%;
-    padding: 1rem;
-
-    .button-container {
+.button-container {
         display: flex;
         flex-direction: row;
         align-items: flex-start;
         justify-content: flex-start;
-        gap: 1rem;
-    }
-}
+        width: 80%;
+  }
 
 .safe-places-reviews {
     padding: 1rem;
@@ -96,4 +85,8 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
+}
+.icon-review-show {
+  display: flex;
+  gap: 8px;
 }
