@@ -15,9 +15,9 @@ export default class extends Controller {
             <button class="modal-close" data-action="click->doctor-modal#close">&times;</button>
           </div>
           <div class="modal-body">
-             <% @dispo.each do |doctor| %>
-  <%=  render "chats/card_doctor", doctor: doctor %>
-  <% end %>
+            <% @dispo.each do |doctor| %>
+              <%=  render "chats/card_doctor", doctor: doctor %>
+            <% end %>
           </div>
         </div>
       </div>

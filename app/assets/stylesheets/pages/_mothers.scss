@@ -111,16 +111,16 @@
 // *** Menu Button ***
 // DO NOT TOUCH THIS BUTTON, IT IS USED IN THE NAVBAR AND IT IS RESPONSIBLE FOR THE RESPONSIVE MENU //
 
-.nav-bar-mother.active .menu__icon span:nth-child(1) {
+.nav-bar-mother-mini.active .menu__icon span:nth-child(1) {
   transform: translateY(7.5px) rotate(-45deg);
 }
 
-.nav-bar-mother.active .menu__icon span:nth-child(2) {
+.nav-bar-mother-mini.active .menu__icon span:nth-child(2) {
   width: 0;
   opacity: 0;
 }
 
-.nav-bar-mother.active .menu__icon span:nth-child(3) {
+.nav-bar-mother-mini.active .menu__icon span:nth-child(3) {
   transform: translateY(-7.5px) rotate(45deg);
 }
 

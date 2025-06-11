@@ -1,7 +1,7 @@
 .chat {
   background: white;
   margin-top: 9px;
-  height:auto;
+  height: auto;
   width: 95%;
   display: flex;
   flex-direction: column;
@@ -25,9 +25,10 @@
     border-top: 1px solid $gray-200;
     padding: 1rem;
   }
-    .form-group {
-      margin-bottom: 0;
-    }
+
+  .form-group {
+    margin-bottom: 0;
+  }
 
   .message {
     display: flex;
@@ -42,31 +43,31 @@
     width: fit-content;
   }
 
-.message.sent {
-  align-items: flex-end;
-  color: var(--bg-dark)
-}
+  .message.sent {
+    align-items: flex-end;
+    color: var(--bg-dark);
+  }
 
-.message.received {
-  align-items: flex-start;
-  color: var(--bg-light)
-}
+  .message.received {
+    align-items: flex-start;
+    color: var(--bg-light);
+  }
 
   .message.sent .message-content {
-     background: var(--bg-dark);
-  color: white;
-  align-self: flex-end;
-  width: auto;
-  max-width: 70%;
-  border: 4px solid var(--bg-dark) !important;
-}
+    background: var(--bg-dark);
+    color: white;
+    align-self: flex-end;
+    width: auto;
+    max-width: 70%;
+    border: 4px solid var(--bg-dark) !important;
+  }
 
   .message.received .message-content {
     align-self: flex-start;
     background: white;
   }
 
-    .message-content {
+  .message-content {
     border-radius: 1rem;
     margin-bottom: 1rem;
     padding: 0.5rem;
@@ -74,10 +75,10 @@
     width: fit-content;
     word-wrap: break-word;
   }
-  .form-control.custom-style {
-  border-radius: 1rem;
-  background-color: white;
-    height: 75px
-}
 
+  .form-control.custom-style {
+    border-radius: 1rem;
+    background-color: white;
+    height: 75px;
+  }
 }
