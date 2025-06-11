@@ -2,7 +2,8 @@ class DoctorsController < ApplicationController
   before_action :define_doctor, :doctor_user, only: [:index, :show, :edit, :update, :destroy]
 
   def index
-
+    @doctor = current_user.userable
+    @chats = Chat.where(doctor: @doctor, status: "ouvert", unread: true)
   end
 
   def show
@@ -71,7 +72,7 @@ class DoctorsController < ApplicationController
                     .where('availabilities.date >= ?', Date.current)
                     .includes(:availabilities)
                     .distinct
-    
+
     render partial: 'doctors/available_list', locals: { doctors: @doctors }
   end
 

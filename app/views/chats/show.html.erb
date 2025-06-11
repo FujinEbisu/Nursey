@@ -1,6 +1,8 @@
 <% if current_user.userable_type == "Mother" %>
   <%= render "mothers/components/navbar_mother_mini" %>
-
+<div class="button-container">
+    <%= link_to "< Retour", chats_path, class: "button-standard" %>
+  </div>
 <div class="container chat">
   <h1>Chat avec nous</h1>
   <%= turbo_stream_from "chat_#{@chat.id}_messages" %>
@@ -13,6 +15,10 @@
 </div>
 <% elsif current_user.userable_type == "Doctor"%>
   <%= render "doctors/navbar_component/navbar_doctor_mini" %>
+  <div>
+  <div class="button-container">
+    <%= link_to "< Retour", chats_path, class: "button-standard" %>
+  </div>
 <div class="container chat">
   <h1>Chattez avec <%= @chat.mother.first_name.capitalize %></h1>
    <%= turbo_stream_from "chat_#{@chat.id}_messages" %>
@@ -21,6 +27,18 @@
     <%= render "chats/message", message: message, user: current_user.userable_type %>
   <% end %>
 </div>
+<% if @chat.status == "ouvert" %>
 <%= render "chats/form_message"%>
+<div class="d-flex justify-content-center">
+<%= form_with url: update_status_chat_path(@chat), method: :patch, local: true do %>
+  <%= hidden_field_tag :status, "archivé" %>
+  <button type="submit" class="chat-button-archive">
+    <i class="fa-solid fa-box-archive"></i> <span>Archiver</span>
+  </button>
+<% end %>
+</div>
+<% else %>
+<p class="text-center mb-1">Conversation archivée. Vous ne pouvez plus envoyer de messages</p>
+<% end %>
 </div>
 <% end %>

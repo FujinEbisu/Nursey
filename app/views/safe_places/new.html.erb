@@ -1,12 +1,18 @@
-<%= simple_form_for @safe_place do |f| %>
-<%= f.input :name %>
-<div data-controller="address-autocomplete" data-address-autocomplete-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-  <%= f.input :adress,
-    input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
-    label: false,
-    wrapper: false
-  %>
+<%= render  "mothers/components/navbar_mother_mini" %>
+<div class="container-new-safe-place-form">
+  <%= simple_form_for @safe_place do |f| %>
+  <%= f.input :name, label: "Nom du lieu" %>
+  <div data-controller="address-autocomplete" data-address-autocomplete-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    <h5 class= "mb-3 fw-medium">Addresse du lieu</h5>
+    <%= f.input :adress,
+      input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
+      label: false,
+      wrapper: false
+    %>
+  </div>
+  <%= f.input :options, collection: SafePlace::OPTIONS, as: :check_boxes %>
+  <div class="submit-new-safe-place">
+    <%= f.submit "Créer un lieu sûr", class: "button-standard" %>
+  </div>
+  <% end %>
 </div>
-<%= f.input :options, collection: SafePlace::OPTIONS, as: :check_boxes %>
-<%= f.submit "Créer un endroit sûr" %>
-<% end %>

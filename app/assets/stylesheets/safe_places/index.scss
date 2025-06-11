@@ -2,7 +2,7 @@
     height: 80vh;
     overflow-y: hidden;
     display: flex;
-  
+
     @media (max-width: 768px) {
       flex-direction: column;
     }
@@ -10,12 +10,12 @@
   .mapboxgl-popup {
       max-width: 200px;
     }
-    
+
     .mapboxgl-popup-content {
       text-align: center;
       font-family: "Open Sans", sans-serif;
     }
-  
+
     .mapboxgl-ctrl-geocoder {
       max-width: none;
       width: 100%;
@@ -23,7 +23,7 @@
       box-shadow: none;
       background-color: transparent;
     }
-  
+
     .safe-places-container {
       display: flex;
       flex-direction: column;
@@ -32,9 +32,9 @@
       scrollbar-width: none;
       gap: 1rem;
       width: 50%;
-      height: 100%; 
+      height: 100%;
       padding: 1rem;
-  
+
       @media (max-width: 768px) {
         width: 100%;
       }
@@ -46,28 +46,28 @@
       border: 5px solid $final-darker;
       padding: 1rem;
       margin-bottom: 0.2rem;
-  
+
       .safe-places-card-title {
         font-size: 1.5rem;
         font-weight: bold;
         font-family: $headers-font;
         color: $final-darker;
       }
-  
+
       .safe-places-card-rating {
         font-size: 1rem;
         font-weight: bold;
       }
-  
+
       .safe-places-card-link {
         font-size: 1rem;
         font-weight: bold;
         color: $final-darker;
         justify-self: flex-end;
       }
-      
+
     }
-  
+
     .map-container {
       display: flex;
       flex-direction: column;
@@ -76,21 +76,21 @@
       width: 50%;
       height: 100%;
       padding: 1rem;
-  
+
       @media (max-width: 768px) {
         width: 100%;
       }
     }
-  
+
     .map{
-      border-radius: 15px; 
+      border-radius: 15px;
       border: 5px solid $final-darker;
       position: sticky;
       top: 0;
       width: 100%;
       height: 100%;
     }
-  
+
     .pills {
       display: flex;
       flex-wrap: wrap;
@@ -99,7 +99,7 @@
       border-radius: 15px;
       padding: 1rem;
     }
-  
+
     .pill {
       padding: 0.5rem;
       border-radius: 15px;
@@ -124,4 +124,63 @@
       width: fit-content;
     }
 
+.add-safe-place {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+// ** New place form ** //
+.container-new-safe-place-form {
+  width: 100%;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+}
+.safe_place_name > label {
+  font-size: larger;
+  margin-top: 8px;
+  color: var(--text-darker);
+}
 
+.safe_place_name {
+  width: 100%;
+}
+
+.safe_place_name > input {
+  background-color: var(--bg-white);
+  border: 1px solid var(--bg-mid);
+  border-radius: 8px;
+}
+
+.mapboxgl-ctrl-geocoder {
+  border-radius: 8px;
+  border: 1px solid var(--bg-mid);
+  background-color: var(--bg-white);
+}
+
+.safe_place_options {
+margin-top: 8px;
+color: var(--text-darker);
+}
+.safe_place_options > legend {
+font-size: larger;
+}
+.mapboxgl-ctrl-geocoder--icon {
+  fill: var(--text-darker)
+}
+
+.mapboxgl-ctrl-geocoder .mapboxgl-ctrl-geocoder--pin-right > * {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.form-check-input[type="checkbox"] {
+    border-radius: 0.25em;
+    border: 1px solid var(--bg-darker);
+}
+
+.submit-new-safe-place {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}

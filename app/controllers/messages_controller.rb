@@ -75,9 +75,7 @@ class MessagesController < ApplicationController
     end
   end
 
-  def history
-    @messages = Message.all.where(doctor: current_user.userable && message.status == "closed")
-  end
+
   private
 
   def set_mother

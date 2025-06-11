@@ -1,0 +1,9 @@
+<%= render "doctors/navbar_component/navbar_doctor_mini" %>
+ <div class="home-header-feed" >
+  <h1 class="doctor-title">Vos discussions archivées</h1>
+</div>
+<div class="home-container-feed">
+ <% @archived.each do |chat| %>
+ <%=  render "chats/card_message_archived", chat: chat %>
+<% end %>
+</div>
