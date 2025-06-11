@@ -4,8 +4,8 @@
       <%= doctor.avatar %>
     </div>
     <div class="doctor-info">
-      <h5 class="card-title"><%= doctor.last_name %></h5>
-      <p class="card-text"><%= doctor.speciality %></p>
+      <h5 class="card-title"><%= doctor.last_name.capitalize %></h5>
+      <p class="card-text"><%= doctor.speciality.capitalize %></p>
     </div>
     <div>
     <%= button_to doctor_chats_path(doctor), method: :post, data: { turbo: false } do %>

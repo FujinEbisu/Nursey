@@ -8,8 +8,8 @@
           <%= image_tag "https://res.cloudinary.com/dc7iookgc/image/upload/v1747992835/samples/two-ladies.jpg", class: "avatar" %>
         <% end %>
     <div class="doctor-info">
-      <h5 class="card-title"><%= chat.mother.last_name %></h5>
-      <p class="card-text"><%= chat.mother.first_name %></p>
+      <h5 class="card-title"><%= chat.mother.last_name.capitalize %></h5>
+      <p class="card-text"><%= chat.mother.first_name.capitalize %></p>
     </div>
     <div>
     <%= link_to chat_path(chat), method: :post, data: { turbo: false } do %>

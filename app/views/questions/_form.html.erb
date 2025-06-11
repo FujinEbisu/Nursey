@@ -1,14 +1,14 @@
 <%= simple_form_for question, url: questions_path,
       html: { data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" } } do |f| %>
   <div class="input-group mb-3 w-100">
-    <%= f.input :mother_question, 
-        label: false, 
-        wrapper: false, 
-        placeholder: "Dites nous ce que vous voulez parler", 
+    <%= f.input :mother_question,
+        label: false,
+        wrapper: false,
+        placeholder: "Dites nous ce dont vous voulez parler",
         class: "form-control static-input",
-        input_html: { 
-          data: { 
-            action: "keydown->reset-form#handleEnter" 
+        input_html: {
+          data: {
+            action: "keydown->reset-form#handleEnter"
           },
           rows: 1
         } %>

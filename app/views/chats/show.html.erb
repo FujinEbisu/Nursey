@@ -14,7 +14,7 @@
 <% elsif current_user.userable_type == "Doctor"%>
   <%= render "doctors/navbar_component/navbar_doctor_mini" %>
 <div class="container chat">
-  <h1>Chattez avec x</h1>
+  <h1>Chattez avec <%= @chat.mother.first_name.capitalize %></h1>
    <%= turbo_stream_from "chat_#{@chat.id}_messages" %>
   <div id="messages" class="messages">
   <% @chat.messages.each do |message| %>
