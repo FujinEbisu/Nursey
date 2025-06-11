@@ -23,7 +23,7 @@
       <% if current_page?(doctors_path) %>
       <%= link_to "Profil", doctor_path(@doctor), class: "menu-item" %>
       <% end %>
-      <%= link_to "Historique", messages_history_path, class: "menu-item" %>
+      <%= link_to "Historique", chats_history_path, class: "menu-item" %>
       <% if user_signed_in? %>
         <%= link_to "Déconnexion", destroy_user_session_path, data: {turbo_method: :delete}, class: "menu-item" %>
       <% else %>
