@@ -34,7 +34,7 @@ before_action :set_mother, :set_doctor, only: [:index]
     else
      render :index, status: :unprocessable_entity
     end
-  end
+    end
 
   private
 

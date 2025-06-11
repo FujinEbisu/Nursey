@@ -64,6 +64,8 @@ puts "db destroyed"
     mother_id: Mother.last.id,
     doctor_id: Doctor.last.id
   )
+
+
   puts "Created Mother, Doctor, Children and User records and a few messages."
 end
 puts "10 Mothers, Doctors, Children, Users, Messages created successfully."
