@@ -97,6 +97,32 @@
   font-size: 32px;
 }
 
+.button-standard.btnchat{
+ padding: 8px 24px;
+  background-color: var(--bg-light);
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  color: var(--text-darker);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 83%;
+
+
+  &:hover {
+    background-color: var(--bg-darker);
+    color: var(--text-white);
+
+    & > a {
+      color: var(--text-white);
+      font-weight: bolder;
+    }
+    }
+}
+
 
 // *** Menu Button ***
 // DO NOT TOUCH THIS BUTTON, IT IS USED IN THE NAVBAR AND IT IS RESPONSIBLE FOR THE RESPONSIVE MENU //

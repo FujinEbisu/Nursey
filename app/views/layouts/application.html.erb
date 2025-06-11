@@ -13,10 +13,10 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="<%= theme_class %>">
-    <%= render "shared/flashes" %>
-    <%= turbo_frame_tag "redirect_chat_window" %>
-    <%= yield %>
+  <body class="<%= theme_class %>" data-current-user-type="<%= current_user ? current_user.userable_type : ""%>">
+  <%= render "shared/flashes" %>
+  <%= turbo_frame_tag "redirect_chat_window" %>
+  <%= yield %>
   </body>
 
 </html>

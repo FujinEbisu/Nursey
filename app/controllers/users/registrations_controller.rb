@@ -24,11 +24,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
       end
       @userid.save
     elsif params[:user][:userable_type] == 'Mother'
-      @userid = Mother.new(set_params_mother)
-      @userid.birthday = @date
-      @userid.save
+      userid = Mother.new(set_params_mother)
+      userid.birthday = @date
+      userid.save
     end
-    resource.userable_id = @userid.id
+    resource.userable_id = userid.id
     resource.save
     yield resource if block_given?
     if resource.persisted?

@@ -1,19 +1,22 @@
 <!-- Chat window -->
 
-<div id="<%= dom_id(question) %>" class="question">
+<div id="<%= dom_id(question) %>" class="question" data-controller="chatbot-links">
   <%= turbo_stream_from dom_id(question) %>
   
   
   <p class="message-text-outgoing">
   <span style="font-size: x-small; font-weight: 200; font-family: 'Poppins', sans-serif; color: $final-darker;">
-  <%= question.created_at.strftime("%H:%M") %> </span>
+  <%= question.created_at.in_time_zone.strftime("%H:%M") %> </span>
   <%= question.mother_question %></p>
   
 
 <span class="message-text-incoming">
   <%= sanitize(question.ai_answer, 
-      tags: %w[strong em b i ul ol li p br span], 
-      attributes: %w[class]) || "..." %>
-      <span style="font-size: x-small; font-weight: 200; font-family: 'Poppins', sans-serif; color: $final-darker;"><%= question.updated_at.strftime("%H:%M") %></span>
+      # Sanitize AI response HTML to allow only safe tags and attributes, fallback to "..." if no answer
+      tags: %w[strong em b i ul ol li p br span a], 
+      attributes: %w[class href data-action]) || "..." %>
+      <% if question.ai_answer.present? %>
+        <span style="font-size: x-small; font-weight: 200; font-family: 'Poppins', sans-serif; color: $final-darker;"><%= question.updated_at.in_time_zone.strftime("%H:%M") %></span>
+      <% end %>
 </span>
 </div>

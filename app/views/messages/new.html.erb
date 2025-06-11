@@ -1,6 +1,33 @@
-<%= render "mothers/components/navbar_mother_mini" %>
-<h1>Parlez à votre expert</h1>
-
-<div class="message-container">
-  <%= render "components/message_window" %>
+<% if current_user.userable_type == "Mother" %>
+  <%= render "mothers/components/navbar_mother_mini" %>
+  <div class="container-chatbot">
+  <h1>Chat avec nous</h1>
+  <div class="message-container">
+    <div class="message-content" id="questions" data-controller="messages-modal" data-messages-modal-target="container" >
+      <% @messages.each do |message| %>
+        <%= render "messages/message", message: message %>
+      <% end %>
+    </div>
+    <div id="new-question-form">
+      <%= render "form_mother", message: @message %>
+      <div id="scroll-anchor"></div>
+    </div>
+  </div>
 </div>
+<% elsif current_user.userable_type == "Doctor"%>
+  <%= render "mothers/components/navbar_mother_mini" %>
+  <div class="container-chatbot">
+  <h1>Chattez avec x</h1>
+  <div class="message-container">
+    <div class="message-content" id="questions" data-controller="messages-modal" data-messages-modal-target="container" >
+      <% @messages.each do |message| %>
+        <%= render "messages/message", message: message %>
+      <% end %>
+    </div>
+    <div id="new-question-form">
+      <%= render "form_doctor", message: @message %>
+      <div id="scroll-anchor"></div>
+    </div>
+  </div>
+</div>
+<% end %>

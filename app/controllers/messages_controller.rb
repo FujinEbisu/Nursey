@@ -16,18 +16,52 @@ class MessagesController < ApplicationController
   def show
   end
 
+  def doctors
+    @today = Date.today
+    @doctors = Doctor.all.where("availabilities.date >= ?", @today)
+  end
+
   def new
     @message = Message.new
   end
 
   def create
-    @message = Message.new(message_params)
-    @message.mother = @mother
-
-    if @message.save
-      redirect_to messages_path, notice: 'Message envoyé avec succès.'
-    else
-      render :new, status: :unprocessable_entity
+    if current_user.userable.is_a?(Mother)
+      @chat = Chat.find(params[:chat_id])
+      @message = Message.new(message_params)
+      @message.mother = current_user.userable
+      @message.doctor = @chat.doctor
+      @message.chat = @chat
+      @message.sender = "Mother"
+      if @message.save
+      respond_to do |format|
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.append(:messages, partial: "chats/message",
+            locals: { message: @message, user: current_user.userable_type })
+        end
+        format.html { redirect_to chat_path(@chat) }
+      end
+      else
+        render "chats/show", status: :unprocessable_entity
+      end
+    elsif current_user.userable.is_a?(Doctor)
+      @chat = Chat.find(params[:chat_id])
+      @message = Message.new(message_params)
+      @message.doctor = current_user.userable
+      @message.mother = @chat.mother
+      @message.chat = @chat
+      @message.sender = "Doctor"
+      if @message.save
+      respond_to do |format|
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.append(:messages, partial: "chats/message",
+            locals: { message: @message, user: current_user.userable_type })
+        end
+        format.html { redirect_to chat_path(@chat) }
+      end
+      else
+        render "chats/show", status: :unprocessable_entity
+      end
     end
   end
 
@@ -51,7 +85,7 @@ class MessagesController < ApplicationController
   end
 
   def message_params
-    params.require(:message).permit(:content)
+    params.require(:message).permit(:content, :status, :mother_id, :doctor_id, :chat_id)
   end
 
   def set_message
@@ -61,4 +95,6 @@ class MessagesController < ApplicationController
   def set_doctor
     @doctor = current_user.userable if current_user.userable.is_a?(Doctor)
   end
+
+
 end
