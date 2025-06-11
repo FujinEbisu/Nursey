@@ -13,6 +13,10 @@
 </div>
 <% elsif current_user.userable_type == "Doctor"%>
   <%= render "doctors/navbar_component/navbar_doctor_mini" %>
+  <div>
+  <%= link_to chats_path  do %>
+  <i class="fa-solid fa-arrow-left"></i>
+  <% end %>
 <div class="container chat">
   <h1>Chattez avec <%= @chat.mother.first_name.capitalize %></h1>
    <%= turbo_stream_from "chat_#{@chat.id}_messages" %>
@@ -21,14 +25,18 @@
     <%= render "chats/message", message: message, user: current_user.userable_type %>
   <% end %>
 </div>
+<% if @chat.status == "ouvert" %>
 <%= render "chats/form_message"%>
 <div class="d-flex justify-content-center">
-<%= button_to update_status_chat_path(@chat),
-  method: :patch,
-  params: { status: "archivé" },
-  class: "chat-button" do %>
-  <i class="fa-solid fa-box-archive">Archiver</i>
+<%= form_with url: update_status_chat_path(@chat), method: :patch, local: true do %>
+  <%= hidden_field_tag :status, "archivé" %>
+  <button type="submit" class="chat-button-archive">
+    <i class="fa-solid fa-box-archive"></i> <span>Archiver</span>
+  </button>
 <% end %>
 </div>
+<% else %>
+<p class="text-center mb-1">Conversation archivée. Vous ne pouvez plus envoyer de messages</p>
+<% end %>
 </div>
 <% end %>

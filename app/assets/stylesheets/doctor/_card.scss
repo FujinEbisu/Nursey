@@ -8,6 +8,17 @@ width: 100%;
     margin-bottom: 20px;
 }
 
+.card-doctor.read {
+
+width: 100%;
+    max-width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 4px solid var(--bg-dark)
+}
+
 .card-header {
   display: flex;
   flex-direction: row;
@@ -33,4 +44,14 @@ width: 100%;
 .doctor-title {
   color: var(--text-dark);
   font-size: 2rem;
+}
+
+.card-doctor-archived {
+width: 100%;
+    max-width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: var(--bg-mid);
 }

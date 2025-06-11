@@ -21,7 +21,7 @@ mount ActionCable.server => '/cable'
     resources :reviews
   end
 
-  get 'messages/history', to: 'messages#history'
+  get 'chats/history', to: 'chats#history'
 
   resources :doctors do
     resources :availabilities, only: [:create, :edit, :update]
