@@ -45,6 +45,11 @@
   font-size: 1rem;
   font-weight: 400;
   font-family: "Nunito", sans-serif;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    max-width: 4/5 * 100%;
+  }
 }
 
 .message-text-outgoing {
@@ -60,6 +65,11 @@
   font-size: 1rem;
   font-weight: 400;
   font-family: "Nunito", sans-serif;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    max-width: 4/5 * 100%;
+  }
 }
 
 .button-close {

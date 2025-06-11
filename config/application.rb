@@ -18,6 +18,8 @@ module Nursey
     config.load_defaults 7.1
     config.active_job.queue_adapter = :solid_queue
 
+    # Set your timezone (replace with your actual timezone)
+    config.time_zone = "Europe/Paris"  # or whatever timezone you're in
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.

@@ -66,6 +66,15 @@ class DoctorsController < ApplicationController
     redirect_to doctors_path, notice: 'Doctor was successfully deleted.'
   end
 
+  def available
+    @doctors = Doctor.joins(:availabilities)
+                    .where('availabilities.date >= ?', Date.current)
+                    .includes(:availabilities)
+                    .distinct
+    
+    render partial: 'doctors/available_list', locals: { doctors: @doctors }
+  end
+
   private
 
   def doctor_params
