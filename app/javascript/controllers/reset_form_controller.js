@@ -9,9 +9,7 @@ export default class extends Controller {
   handleEnter(event) {
     if (event.key === 'Enter') {
       this.element.submit()
-      this.containerTarget.scrollTo({
-        top: this.containerTarget.scrollHeight,
-      })
+      this.containerTarget.scrollTo({ top: this.containerTarget.scrollHeight })
     }
   }
 }

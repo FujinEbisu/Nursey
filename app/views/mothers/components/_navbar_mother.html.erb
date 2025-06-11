@@ -1,6 +1,6 @@
 <div class="nav-bar-mother" data-controller="menu-bar-mother">
   <div class="menu-bar">
-    <button class="menu__icon button-menu" data-action="click->menu-bar-mother#toggle" data-menu-bar-mother-target="menu-bar-mother">
+    <button class="menu__icon button-menu" data-action="click->menu-bar-mother#toggle">
       <span></span>
       <span></span>
       <span></span>
@@ -40,8 +40,9 @@
 
   <div class="user_welcome" data-menu-bar-mother-target="user_welcome">
     <!--  change email for name -->
-    <h1 class="welcome-text">Bienvenue <%= @mother.first_name %></h1>
+    <h1 class="welcome-text">
+      Bienvenue <%= @mother.first_name %>
+    </h1>
+    <%= link_to 'Nouvelle Tétée', new_mother_feed_path(@mother.id), class: "button-home", data: { menu_bar_mother_target: "nouvelle_tete" } %>
   </div>
-
-<%= link_to 'Nouvelle Tétée', new_mother_feed_path(@mother.id), class: "button-home", data: { menu_bar_mother_target: "nouvelle_tete" } %>
 </div>

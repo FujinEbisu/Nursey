@@ -3,42 +3,42 @@
   <h1>Editer</h1>
   <%= simple_form_for [@mother, @feed] do |f| %>
     <%# <div class="quantity-tetee"> %>
-      <div class="donnee-boob">
-    <!-- Left boob -->
-    <div class="left-boob-show">
-      <h6>Gauche</h6>
-      <!-- Time -->
-      <p>Temps:</p>
-      <div class="time-left-show">
-        <%= f.input :time_left, wrapper_html: { class: 'form-group-edit' }, input_html: { class: 'form-input-edit-feed' }, label_html: { class: 'd-none' } %>
+    <div class="donnee-boob">
+      <!-- Left boob -->
+      <div class="left-boob-show">
+        <h6>Gauche</h6>
+        <!-- Time -->
+        <p>Temps:</p>
+        <div class="time-left-show">
+          <%= f.input :time_left, wrapper_html: { class: 'form-group-edit' }, input_html: { class: 'form-input-edit-feed' }, label_html: { class: 'd-none' } %>
+        </div>
+        <!-- Quantity -->
+        <%  if @feed.nursy_type == "Tirage" %>
+          <p>Quantité:</p>
+          <div class="quantity-left-show">
+            <%= f.input :quantity_left, wrapper_html: { class: 'form-group-tetee-edit' }, input_html: { class: 'form-input-modal' }, label_html: { class: 'd-none' } %>
+          </div>
+        <% end %>
       </div>
-      <!-- Quantity -->
-      <%  if @feed.nursy_type == "Tirage" %>
-      <p>Quantité:</p>
-      <div class="quantity-left-show">
-        <%= f.input :quantity_left, wrapper_html: { class: 'form-group-tetee-edit' }, input_html: { class: 'form-input-modal' }, label_html: { class: 'd-none' } %>
+      <!-- ********** -->
+      <!-- Right boob -->
+      <div class="right-boob-show">
+        <h6>Droite</h6>
+        <!-- Time -->
+        <p>Temps:</p>
+        <div class="time-right-show">
+          <%= f.input :time_right, wrapper_html: { class: 'form-group-edit' }, input_html: { class: 'form-input-edit-feed' }, label_html: { class: 'd-none'} %>
+        </div>
+        <!-- Quantity -->
+        <%  if @feed.nursy_type == "Tirage" %>
+          <p>Quantité:</p>
+          <div class="quantity-right-show">
+            <%= f.input :quantity_right, wrapper_html: { class: 'form-group-tetee-edit' }, input_html: { class: 'form-input-modal' }, label_html: { class: 'd-none'} %>
+          </div>
+        <% end %>
       </div>
-      <% end %>
+      <!-- ********** -->
     </div>
-    <!-- ********** -->
-    <!-- Right boob -->
-    <div class="right-boob-show">
-      <h6>Droite</h6>
-      <!-- Time -->
-      <p>Temps:</p>
-      <div class="time-right-show">
-            <%= f.input :time_right, wrapper_html: { class: 'form-group-edit' }, input_html: { class: 'form-input-edit-feed' }, label_html: { class: 'd-none'} %>
-      </div>
-      <!-- Quantity -->
-      <%  if @feed.nursy_type == "Tirage" %>
-      <p>Quantité:</p>
-      <div class="quantity-right-show">
-        <%= f.input :quantity_right, wrapper_html: { class: 'form-group-tetee-edit' }, input_html: { class: 'form-input-modal' }, label_html: { class: 'd-none'} %>
-      </div>
-      <% end %>
-    </div>
-    <!-- ********** -->
-  </div>
     <%= f.input :comment, input_html: { class:'feed_comment_edit'}, label: 'Commentaire', wrapper_html: { class: 'mt-3'} %>
     <div class="form-inline">
       <%= f.input :mood, as: :radio_buttons, collection: Feed.moods.keys.map {
@@ -48,7 +48,8 @@
     <% if @feed.nursy_type == "Tetee" %>
       <%= f.input :child_id, as: :select, collection: @mother.children.map { |c| [c.first_name, c.id] }, prompt: "Select child" %>
     <% end %>
-    <div class="d-flex justify-content-center">
+    <div class="d-flex align-items-center justify-content-center gap-3">
+      <%= link_to "Retour", mother_feed_path(@feed), class: 'link' %>
       <%= f.button :submit, class: 'button-standard-dark', value: 'Valider' %>
     </div>
   <% end %>

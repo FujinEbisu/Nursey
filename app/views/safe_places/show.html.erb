@@ -25,12 +25,8 @@
         <p class="pill"><%= option %></p>
       <% end %>
     </div>
-
-    <div class="avis">
-      <h2>Avis</h2>
+    <h3>Avis</h3>
       <%= link_to "Ajouter un avis", new_safe_place_review_path(@safe_place.id), class: "button-standard" %>
-    </div>
-    <div class="safe-places-reviews">
       <% @safe_place.reviews.each do |review| %>
         <div class="review">
         <div class="review-in-show">

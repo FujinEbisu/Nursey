@@ -1,10 +1,28 @@
 <%= simple_form_for [@mother, @child] do |f| %>
-<div class="form-header">
-    <%= f.input :first_name, required: true, input_html: { class: "input-modern"}, label_html: { class: "label-modern"}%>
-    <%= f.input :sexe, as: :radio_buttons, collection: [['<i class="fa-solid fa-venus" style="color:#FBC4AB;font-size:32px;margin-left:8px"></i>'.html_safe, 'fille'], ['<i class="fa-solid fa-mars" style="color:#FBC4AB;font-size:32px;margin-left:8px"></i>'.html_safe, 'garcon']], escape: false, item_wrapper_class: "checkbox-inline" %>
-    <%= f.submit "Ajouter", class: 'button-standard'%>
+  <div class="form-header-child">
+  <div class="form-header-child-content">
+    <h1 class="feed-title">Ajoutez votre enfant</h1>
+  <p>Vous pouvez ajouter un enfant pour suivre ses tétées.</p>
+    <%= f.input :first_name, 
+                required: true, 
+                input_html: { class: "input-modern"}, 
+                label_html: { class: "label-modern"},
+                placeholder: "Prénom" %>
+    <%= f.input :sexe, 
+                as: :radio_buttons, 
+                collection: [
+                  ['<i class="fa-solid fa-venus" style="color:#FBC4AB;font-size:32px;margin-left:8px"></i>'.html_safe, 'fille'], 
+                  ['<i class="fa-solid fa-mars" style="color:#FBC4AB;font-size:32px;margin-left:8px"></i>'.html_safe, 'garcon']
+                ], 
+                escape: false, 
+                item_wrapper_class: "checkbox-inline" %>
+  <div class="form-actions-child">
+  <%= link_to "Annuler", 
+              mother_children_path(@mother), 
+              class: "link", 
+              data: { turbo: false } %>
+      <%= f.submit "Ajouter", class: 'button-standard-dark'%>
+    </div>
+      </div>
+    </div>
 <% end %>
-<div class="form-actions">
-  <%= link_to "Annuler", mother_children_path(@mother), class: "button-standard", data: { turbo: false } %>
-</div>
-</div>
