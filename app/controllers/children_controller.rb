@@ -14,7 +14,7 @@ class ChildrenController < ApplicationController
     @child = Child.new(child_params)
     @child.mother = @mother
     if @child.save
-      redirect_to mother_path(@mother), notice: 'Child was successfully created.'
+      redirect_to mother_children_path(@mother), notice: 'Enfant ajouté avec succès.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -24,7 +24,7 @@ class ChildrenController < ApplicationController
     set_mother
     set_child
     @child.destroy
-    redirect_to mother_children_path(@mother), notice: 'Child was successfully deleted.'
+    redirect_to mother_children_path(@mother), notice: 'Enfant supprimé avec succès.'
   end
 
   private

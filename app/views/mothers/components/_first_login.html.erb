@@ -1,0 +1,23 @@
+<div class="first-login-container">
+  <div class="first-pill">
+    <h4>Félicitations pour votre nouveau-né !</h4>
+    <h6>Voici quelques conseils pour débuter l'allaitement :</h6>
+    <div class="d-flex flex-column align-items-center">
+      <ul style="list-style-type: none; padding: 0; margin: 4px;">
+        <li><strong>Positionnement :</strong> Assurez-vous que votre bébé est bien positionné, la bouche grande ouverte sur le mamelon.</li>
+        <li><strong>Fréquence :</strong> Allaiter à la demande, généralement 8 à 12 fois par jour.</li>
+        <li><strong>Hydratation :</strong> Buvez beaucoup d'eau pour rester hydratée.</li>
+        <li><strong>Soutien :</strong> N'hésitez pas à demander de l'aide si vous avez des difficultés.</li>
+      </ul>
+      <em>N'oubliez pas de vous reposer lorsque c'est possible.</em>
+      <em style="font-size: 0.7rem;">*Ce message ne s'affichera plus après votre prochaine connexion.</em>
+    </div>
+    <%= link_to "Fermer", "#", class: "button-standard-dark", id: "close-first-login" %>
+  </div>
+
+  <script>
+    document.getElementById('close-first-login').addEventListener('click', function() {
+      document.querySelector('.first-login-container').style.display = 'none';
+    });
+  </script>
+</div>
