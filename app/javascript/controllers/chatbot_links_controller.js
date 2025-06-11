@@ -5,7 +5,7 @@ export default class extends Controller {
 
   openDoctorModal(event) {
     event.preventDefault()
-    
+
     // Create modal HTML
     const modalHTML = `
       <div id="doctor-modal" class="modal-overlay" data-controller="doctor-modal" data-action="click->doctor-modal#closeOnOverlay">
@@ -15,15 +15,17 @@ export default class extends Controller {
             <button class="modal-close" data-action="click->doctor-modal#close">&times;</button>
           </div>
           <div class="modal-body">
-            <div id="doctors-list">Chargement...</div>
+             <% @dispo.each do |doctor| %>
+  <%=  render "chats/card_doctor", doctor: doctor %>
+  <% end %>
           </div>
         </div>
       </div>
     `
-    
+
     // Insert modal into DOM
     document.body.insertAdjacentHTML('beforeend', modalHTML)
-    
+
     // Load doctors via Turbo Frame or fetch
     this.loadDoctors()
   }
@@ -36,7 +38,7 @@ export default class extends Controller {
           'X-Requested-With': 'XMLHttpRequest'
         }
       })
-      
+
       if (response.ok) {
         const html = await response.text()
         document.getElementById('doctors-list').innerHTML = html
