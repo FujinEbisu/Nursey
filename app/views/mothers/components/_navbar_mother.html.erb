@@ -37,12 +37,9 @@
       <% end %>
     </nav>
   </div>
-
   <div class="user_welcome" data-menu-bar-mother-target="user_welcome">
-    <!--  change email for name -->
-    <h1 class="welcome-text">
-      Bienvenue <%= @mother.first_name %>
-    </h1>
+    <h1 class="welcome-text">Bienvenue <%= @mother.first_name %></h1>
+    </div>
     <%= link_to 'Nouvelle Tétée', new_mother_feed_path(@mother.id), class: "button-home", data: { menu_bar_mother_target: "nouvelle_tete" } %>
   </div>
 </div>
