@@ -29,9 +29,6 @@
         <div class="pill-container-child ">
           <div class="d-flex flex-row gap-2">
             <h6>Mes enfant(s)</h6>
-            <%= link_to new_mother_child_path(@mother) do %>
-              <i class="fa-solid fa-plus"></i>
-            <% end %>
           </div>
           <div class="mother-details-child">
             <% @mother.children.each do |child| %>
@@ -59,8 +56,13 @@
             <p><%= @feeds.count %></p>
           </div>
           <div class="pill-container">
-            <h6>Total de litres tirés: </h6>
-            <p><%= quantite.to_i %></p>
+            <h6>Total tiré : </h6>
+            <% quantite = @feeds.sum(:quantity_left) + @feeds.sum(:quantity_right) %>
+            <% if quantite.to_f.round(2) > 1000 %>
+              <p><%= (quantite.to_f / 1000).round(2) %> L</p>
+            <% else %>
+              <p><%= quantite.to_f.round(2) %> ml</p>
+            <% end %>
           </div>
         </div>
       </div>
@@ -69,9 +71,9 @@
   <div class="mother-details-buttons d-flex text-center justify-content-center align-items-center gap-2 mx-3">
     <%= link_to "Editer Informations Personnelles", edit_mother_path(@mother), class: "button-standard-dark" %>
     <%= link_to "Effacer mon profil", registration_path(current_user), data: { 
-                                                                    turbo_method: :delete, 
-                                                                    turbo_confirm: "Êtes-vous sûr de vouloir effacer votre profil ? Cette action est irréversible.", 
-                                                                    class: "link",
-                                                                    turbo_frame: "_top" } %>
+                                                                      turbo_method: :delete, 
+                                                                      turbo_confirm: "Êtes-vous sûr de vouloir effacer votre profil ? Cette action est irréversible.", 
+                                                                      class: "link",
+                                                                      turbo_frame: "_top" } %>
   </div>
 </div>
