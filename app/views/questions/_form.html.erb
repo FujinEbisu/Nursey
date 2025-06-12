@@ -1,17 +1,11 @@
 <%= simple_form_for question, url: questions_path,
-      html: { data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" } } do |f| %>
-  <div class="input-group">
-    <%= f.input :mother_question,
-        label: false,
-        wrapper: false,
-        placeholder: "Dites nous ce dont vous voulez parler",
-        class: "form-control static-input",
-        input_html: {
-          data: {
-            action: "keydown->reset-form#handleEnter"
-          },
-          rows: 1
-        } %>
-    <%= f.submit "Envoyer", id: "new-question-button", class: "button-standard" %>
-  </div>
+      html: { class: "d-flex", data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" } } do |f| %>
+  <%= f.input :mother_question,
+    label: false,
+    wrapper: false,
+    placeholder: "Votre message ici",
+    wrapper_html: {class: "flex-grow-1"}, input_html: { class: "form-control custom-style", style: "border-radius: 12px 0 0 12px; height: 48px;", data: {action: "keydown->reset-form#handleEnter" }}
+  %> 
+<%= f.submit "Envoyer", class: "button-standard btnchat", style: "border-radius: 0 12px 12px 0; height: 48px;" %>
+
 <% end %>

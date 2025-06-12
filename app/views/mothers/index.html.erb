@@ -2,7 +2,21 @@
 
 
 <div class="mothers-container" style="margin-top: 1rem;">
-  <div class="pill-container-child ">
+  <div class="button-container-mothers">
+  <%= link_to mother_feeds_path(@mother), class: "button-standard" do %>
+    <i class="fa-solid fa-clock-rotate-left"></i> Historique
+  <% end %>
+  <%= link_to questions_path, class: "button-standard" do %>
+    <i class="fa-solid fa-comments" style="font-size: 1rem;"></i> Conseils
+  <% end %>
+  <%= link_to safe_places_path, class: "button-standard" do %>
+    <i class="fa-solid fa-user-shield" style="font-size: 1rem;"></i> Safe places
+  <% end %>
+  <%= link_to dashboard_index_path, class: "button-standard" do %>
+    <i class="fa-solid fa-chart-line" style="font-size: 1rem;"></i> Dashboard
+  <% end %>
+  </div>
+    <div class="pill-container-child ">
     <div class="d-flex flex-row gap-2 align-items-center">
       <%= link_to mother_children_path(@mother) do %>
         <h6>Mes enfant(s)</h6>
@@ -25,20 +39,5 @@
         </div>
       <% end %>
     </div>
-  </div>
-  
-  <div class="button-container-mothers">
-  <%= link_to mother_feeds_path(@mother), class: "button-standard" do %>
-    <i class="fa-solid fa-clock-rotate-left"></i> Historique
-  <% end %>
-  <%= link_to questions_path, class: "button-standard" do %>
-    <i class="fa-solid fa-comments" style="font-size: 1rem;"></i> Conseils
-  <% end %>
-  <%= link_to safe_places_path, class: "button-standard" do %>
-    <i class="fa-solid fa-user-shield" style="font-size: 1rem;"></i> Safe places
-  <% end %>
-  <%= link_to dashboard_index_path, class: "button-standard" do %>
-    <i class="fa-solid fa-chart-line" style="font-size: 1rem;"></i> Dashboard
-  <% end %>
   </div>
 </div>
