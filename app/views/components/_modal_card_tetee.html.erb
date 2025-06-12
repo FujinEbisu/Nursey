@@ -106,7 +106,7 @@
             </div>
           </div>
 
-          <%= f.input :comment %>
+          <%= f.input :comment, label: "Commentaire" %>
 
           <div class="form-inline mb-3">
             <%= f.input :mood, as: :radio_buttons,
@@ -119,7 +119,7 @@
           <%= f.error :mood %>
 
           <div class="d-flex justify-content-center mt-3">
-            <%= f.button :submit, class: 'button-standard-dark' %>
+            <%= f.button :submit, "Créer une entrée", class: 'button-standard-dark' %>
           </div>
         <% end %>
       </div>
