@@ -31,6 +31,13 @@ class FeedsController < ApplicationController
     @feed = Feed.new(feed_params)
     @feed.mother = current_user.userable
     @mother = current_user.userable
+    # minutes1 = params[:feed]["time_left"]
+
+    # minutes2 = params[:feed]["time_right(4i)"].to_i
+    # seconds2 = params[:feed]["time_right(5i)"].to_i
+    # @feed.time_left = minutes1 * 60 + seconds1
+    # @feed.time_right = minutes2 * 60 + seconds2
+    # debugger
     if @feed.save
       redirect_to mother_feeds_path(@feed.mother), notice: 'La Tetée a bien été créée.'
     else
@@ -68,7 +75,10 @@ class FeedsController < ApplicationController
   private
 
   def feed_params
-    params.require(:feed).permit(:quantity_left, :quantity_right, :time_left, :time_right, :mood, :nursy_type, :comment, :child_id)
+    params.require(:feed).permit( :nursy_type, :comment, :mood, :child_id,
+    :time_left_minutes, :time_left_seconds,
+    :time_right_minutes, :time_right_seconds
+  )
   end
 
   def set_feed

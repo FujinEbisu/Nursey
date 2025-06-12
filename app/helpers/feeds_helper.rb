@@ -15,8 +15,9 @@ module FeedsHelper
     return "" unless time_value.present?
 
     # total_seconds = (time_value.hour * 60) + time_value.min
-    minutes = time_value.hour
-    seconds = time_value.min
+    minutes = time_value / 60
+    seconds = time_value % 60
+
     "#{minutes} min #{seconds} s"
   end
 end

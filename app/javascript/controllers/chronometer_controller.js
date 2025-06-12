@@ -4,8 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
     static targets = ["output", "tirage", "droite", "gauche", "stop", "chooseSide",
        "title", "second", "output2","newtitle", "time", "change", "output3", "first",
-        "stop1", "totaltime", "inputleft", "inputright","totaltime1", "inputleft1", "inputright1"]
-
+        "stop1", "totaltime", "inputleft_minutes", "inputleft_seconds", "inputright_minutes", "inputright_seconds","totaltime1", "inputleft1_minutes", "inputleft1_seconds", "inputright1_minutes", "inputright1_seconds"]
 
  connect() {
     // Chrono total
@@ -55,6 +54,7 @@ export default class extends Controller {
       clearInterval(this.timer1)
       clearInterval(this.timer2)
       clearInterval(this.timer3)
+      console.log(this.timer1, this.timer2, this.timer3)
       const time1 = this.outputTarget.textContent.split(":")
       const time2 = this.output2Target.textContent.split(":")
       const time3 = this.output3Target.textContent.split(":")
@@ -65,22 +65,34 @@ export default class extends Controller {
       this.running3 = false
       this.totaltimeTarget.innerText = `Temps total de tétée: ${time3.join(":")}`
       this.totaltime1Target.innerText = `Temps total de tirage: ${time3.join(":")}`
-      this.inputleftTargets[0].value = time3[0]
-      this.inputleftTargets[1].value = time3[1]
-      this.inputrightTargets[0].value = time3[0]
-      this.inputrightTargets[1].value = time3[1]
+      // this.inputleftTarget.value = parseInt(time3[0]*60 + time3[1])
+      this.inputleft1_minutesTarget.value = time3[0]
+      this.inputleft1_secondsTarget.value = time3[1]
+      // this.inputleftTargets[1].value = time3[1]
+      // this.inputrightTarget.value = parseInt(time3[0]*60 + time3[1])
+      this.inputright1_minutesTarget.value = time3[0]
+      this.inputright1_secondsTarget.value = time3[1]
+      // this.inputrightTargets[1].value = time3[1]
       if (firsttimer === "Droite") {
-        this.inputright1Targets[0].value = time1[0]
-        this.inputright1Targets[1].value = time1[1]
-        this.inputleft1Targets[0].value = time2[0]
-        this.inputleft1Targets[1].value = time2[1]
+        // this.inputright1Target.value = parseInt(time1[0]*60 + time1[1])
+        this.inputright_minutesTarget.value = time1[0]
+        this.inputright_secondsTarget.value = time1[1]
+        // this.inputright1Targets[1].value = time1[1]
+        // this.inputleft1Target.value = parseInt(time2[0]*60 + time2[1])
+        this.inputleft_minutesTarget.value = time2[0]
+        this.inputleft_secondsTarget.value = time2[1]
+        // this.inputleft1Targets[1].value = time2[1]
       } else if (firsttimer === "Gauche") {
-        this.inputleft1Targets[0].value = time1[0]
-        this.inputleft1Targets[1].value = time1[1]
-        this.inputright1Targets[0].value = time2[0]
-        this.inputright1Targets[1].value = time2[1]
+        // this.inputleft1Target.value = parseInt(time1[0]*60 + time1[1])
+        this.inputleft_minutesTarget.value = time1[0]
+        this.inputleft_secondsTarget.value = time1[1]
+        // this.inputleft1Targets[1].value = time1[1]
+        // this.inputright1Target.value = parseInt(time2[0]*60 + time2[1])
+        this.inputright_minutesTarget.value = time2[0]
+        this.inputright_secondsTarget.value = time2[1]
+        // this.inputright1Targets[1].value = time2[1]
       }
-      console.log(time3.split(":"))
+      console.log(time3.join(":"))
       console.log("Temps 2ème sein :", time2)
       console.log("Temps total :", time3)
     } else if (button === "Changer de seins") {
