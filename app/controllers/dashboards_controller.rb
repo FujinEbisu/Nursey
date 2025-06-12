@@ -2,8 +2,35 @@ class DashboardsController < ApplicationController
     before_action :mother, :doctor, :user, :feeds, :moods, only: [:index]
 
     def index
-        
         feed_count
+
+        feeds_last_week     = @Feeds.where(created_at: 7.days.ago..Time.current)
+
+        # 1. Feeds per day split by type (last 7 days)
+        days                = (0..6).map { |i| i.days.ago.to_date }.reverse
+        @tetee_per_day      = days.map { |d| feeds_last_week.where(nursy_type: "Tetee",  created_at: d.all_day).count }
+        @tirage_per_day     = days.map { |d| feeds_last_week.where(nursy_type: "Tirage", created_at: d.all_day).count }
+        @day_labels         = days.map { |d| d.strftime("%d/%m") }
+
+        # 2. Quantity pumped per day (Tirage only)
+        @quantity_per_day   = days.map do |d|
+            feeds_last_week.where(nursy_type: "Tirage", created_at: d.all_day)
+                           .sum("COALESCE(quantity_left,0) + COALESCE(quantity_right,0)")
+        end
+
+        # 3. Average duration per day (Tetee only, minutes)
+        @duration_per_day   = days.map do |d|
+            left  = feeds_last_week.where(nursy_type: "Tetee",  created_at: d.all_day).average("EXTRACT(EPOCH FROM time_left )")
+            right = feeds_last_week.where(nursy_type: "Tetee",  created_at: d.all_day).average("EXTRACT(EPOCH FROM time_right)")
+            avg_seconds = ([left,0].max + [right,0].max) / 2 rescue 0
+            (avg_seconds / 60).round(1)
+        end
+
+        # 4. Real interval vs target (hours between consecutive feeds)
+        consecutive_pairs = @Feeds.order(:created_at).each_cons(2).to_a
+        @intervals = consecutive_pairs.map { |prev,cur| ((cur.created_at - prev.created_at)/3600).round(2) }
+        @interval_labels = @intervals.each_index.map { |i| "Feed #{i+1}" }
+        @target_interval = @mother.time_between_feed
     end
 
 private

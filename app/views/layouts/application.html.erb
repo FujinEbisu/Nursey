@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <link rel="icon" href="favicon.png" type="image/png">
   </head>
 
   <body class="<%= theme_class %>" data-current-user-type="<%= current_user ? current_user.userable_type : ""%>">
