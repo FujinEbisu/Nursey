@@ -2,12 +2,18 @@
 // Specific CSS for your home-page
 .home-container {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  width: 100vw;
   height: 100vh;
+}
+
+.home-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .button-container {
@@ -62,8 +68,14 @@
     height: 600px;
     object-fit: contain;
 
+    @media (max-width: 768px) {
+      height: 300px;
+      width: 300px;
+    }
+
 }
 
 .phone-mockup-image {
+    width: 100%;
     object-fit: contain;
 }
