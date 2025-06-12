@@ -1,8 +1,8 @@
 <% if current_user.userable_type == "Mother" %>
   <%= render "mothers/components/navbar_mother_mini" %>
-  <div class="container-chatbot">
+  <div class="container chat">
   <h1>Chat avec nous</h1>
-  <div class="message-container">
+  <div class="message-container-chat">
     <div class="message-content" id="questions" data-controller="messages-modal" data-messages-modal-target="container" >
       <% @messages.each do |message| %>
         <%= render "messages/message", message: message %>
@@ -16,9 +16,9 @@
 </div>
 <% elsif current_user.userable_type == "Doctor"%>
   <%= render "mothers/components/navbar_mother_mini" %>
-  <div class="container-chatbot">
+  <div class="container chat">
   <h1>Chattez avec x</h1>
-  <div class="message-container">
+  <div class="message-container-chat">
     <div class="message-content" id="questions" data-controller="messages-modal" data-messages-modal-target="container" >
       <% @messages.each do |message| %>
         <%= render "messages/message", message: message %>
