@@ -43,7 +43,7 @@ class SafePlacesController < ApplicationController
     @safe_place = SafePlace.new(safe_place_params)
     @safe_place.save
     if @safe_place.save
-      redirect_to safe_place_path(@safe_place), notice: 'Safe place was successfully created.'
+      redirect_to safe_place_path(@safe_place), notice: 'Nouveau nid de confiance créé.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -54,7 +54,7 @@ class SafePlacesController < ApplicationController
 
   def update
     if @safe_place.update(safe_place_params)
-      redirect_to safe_place_path(@safe_place), notice: 'Safe place bien modifié'
+      redirect_to safe_place_path(@safe_place), notice: 'Le nid de confiance a bien été modifié.'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -62,7 +62,7 @@ class SafePlacesController < ApplicationController
 
   def destroy
     @safe_place.destroy
-    redirect_to safe_places_path, notice: 'Safe place was successfully deleted.'
+    redirect_to safe_places_path, notice: 'Le nid de confiance a bien été supprimé.'
   end
 
   private

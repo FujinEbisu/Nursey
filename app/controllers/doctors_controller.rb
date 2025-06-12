@@ -42,7 +42,7 @@ class DoctorsController < ApplicationController
     @doctor = Doctor.new(doctor_params)
     @doctor.availability = @availability
     if @doctor.save
-      redirect_to doctor_path(@doctor), notice: 'Doctor was successfully created.'
+      redirect_to doctor_path(@doctor), notice: 'Le profil du docteur a bien été créé.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -55,7 +55,7 @@ class DoctorsController < ApplicationController
   def update
     set_doctor
     if @doctor.update(doctor_params)
-      redirect_to doctor_path(@doctor), notice: 'Doctor was successfully updated.'
+      redirect_to doctor_path(@doctor), notice: 'Le profil du docteur a bien été mis à jour.'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -64,7 +64,7 @@ class DoctorsController < ApplicationController
   def destroy
     set_doctor
     @doctor.destroy
-    redirect_to doctors_path, notice: 'Doctor was successfully deleted.'
+    redirect_to doctors_path, notice: 'Le profil du docteur a bien été supprimé.'
   end
 
   def available

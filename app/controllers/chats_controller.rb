@@ -44,7 +44,7 @@ class ChatsController < ApplicationController
     @chat.mother = current_user.userable
     @chat.doctor = Doctor.find(params[:doctor_id])
     if @chat.save
-      redirect_to chat_path(@chat), notice: 'Chat was successfully created.'
+      redirect_to chat_path(@chat), notice: 'La conversation a bien été créée.'
     else
       render :new, status: :unprocessable_entity
     end
