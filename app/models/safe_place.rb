@@ -3,6 +3,8 @@ class SafePlace < ApplicationRecord
   geocoded_by :adress
   after_validation :geocode, if: :will_save_change_to_adress?
 
+
+
   serialize :options, coder: JSON
 
   validates :name, presence: true
