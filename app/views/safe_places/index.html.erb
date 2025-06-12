@@ -21,7 +21,7 @@
       <% rating_count = safe_place.rating_count %>
       <div class="safe-places-card">
         <div class="safe-places-card-title">
-          <%= safe_place.name %>
+          <%= safe_place.name.capitalize %>
         </div>
         <div class="safe-places-card-options">
           <% safe_place.options.each do |option| %>
