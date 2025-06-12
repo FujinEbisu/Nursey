@@ -26,16 +26,16 @@
           <h6>Taille à la naissance: </h6>
           <p><%#= @mother.birth_height %> cm</p>
         </div>-->
-        <div class="mother-details-child">  
-        <div class="pill-container-child ">
-          <div class="d-flex flex-row gap-2">
-      <%= link_to mother_children_path(@mother), data: { turbo_frame: "_top" } do %>
-        <h6>Mes enfant(s)</h6>
-      <% end %>
-      <%= link_to new_mother_child_path(@mother), data: { turbo_frame: "_top" } do %>
+        <div class="pill-container-child">
+          <div class="d-flex flex-row gap-2 align-items-center">
+          <%= link_to "Mes enfant(s)", mother_children_path(@mother), data: { turbo: false }%>
+
+            <%= link_to new_mother_child_path(@mother), data: { turbo: false } do %>
         <i class="fa-solid fa-plus"></i>
       <% end %>
           </div>
+          <div class="mother-details-child">  
+
             <% @mother.children.each do |child| %>
               <div class="d-flex flex-column align-items-center">
                 <%= child.first_name %>
@@ -70,7 +70,7 @@
             <% end %>
           </div>
         </div>
-      <% end %>
+      </div>
       <div class="mother-details-buttons">
         <%= link_to edit_mother_path(@mother) do %>
           <div class="button-standard-dark">
@@ -83,5 +83,5 @@
           turbo_frame: "_top" } %>
       </div>
     </div>
-  </div>
+  <% end %>
 </div>

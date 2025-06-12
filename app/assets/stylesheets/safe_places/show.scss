@@ -14,10 +14,10 @@
     justify-content: center;
     width: 100%;
     padding: 1rem;
-    border-radius: 15px;
+    border-radius: 16px;
     background-color: $final-white;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin: 8px;
+    border: 2px solid var(--bg-dark);
 
     .safeplace-info-container-content {
         padding: 1rem;

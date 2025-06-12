@@ -36,27 +36,27 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header justify-content-center">
-        <h5 class="modal-title" id="exampleModalLabel">Tetee</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Tétée</h5>
       </div>
       <div class="modal-body">
         <div class="row">
-          <h6 class="fw-bolder mb-2" data-chronometer-target="totaltime">Temps total: </h6>
+          <h6 class="fw-bolder mb-2 text-center" data-chronometer-target="totaltime">Temps total: </h6>
         </div>
 
         <%= simple_form_for [@mother, @feed], namespace: "modal_2"  do |f| %>
           <%= f.input :nursy_type, as: :hidden, input_html: { value: "Tetee" } %>
 
           <!-- Temps gauche -->
-          <div class="form-group mb-3">
+          <div class="form-group-modal-feed mb-3">
             <label>Gauche</label>
             <div class="row">
-              <div class="col">
+              <div class="col text-center">
                 <%= f.input :time_left_minutes,
                             label: "Minutes",
                             input_html: { class: "form-input-modal", min: 0, type: :number, data: { chronometer_target: "inputleft_minutes" } },
                             wrapper: false %>
               </div>
-              <div class="col">
+              <div class="col text-center">
                 <%= f.input :time_left_seconds,
                             label: "Secondes",
                             input_html: { class: "form-input-modal", min: 0, max: 59, type: :number, data: { chronometer_target: "inputleft_seconds" } },
@@ -66,16 +66,16 @@
           </div>
 
           <!-- Temps droite -->
-          <div class="form-group mb-3">
+          <div class="form-group-modal-feed mb-3">
             <label>Droite</label>
             <div class="row">
-              <div class="col">
+              <div class="col text-center">
                 <%= f.input :time_right_minutes,
                             label: "Minutes",
                             input_html: { class: "form-input-modal", min: 0, type: :number, data: { chronometer_target: "inputright_minutes" } },
                             wrapper: false %>
               </div>
-              <div class="col">
+              <div class="col text-center">
                 <%= f.input :time_right_seconds,
                             label: "Secondes",
                             input_html: { class: "form-input-modal", min: 0, max: 59, type: :number, data: { chronometer_target: "inputright_seconds" } },
