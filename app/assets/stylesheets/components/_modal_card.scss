@@ -160,11 +160,12 @@
 
 .quantity-tetee {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   gap: 10px;
   align-items: center;
   color: var(--text-darker);
   font-family: 'Nunito', sans-serif;
+  margin: 0 8px;
 }
 
 .feed_time_left > label {
@@ -207,4 +208,9 @@
   background-color: var(--bg-white);
   border-radius: 8px;
   color: var(--text-darker)
+}
+
+.input-qtt {
+  display: flex;
+  gap: 24px;
 }

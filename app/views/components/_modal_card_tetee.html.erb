@@ -49,7 +49,7 @@
       </div>
       <div class="modal-body">
         <div class="row">
-          <h6 class="fw-bolder mb-2" data-chronometer-target="totaltime1">Temps total:</h6>
+          <h6 class="fw-bolder mb-2 text-center" data-chronometer-target="totaltime1">Temps total:</h6>
         </div>
 
         <%= simple_form_for [@mother, @feed], namespace: "modal_1"  do |f| %>
@@ -58,27 +58,29 @@
           <!-- Quantités tirées -->
           <div class="quantity-tetee">
             <p>Qt/ml:</p>
-            <%= f.input :quantity_left,
-                        wrapper_html: { class: 'form-group-tetee' },
-                        input_html: { class: 'form-input-modal' },
-                        label: "Gauche" %>
-            <%= f.input :quantity_right,
-                        wrapper_html: { class: 'form-group-tetee' },
-                        input_html: { class: 'form-input-modal' },
-                        label: "Droit" %>
+            <div class="input-qtt">
+              <%= f.input :quantity_left,
+                          wrapper_html: { class: 'form-group-tetee' },
+                          input_html: { class: 'form-input-modal' },
+                          label: "Gauche" %>
+              <%= f.input :quantity_right,
+                          wrapper_html: { class: 'form-group-tetee' },
+                          input_html: { class: 'form-input-modal' },
+                          label: "Droit" %>
+            </div>
           </div>
 
           <!-- Temps gauche -->
-          <div class="form-group mb-3">
+          <div class="form-group-modal-feed mb-3">
             <label>Temps Gauche</label>
             <div class="row">
-              <div class="col">
+              <div class="col text-center">
                 <%= f.input :time_left_minutes,
                             label: "Minutes",
                             input_html: { class: "form-input-modal", min: 0, type: :number, data: { chronometer_target: "inputleft1_minutes" } },
                             wrapper: false %>
               </div>
-              <div class="col">
+              <div class="col text-center">
                 <%= f.input :time_left_seconds,
                             label: "Secondes",
                             input_html: { class: "form-input-modal", min: 0, max: 59, type: :number, data: { chronometer_target: "inputleft1_seconds" } },
@@ -88,16 +90,16 @@
           </div>
 
           <!-- Temps droite -->
-          <div class="form-group mb-3">
+          <div class="form-group-modal-feed mb-3">
             <label>Temps Droit</label>
             <div class="row">
-              <div class="col">
+              <div class="col text-center">
                 <%= f.input :time_right_minutes,
                             label: "Minutes",
                             input_html: { class: "form-input-modal", min: 0, type: :number, data: { chronometer_target: "inputright1_minutes" } },
                             wrapper: false %>
               </div>
-              <div class="col">
+              <div class="col text-center">
                 <%= f.input :time_right_seconds,
                             label: "Secondes",
                             input_html: { class: "form-input-modal", min: 0, max: 59, type: :number, data: { chronometer_target: "inputright1_seconds" } },
