@@ -20,14 +20,14 @@
           </div>
           <%= f.input :time_left, wrapper_html: { class: 'form-group' }, input_html: { class: 'form-input-modal', data: { chronometer_target: "inputleft"} }, label: "Temps Gauche" %>
           <%= f.input :time_right, wrapper_html: { class: 'form-group' }, input_html: { class: 'form-input-modal', data: { chronometer_target: "inputright"} }, label: "Temps Droit" %>
-          <%= f.input :comment %>
+          <%= f.input :comment, label: "Commentaire" %>
         <div class="form-inline">
           <%= f.input :mood, as: :radio_buttons, collection: Feed.moods.keys.map {
             |mood| [emoji_for_mood(mood), mood] }, item_wrapper_class: 'emoji-option', label_method: :first, value_method: :last, input_html: {class:"emoji-radio"} %>
         </div>
         <%= f.error :mood %>
         <div class="d-flex justify-content-center">
-            <%= f.button :submit, class: 'button-standard-dark'%>
+            <%= f.button :submit, "Créer une entrée", class: 'button-standard-dark'%>
           </div>
           </div>
         <% end %>
