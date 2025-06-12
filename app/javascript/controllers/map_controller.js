@@ -111,7 +111,7 @@ export default class extends Controller {
   #fitMapToUserLocation() {
     if (this.userLocationValue && this.userLocationValue.length > 0) {
       const bounds = new mapboxgl.LngLatBounds(this.userLocationValue, this.userLocationValue)
-      this.map.fitBounds(bounds, { padding: 20, maxZoom: 12, duration: 0 })
+      this.map.fitBounds(bounds, { padding: 35, maxZoom: 20, duration: 0 })
     }
   }
 
@@ -119,7 +119,7 @@ export default class extends Controller {
     if (this.markersValue.length > 0) {
       const bounds = new mapboxgl.LngLatBounds()
       this.markersValue.forEach(marker => bounds.extend([marker.lng, marker.lat]))
-      this.map.fitBounds(bounds, { padding: 20, maxZoom: 12, duration: 0 })
+      this.map.fitBounds(bounds, { padding: 35, maxZoom: 20, duration: 0 })
     }
   }
 
@@ -135,7 +135,7 @@ export default class extends Controller {
     this.markersValue.forEach(marker => bounds.extend([marker.lng, marker.lat]))
 
     // Fit map to show everything
-    this.map.fitBounds(bounds, { padding: 20, maxZoom: 12, duration: 0 })
+    this.map.fitBounds(bounds, { padding: 35, maxZoom: 16, duration: 0 })
   }
 
   #updatePageWithLocation(latitude, longitude) {

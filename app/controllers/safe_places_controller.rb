@@ -8,7 +8,7 @@ class SafePlacesController < ApplicationController
     if @user_latitude && @user_longitude
       # Find safe places within 10km radius, ordered by distance
       @safe_places = SafePlace.near([@user_latitude, @user_longitude], 1000, order: :distance)
-      @safes_places = @safe_places.select { |safe| safe.rating_count > 2 || safe.rating_count == 0 }.sort_by(&:average_rating).reverse
+      @safes_places = @safe_places.select { |safe| safe.rating_count > 2 || safe.rating_count == 0 }
     else
       # Fallback to showing all safe places if location is not available
       @safe_places = SafePlace.all
