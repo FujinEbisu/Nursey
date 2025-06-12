@@ -1,3 +1,5 @@
+@import "helpers/helpers";
+
 // Specific CSS for your home-page
 .home-container {
   display: flex;
@@ -5,10 +7,15 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  height: 100vh;
+  height: 75vh;
   width: 100vw;
-}
 
+  @if current_page?(root_path) {
+    .home-container {
+      height: 100vh;
+    }
+  }
+}
 .button-container {
   display: flex;
   justify-content: center;

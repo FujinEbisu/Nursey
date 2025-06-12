@@ -26,11 +26,11 @@
           <h6>Taille à la naissance: </h6>
           <p><%#= @mother.birth_height %> cm</p>
         </div>-->
+        <div class="mother-details-child">  
         <div class="pill-container-child ">
           <div class="d-flex flex-row gap-2">
             <h6>Mes enfant(s)</h6>
           </div>
-          <div class="mother-details-child">
             <% @mother.children.each do |child| %>
               <div class="d-flex flex-column align-items-center">
                 <%= child.first_name %>
@@ -65,15 +65,18 @@
             <% end %>
           </div>
         </div>
+      <% end %>
+      <div class="mother-details-buttons">
+        <%= link_to edit_mother_path(@mother) do %>
+          <div class="button-standard-dark">
+            Editer Informations Personnelles
+          </div>
+        <% end %>
+        <%= link_to "Effacer mon profil", registration_path(current_user), data: { 
+          turbo_method: :delete, 
+          turbo_confirm: "Êtes-vous sûr de vouloir effacer votre profil ? Cette action est irréversible.", 
+          turbo_frame: "_top" } %>
       </div>
     </div>
-  <% end %>
-  <div class="mother-details-buttons d-flex text-center justify-content-center align-items-center gap-2 mx-3">
-    <%= link_to "Editer Informations Personnelles", edit_mother_path(@mother), class: "button-standard-dark" %>
-    <%= link_to "Effacer mon profil", registration_path(current_user), data: { 
-                                                                      turbo_method: :delete, 
-                                                                      turbo_confirm: "Êtes-vous sûr de vouloir effacer votre profil ? Cette action est irréversible.", 
-                                                                      class: "link",
-                                                                      turbo_frame: "_top" } %>
   </div>
 </div>
