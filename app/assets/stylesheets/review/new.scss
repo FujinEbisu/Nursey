@@ -28,10 +28,11 @@
     &:hover {
       transform: scale(1);
     }
-
   }
 }
-
+.rating-option label.selected {
+    transform: scale(1.2);
+  }
 
 .rating-radio {
   display: none;
