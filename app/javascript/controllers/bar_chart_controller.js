@@ -35,10 +35,10 @@ export default class extends Controller {
       data: {
         labels: JSON.parse(ctx.dataset.dayLabels),
         datasets: [
-          { label: 'ml pompés', data: JSON.parse(ctx.dataset.quantity), backgroundColor: '#F4978E' }
+          { label: 'ml tirées', data: JSON.parse(ctx.dataset.quantity), backgroundColor: '#F4978E' }
         ]
       },
-      options: { plugins: { title: { text: 'Quantité pompée (ml)', display: true } }, scales: { y: { beginAtZero: true } } }
+      options: { plugins: { title: { text: 'Quantité tirée (ml)', display: true } }, scales: { y: { beginAtZero: true } } }
     })
   }
 

@@ -1,6 +1,6 @@
 <%= simple_form_for question, url: questions_path,
       html: { class: "d-flex", data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" } } do |f| %>
-  <%= f.input :mother_question,
+    <%= f.input :mother_question,
     label: false,
     wrapper: false,
     placeholder: "Votre message ici",

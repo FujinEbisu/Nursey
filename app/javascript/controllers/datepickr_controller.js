@@ -7,7 +7,7 @@ export default class extends Controller {
   connect() {
     console.log("Flatpickr connecté")
     flatpickr(this.element, {
-      dateFormat: "Y-m-d",
+      dateFormat: "d/m/Y",
       defaultDate: new Date(),
       locale: "fr",
 

@@ -1,14 +1,14 @@
-<div class="home-container">
 <%= turbo_frame_tag "edit-mother-details" do %>
+<div class="mother-edit-container">
     <h3>Editer vos détails</h3>
 <div class="mother-edit">
-    <%= simple_form_for @mother, html: { class: "form-edit-mother"} do |f| %>
+    <%= simple_form_for @mother, html: { class: "form-edit-mother"} do |f|%>
+        <%= f.input :avatar, as: :file, label: "Photo de profil" %>
         <div class="mother-edit-form">
         <%= f.input :first_name, label: 'Prénom', placeholder: 'Prénom' %>
         <%= f.input :last_name, label: 'Nom', placeholder: 'Nom' %>
-        <%= f.input :avatar, as: :file, label: "Avatar" %>
         </div>
-        <%= f.input :birthday, label: 'Date de naissance', as: :date, html5: true, placeholder: 'Date de naissance' %>
+        <%= f.input :birthday, label: 'Date de naissance', as: :string, placeholder: 'Date de naissance', input_html: { data: { controller: "datepickr" } , style: "padding: 0.5rem; width: 100%;" } %>
         <p><%= f.input :time_between_feed, label: 'Temps entre les tétées en heures', as: :integer, placeholder: 'Temps entre les tétées en heures' %></p>
         <%= f.submit "Sauvegarder", class: "button-standard-dark", data: { turbo_frame: "_top" } %>
     <% end %>

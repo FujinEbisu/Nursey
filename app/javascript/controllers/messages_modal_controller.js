@@ -8,7 +8,6 @@ export default class extends Controller {
   }
 
   disconnect() {
-    document.body.style.overflow = ""
   }
 
   close() {

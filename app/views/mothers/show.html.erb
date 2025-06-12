@@ -26,7 +26,7 @@
           <h6>Taille à la naissance: </h6>
           <p><%#= @mother.birth_height %> cm</p>
         </div>-->
-        <div class="pill-container-child">
+        <div class="pill-container-child-home">
           <div class="d-flex flex-row gap-2 align-items-center">
           <%= link_to "Mes enfant(s)", mother_children_path(@mother), data: { turbo: false }%>
 
@@ -34,7 +34,8 @@
         <i class="fa-solid fa-plus"></i>
       <% end %>
           </div>
-          <div class="mother-details-child">
+          <div class="mother-details-child">  
+
             <% @mother.children.each do |child| %>
               <div class="d-flex flex-column align-items-center">
                 <%= child.first_name %>
@@ -70,18 +71,17 @@
           </div>
         </div>
       </div>
+      <div class="mother-details-buttons">
+        <%= link_to edit_mother_path(@mother) do %>
+          <div class="button-standard-dark">
+            Editer Informations Personnelles
+          </div>
+        <% end %>
+        <%= link_to "Effacer mon profil", registration_path(current_user), data: { 
+          turbo_method: :delete, 
+          turbo_confirm: "Êtes-vous sûr de vouloir effacer votre profil ? Cette action est irréversible.", 
+          turbo_frame: "_top" } %>
+      </div>
     </div>
   <% end %>
-  <div class="mother-details-buttons d-flex flex-column text-center justify-content-center align-items-center gap-4 mt-3 mx-3">
-  <div>
-    <%= link_to "Editer Informations Personnelles", edit_mother_path(@mother), class: "button-standard-dark p-3" %>
-    </div>
-    <div>
-    <%= link_to "Effacer mon profil", registration_path(current_user), data: {
-                                                                      turbo_method: :delete,
-                                                                      turbo_confirm: "Êtes-vous sûr de vouloir effacer votre profil ? Cette action est irréversible.",
-                                                                      class: "link",
-                                                                      turbo_frame: "_top" } %>
-                                                                      </div>
-  </div>
 </div>

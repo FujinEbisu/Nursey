@@ -1,3 +1,4 @@
+
 // Specific CSS for your home-page
 .home-container {
   display: flex;
@@ -5,8 +6,8 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  height: 100vh;
   width: 100vw;
+  height: 100vh;
 }
 
 .button-container {
@@ -56,11 +57,12 @@
     display: flex;
     justify-content: center;
     position: relative;
+    padding: 1rem;
 
 }
 
 .phone-mockup-image {
-    height: 400px;
+    height: fit-content;
     width: 100%;
     object-fit: cover;
 }
