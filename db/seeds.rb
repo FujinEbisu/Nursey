@@ -56,8 +56,8 @@ puts "db destroyed"
     child_id: Child.last.id,
     quantity_left: Faker::Number.decimal(l_digits: 1, r_digits: 2),
     quantity_right: Faker::Number.decimal(l_digits: 1, r_digits: 2),
-    time_left: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :default),
-    time_right: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :default),
+    time_left: rand(1..300),
+    time_right: rand(1..300),
     mood: rand(1..5),
     comment: Faker::Lorem.sentence(word_count: 10)
   )
