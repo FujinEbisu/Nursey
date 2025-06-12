@@ -3,7 +3,7 @@
 <div class="container-chatbot">
   <h1>Votre assistant maternel</h1>
   <div class="message-container">
-    <div class="message-content-assistant" id="questions" data-controller="messages-modal" data-messages-modal-target="container" >
+    <div class="message-content-assistant" id="questions" data-controller="messages-modal scroll" data-messages-modal-target="container" data-scroll-target="container" style="scroll-behavior: auto;">
       <% @questions.each do |question| %>
         <%= render "questions/question", question: question %>
       <% end %>
@@ -12,6 +12,7 @@
       <%= render "form", question: @question %>
       <div id="scroll-anchor"></div>
     </div>
+  </div>
   </div>
 
   <div class="button-container">

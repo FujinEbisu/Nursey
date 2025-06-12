@@ -29,7 +29,12 @@
         <div class="mother-details-child">  
         <div class="pill-container-child ">
           <div class="d-flex flex-row gap-2">
-            <h6>Mes enfant(s)</h6>
+      <%= link_to mother_children_path(@mother), data: { turbo_frame: "_top" } do %>
+        <h6>Mes enfant(s)</h6>
+      <% end %>
+      <%= link_to new_mother_child_path(@mother), data: { turbo_frame: "_top" } do %>
+        <i class="fa-solid fa-plus"></i>
+      <% end %>
           </div>
             <% @mother.children.each do |child| %>
               <div class="d-flex flex-column align-items-center">
