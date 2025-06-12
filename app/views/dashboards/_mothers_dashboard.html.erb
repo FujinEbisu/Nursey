@@ -39,8 +39,12 @@ zone de generation de données a metre dans le controller plus tard
     <h6 class="mt-1">Nous vous conseillons de prendre un peu de temps pour vous poser et de vous détendre</h4>
   </div>
   <% elsif avg_mood == 1 %>
-  <%= link_to new_message_path, class: "dashboard-card mt-4" do %>
+  <%= link_to new_chat_path, class: "dashboard-card mt-4" do %>
+   <div class="dashboard-card mt-1">
+    <h4 style="">Humeur générale</h4>
+    <h4 class="mt-1"><%= mood_icon %></h4>
     <h6 style="font-size: 0.7rem;">Contactez un expert pour vous aider, il suffit de cliquer <strong>ICI</strong></h6>
+    </div>
   <% end %>
   <% else avg_mood >= 4 %>
     <div class="dashboard-card mt-4">
@@ -53,7 +57,7 @@ zone de generation de données a metre dans le controller plus tard
 
 <div class="dashboard-section">
 <h6>
-  Ready to populate lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+
 </h6>
 </div>
 
