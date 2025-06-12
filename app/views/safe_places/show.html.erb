@@ -17,9 +17,15 @@
       <p><%= @safe_place.adress %></p>
       <% avg_rating = @safe_place.average_rating %>
       <% rating_count = @safe_place.rating_count%>
-      <p><strong><%= avg_rating %> <%=  avg_rating == 0 ? "⭐" * avg_rating : "⭐" * avg_rating %> (<%= rating_count %> avis)</strong></p>
-    </div>
 
+      <p><strong><%= avg_rating %> <%=  avg_rating == 0 ? "⭐" * avg_rating : "⭐" * avg_rating %> (<%= rating_count %> avis)</strong></p>
+            <% if @safe_place.reviews.count == 0 %>
+            <div class="mt-3">
+      <h5>N'oubliez pas de laisser un avis</h5>
+      </div>
+    <% end %>
+
+    </div>
     <div class="pills">
       <% @safe_place.options.each do |option| %>
         <p class="pill"><%= option %></p>
