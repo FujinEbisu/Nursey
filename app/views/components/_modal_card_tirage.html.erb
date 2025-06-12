@@ -4,7 +4,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
        <div class="modal-header justify-content-center">
-        <h5 class="modal-title" id="exampleModalLabel">Tetee</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Tétée</h5>
       </div>
       <div class="modal-body">
         <div class="row">
@@ -14,15 +14,15 @@
           <%= f.input :nursy_type, as: :hidden, input_html: { value: "Tetee" } %>
           <%= f.input :time_left, wrapper_html: { class: 'form-group' }, input_html: { class: 'form-input-modal', data: { chronometer_target: "inputleft1"} }, label: "Gauche"%>
           <%= f.input :time_right, wrapper_html: { class: 'form-group' }, input_html: { class: 'form-input-modal', data: { chronometer_target: "inputright1"} }, label: "Droite" %>
-          <%= f.input :comment %>
+          <%= f.input :comment, label: "Commentaire" %>
         <div class="form-inline">
           <%= f.input :mood, as: :radio_buttons, collection: Feed.moods.keys.map {
             |mood| [emoji_for_mood(mood), mood] }, item_wrapper_class: 'emoji-option', label_method: :first, value_method: :last, input_html: {class:"emoji-radio"} %>
         </div>
         <%= f.error :mood %>
-         <%= f.input :child_id, as: :select, collection: @mother.children.map { |c| [c.first_name, c.id] }, prompt: "Select child" %>
+         <%= f.input :child_id, as: :select, collection: @mother.children.map { |c| [c.first_name, c.id] }, prompt: "Sélectionner un enfant", label: "Enfant" %>
           <div class="d-flex justify-content-center">
-            <%= f.button :submit, class: 'button-standard-dark'%>
+            <%= f.button :submit, "Créer une entrée", class: 'button-standard-dark'%>
           </div>
         <% end %>
       </div>
