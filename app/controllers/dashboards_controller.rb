@@ -20,8 +20,8 @@ class DashboardsController < ApplicationController
 
         # 3. Average duration per day (Tetee only, minutes)
         @duration_per_day   = days.map do |d|
-            left  = feeds_last_week.where(nursy_type: "Tetee",  created_at: d.all_day).average("EXTRACT(EPOCH FROM time_left )")
-            right = feeds_last_week.where(nursy_type: "Tetee",  created_at: d.all_day).average("EXTRACT(EPOCH FROM time_right)")
+            left  = feeds_last_week.where(nursy_type: "Tetee", created_at: d.all_day).average(:time_left)
+            right = feeds_last_week.where(nursy_type: "Tetee", created_at: d.all_day).average(:time_right)
             avg_seconds = ([left,0].max + [right,0].max) / 2 rescue 0
             (avg_seconds / 60).round(1)
         end
@@ -70,15 +70,15 @@ private
     end
 
     def mother_params
-        params.require(:mother).permit(:first_name, :last_name, :email, :password, :password_confirmation) 
+        params.require(:mother).permit(:first_name, :last_name, :email, :password, :password_confirmation)
     end
 
     def doctor_params
-        params.require(:doctor).permit(:first_name, :last_name, :email, :password, :password_confirmation) 
+        params.require(:doctor).permit(:first_name, :last_name, :email, :password, :password_confirmation)
     end
 
     def user_params
-        params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation) 
+        params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
     end
 
 end

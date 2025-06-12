@@ -34,7 +34,7 @@
 
   <div class="user_welcome" data-menu-bar-mother-target="user_welcome">
     <!--  change email for name -->
-    <h1 class="welcome-text">Bienvenue <%= @doctor.first_name %></h1>
+    <h1 class="welcome-text">Bienvenue <%= @doctor.first_name.capitalize %></h1>
   </div>
 
 <%= link_to 'Discussions', chats_path, class: "button-home", data: { menu_bar_mother_target: "nouvelle_tete" } %>

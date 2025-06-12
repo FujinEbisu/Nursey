@@ -1,5 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 import flatpickr from "flatpickr";
+import "flatpickr/dist/l10n/fr.js"
 
 // Connects to data-controller="datepickr"
 export default class extends Controller {
@@ -8,6 +9,7 @@ export default class extends Controller {
     flatpickr(this.element, {
       dateFormat: "Y-m-d",
       defaultDate: new Date(),
+      locale: "fr",
 
 
 })

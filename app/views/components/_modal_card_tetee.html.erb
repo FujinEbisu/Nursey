@@ -1,7 +1,7 @@
+<!--
 
-
-<!-- MODAL DE TETEE -->
-<div class="modal fade" id="ModalMotherTetee" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- MODAL DE TETEE -->-->
+<!--<div class="modal fade" id="ModalMotherTetee" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
        <div class="modal-header justify-content-center">
@@ -11,30 +11,118 @@
         <div class="row">
         <h6 class="fw-bolder mb-2" data-chronometer-target="totaltime1">Temps total:</h6>
         </div>
-        <%= simple_form_for [@mother, @feed], namespace: "modal_1"  do |f| %>
-          <div class="quantity-tetee">
-          <%= f.input :nursy_type, as: :hidden, input_html: { value: "Tirage" } %>
-            <p> Qt/ml:</p>
-            <%= f.input :quantity_left, wrapper_html: { class: 'form-group-tetee' }, input_html: { class: 'form-input-modal' }, label: "Gauche"%>
-            <%= f.input :quantity_right, wrapper_html: { class: 'form-group-tetee' }, input_html: { class: 'form-input-modal' }, label: "Droit" %>
-          </div>
-          <%= f.input :time_left, wrapper_html: { class: 'form-group' }, input_html: { class: 'form-input-modal', data: { chronometer_target: "inputleft"} }, label: "Temps Gauche" %>
-          <%= f.input :time_right, wrapper_html: { class: 'form-group' }, input_html: { class: 'form-input-modal', data: { chronometer_target: "inputright"} }, label: "Temps Droit" %>
-          <%= f.input :comment, label: "Commentaire" %>
-        <div class="form-inline">
-          <%= f.input :mood, as: :radio_buttons, collection: Feed.moods.keys.map {
+        <%#= simple_form_for [@mother, @feed], namespace: "modal_1"  do |f| %>-->
+<!--          <div class="quantity-tetee">-->
+          <%#= f.input :nursy_type, as: :hidden, input_html: { value: "Tirage" } %>
+<!--            <p> Qt/ml:</p>-->
+            <%#= f.input :quantity_left, wrapper_html: { class: 'form-group-tetee' }, input_html: { class: 'form-input-modal' }, label: "Gauche"%>
+            <%#= f.input :quantity_right, wrapper_html: { class: 'form-group-tetee' }, input_html: { class: 'form-input-modal' }, label: "Droit" %>
+<!--          </div>-->
+          <%#= f.input :time_left, wrapper_html: { class: 'form-group' }, input_html: { class: 'form-input-modal', data: { chronometer_target: "inputleft"} }, label: "Temps Gauche" %>
+          <%#= f.input :time_right, wrapper_html: { class: 'form-group' }, input_html: { class: 'form-input-modal', data: { chronometer_target: "inputright"} }, label: "Temps Droit" %>
+          <%#= f.input :comment %>
+<!--        <div class="form-inline">-->
+          <%#= f.input :mood, as: :radio_buttons, collection: Feed.moods.keys.map {
             |mood| [emoji_for_mood(mood), mood] }, item_wrapper_class: 'emoji-option', label_method: :first, value_method: :last, input_html: {class:"emoji-radio"} %>
-        </div>
-        <%= f.error :mood %>
-        <div class="d-flex justify-content-center">
-            <%= f.button :submit, "Créer une entrée", class: 'button-standard-dark'%>
+<!--        </div>-->
+        <%#= f.error :mood %>
+<!--        <div class="d-flex justify-content-center">-->
+            <%#= f.button :submit, class: 'button-standard-dark'%>
+<!--          </div>
           </div>
-          </div>
-        <% end %>
+        <%# end %>-->
       <%# <div class="modal-footer border-top-0">
         <button type="button" class="button-standard" data-bs-dismiss="modal"><a href="">Close</a></button>
         <button type="button" class="button-standard-dark"><a href="">Save changes</a></button>
       </div> %>
+<!--    </div>
+  </div>
+</div>
+-->
+
+<!-- MODAL DE TIRAGE -->
+<div class="modal fade" id="ModalMotherTetee" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header justify-content-center">
+        <h5 class="modal-title" id="exampleModalLabel">Tirage</h5>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <h6 class="fw-bolder mb-2" data-chronometer-target="totaltime1">Temps total:</h6>
+        </div>
+
+        <%= simple_form_for [@mother, @feed], namespace: "modal_1"  do |f| %>
+          <%= f.input :nursy_type, as: :hidden, input_html: { value: "Tirage" } %>
+
+          <!-- Quantités tirées -->
+          <div class="quantity-tetee">
+            <p>Qt/ml:</p>
+            <%= f.input :quantity_left,
+                        wrapper_html: { class: 'form-group-tetee' },
+                        input_html: { class: 'form-input-modal' },
+                        label: "Gauche" %>
+            <%= f.input :quantity_right,
+                        wrapper_html: { class: 'form-group-tetee' },
+                        input_html: { class: 'form-input-modal' },
+                        label: "Droit" %>
+          </div>
+
+          <!-- Temps gauche -->
+          <div class="form-group mb-3">
+            <label>Temps Gauche</label>
+            <div class="row">
+              <div class="col">
+                <%= f.input :time_left_minutes,
+                            label: "Minutes",
+                            input_html: { class: "form-input-modal", min: 0, type: :number, data: { chronometer_target: "inputleft1_minutes" } },
+                            wrapper: false %>
+              </div>
+              <div class="col">
+                <%= f.input :time_left_seconds,
+                            label: "Secondes",
+                            input_html: { class: "form-input-modal", min: 0, max: 59, type: :number, data: { chronometer_target: "inputleft1_seconds" } },
+                            wrapper: false %>
+              </div>
+            </div>
+          </div>
+
+          <!-- Temps droite -->
+          <div class="form-group mb-3">
+            <label>Temps Droit</label>
+            <div class="row">
+              <div class="col">
+                <%= f.input :time_right_minutes,
+                            label: "Minutes",
+                            input_html: { class: "form-input-modal", min: 0, type: :number, data: { chronometer_target: "inputright1_minutes" } },
+                            wrapper: false %>
+              </div>
+              <div class="col">
+                <%= f.input :time_right_seconds,
+                            label: "Secondes",
+                            input_html: { class: "form-input-modal", min: 0, max: 59, type: :number, data: { chronometer_target: "inputright1_seconds" } },
+                            wrapper: false %>
+              </div>
+            </div>
+          </div>
+
+          <%= f.input :comment %>
+
+          <div class="form-inline mb-3">
+            <%= f.input :mood, as: :radio_buttons,
+                        collection: Feed.moods.keys.map { |mood| [emoji_for_mood(mood), mood] },
+                        item_wrapper_class: 'emoji-option',
+                        label_method: :first, value_method: :last,
+                        input_html: { class: "emoji-radio" } %>
+          </div>
+
+          <%= f.error :mood %>
+
+          <div class="d-flex justify-content-center mt-3">
+            <%= f.button :submit, class: 'button-standard-dark' %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
