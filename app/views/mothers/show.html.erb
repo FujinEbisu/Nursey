@@ -28,8 +28,9 @@
         </div>-->
         <div class="pill-container-child">
           <div class="d-flex flex-row gap-2 align-items-center">
-            <h6>Mes enfant(s)</h6>
-            <%= link_to new_mother_child_path(@mother) do %>
+          <%= link_to "Mes enfant(s)", mother_children_path(@mother), data: { turbo: false }%>
+
+            <%= link_to new_mother_child_path(@mother), data: { turbo: false } do %>
         <i class="fa-solid fa-plus"></i>
       <% end %>
           </div>
