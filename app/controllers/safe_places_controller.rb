@@ -14,7 +14,6 @@ class SafePlacesController < ApplicationController
       @safe_places = SafePlace.all
       @safes_places = @safe_places.select { |safe| safe.rating_count > 2 }
     end
-    raise
     @markers = @safe_places.geocoded.map do |safe_place|
       {
         lat: safe_place.latitude,
