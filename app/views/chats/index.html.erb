@@ -1,12 +1,14 @@
 <% if current_user.userable_type === "Mother" %>
 <%= render "mothers/components/navbar_mother_mini" %>
  <div class="home-header-feed" >
-  <h1 class="feed-title">Vos discussions</h1>
+  <h1 class="feed-title">Vos discussions ouvertes</h1>
 </div>
 <div class="home-container-feed">
  <% @chats.each do |chat| %>
  <%=  render "chats/card_message_doctor", chat: chat %>
 <% end %>
+<div class="button-container">
+  <%= link_to "Archives", chats_history_path, class: "link" %>
 </div>
 <% elsif current_user.userable_type === "Doctor" %>
 <%= render "doctors/navbar_component/navbar_doctor_mini" %>

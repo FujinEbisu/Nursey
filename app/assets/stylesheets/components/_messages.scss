@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 8px;
+  padding: 0.5rem;
   align-content: center;
   background-color: var(--bg-mid);
   border-radius: 16px;
@@ -108,6 +108,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 0.7rem;
 }
 
 #new-question-form {

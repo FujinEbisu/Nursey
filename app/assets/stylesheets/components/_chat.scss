@@ -35,6 +35,7 @@
     flex-direction: column;
     margin-bottom: 1rem;
     width: 100%;
+
   }
 
   .message-info {
@@ -50,11 +51,11 @@
 
   .message.received {
     align-items: flex-start;
-    color: var(--bg-light);
+    color: var(--bg-darker);
   }
 
   .message.sent .message-content {
-    background: var(--bg-dark);
+    background: var(--bg-mid);
     color: white;
     align-self: flex-end;
     width: auto;
@@ -64,9 +65,15 @@
 
   .message.received .message-content {
     align-self: flex-start;
-    background: white;
-    
+    background: var(--bg-darker);
+    color: white;
+    width: auto;
+    max-width: 70%;
+    border: 4px solid var(--bg-mid) !important;
+
   }
+
+
 
   .message-content {
     border-radius: 1rem;
@@ -75,6 +82,8 @@
     // max-width: 70%;
     width: fit-content;
     word-wrap: break-word;
+    background: --bg-darker;
+
   }
 
   .form-control.custom-style {

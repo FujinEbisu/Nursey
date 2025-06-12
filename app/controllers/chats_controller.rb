@@ -2,7 +2,8 @@ class ChatsController < ApplicationController
 
   def index
     if current_user.userable_type == "Mother"
-    @chats = Chat.all.where(mother: current_user.userable)
+    @chats = Chat.all.where(mother: current_user.userable, status: "ouvert")
+    @mother = current_user.userable
     else
       @chats = Chat.all.where(doctor: current_user.userable, status: "ouvert")
       @doctor = current_user.userable
@@ -60,8 +61,11 @@ class ChatsController < ApplicationController
   end
 
   def history
-    @archived = Chat.all.where(doctor: current_user.userable, status: "archivé")
-    @doctor = current_user.userable
+      @archived = Chat.all.where(doctor: current_user.userable, status: "archivé")
+      @doctor = current_user.userable
+    
+      @archived = Chat.all.where(mother: current_user.userable, status: "archivé")
+      @mother = current_user.userable
   end
 
 

@@ -1,15 +1,28 @@
 <div class="card-doctor-archived">
   <div class="card-header">
-   <% if chat.mother.avatar.attached? %>
+   <% if current_user.userable_type == "Doctor" && chat.mother.avatar.attached? %>
         <div id="avatar">
           <%= cl_image_tag chat.mother.avatar.key,  gravity: "auto", height: 600, width: 600, crop: :fill, class: "avatar" %>
         </div>
+        <% elsif current_user.userable_type == "Mother" && chat.doctor.avatar.attached? %>
+          <div id="avatar">
+            <%= cl_image_tag chat.doctor.avatar.key,  gravity: "auto", height: 600, width: 600, crop: :fill, class: "avatar" %>
+          </div>
         <% else %>
-          <%= image_tag "https://res.cloudinary.com/dc7iookgc/image/upload/v1747992835/samples/two-ladies.jpg", class: "avatar" %>
+          <% if current_user.userable_type == "Doctor" %>
+            <%= image_tag "https://res.cloudinary.com/dc7iookgc/image/upload/v1747992835/samples/two-ladies.jpg",  gravity: "auto", height: 600, width: 600, crop: :fill, class: "avatar" %>
+          <% else %>
+            <%= image_tag "https://res.cloudinary.com/dc7iookgc/image/upload/v1749761458/belle-jeune-femme-medecin-regardant-camera-dans-bureau_1301-7807_reziq5.avif",  gravity: "auto", height: 600, width: 600, crop: :fill, class: "avatar" %>
+          <% end %>
         <% end %>
     <div class="doctor-info">
-      <h5 class="card-title"><%= chat.mother.last_name.capitalize %></h5>
-      <p class="card-text"><%= chat.mother.first_name.capitalize %></p>
+      <% if current_user.userable_type == "Doctor" %>
+        <h5 class="card-title">Mme <%= chat.mother.last_name.capitalize %></h5>
+        <p class="card-text"><%= chat.created_at.strftime("%d/%m/%Y") %></p>
+      <% else %>
+        <h5 class="card-title">Dr. <%= chat.doctor.last_name.capitalize %></h5>
+        <p class="card-text"><%= chat.created_at.strftime("%d/%m/%Y") %></p>
+      <% end %>
     </div>
     <div>
     <%= link_to chat_path(chat), method: :post, data: { turbo: false } do %>

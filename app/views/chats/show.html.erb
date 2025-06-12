@@ -4,7 +4,7 @@
     <%= link_to "< Retour", chats_path, class: "button-standard" %>
   </div>
   <div class="container chat">
-    <h1>Chat avec nous</h1>
+    <h1>Vous parlez avec Dr. <%= @chat.doctor.first_name.capitalize %></h1>
     <%= turbo_stream_from "chat_#{@chat.id}_messages" %>
     <div id="messages" class="messages">
       <% @chat.messages.each do |message| %>
@@ -19,7 +19,7 @@
     <%= link_to "< Retour", chats_path, class: "button-standard" %>
   </div>
   <div class="container chat">
-    <h1>Chattez avec <%= @chat.mother.first_name.capitalize %></h1>
+    <h1>Vous parlez avec Mme <%= @chat.mother.first_name.capitalize %></h1>
     <%= turbo_stream_from "chat_#{@chat.id}_messages" %>
     <div id="messages" class="messages">
       <% @chat.messages.each do |message| %>

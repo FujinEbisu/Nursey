@@ -46,6 +46,13 @@ width: 100%;
   font-size: 2rem;
 }
 
+.card-title {
+  color: var(--text-darker);
+}
+
+.card-text {
+  color: var(--text-dark);
+}
 .card-doctor-archived {
 width: 100%;
     max-width: 400px;
@@ -53,7 +60,8 @@ width: 100%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin-bottom: 20px;
-    background-color: var(--bg-mid);
+    background-color: var(--bg-light);
+    border: 4px solid var(--bg-darker);
 }
 
 .container-chats-unread {
