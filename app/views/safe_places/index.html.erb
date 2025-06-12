@@ -1,6 +1,6 @@
 <%= render "mothers/components/navbar_mother_mini" %>
 
-<div class="container">
+<div class="container-mapbox">
 
   <div class="map-container">
     <div class="map"
@@ -16,7 +16,7 @@
   <div class="add-safe-place">
   <%= link_to "Ajouter un lieu", new_safe_place_path(@safe_place), class: "button-standard" %>
   </div>
-    <% @safe_places.each do |safe_place| %>
+    <% @safes_places.each do |safe_place| %>
       <% avg_rating = safe_place.average_rating %>
       <% rating_count = safe_place.rating_count %>
       <div class="safe-places-card">

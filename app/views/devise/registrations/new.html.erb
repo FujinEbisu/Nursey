@@ -32,11 +32,9 @@
     <div data-formulaire-target="doctor" class="d-none">
       <%= f.input :speciality, label: "Spécialité" %>
       <%= f.input :availibity, label: "Disponibilité",  as: :string, include_blank: false, input_html: { data: { controller: "datepickrdr", datepickrdr_dates_value: (@availability ? [@availability].to_json : nil) }}%>
-
   </div>
   <div data-formulaire-target="mother" class="d-none">
       <%= f.input :birthday, label: "Date de naissance", as: :string, include_blank: false, input_html: { data: { controller: "datepickr", datepickr_dates_value: (@date ? [@date].to_json : nil) }}%>
-
   </div>
   </div>
 
