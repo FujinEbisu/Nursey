@@ -7,9 +7,17 @@
 <% end %>
 </div>
 <div class="card-feed-title">
-  <h4 class="card-child-name"><%= feed.created_at.strftime("%d/%m/%Y") %></h3>
+  <p class="card-child-name"><%= feed.created_at.strftime("%d/%m/%Y") %></p>
   <%  if feed.nursy_type == "Tetee" && feed.child.present? %>
-    <h4 class="card-child-name"><%= feed.child.first_name %></h3>
+    <div class="no-style">
+      <h4 class="card-child-name"><%= feed.child.first_name %></h4>
+      <p class="card-child-name"><%= feed.time_left + feed.time_right %> min</p>
+    </div>
+  <%  elsif feed.nursy_type == "Tirage" %>
+    <div class="no-style">
+      <h5 class="card-child-name">Tirage</h5>
+      <p class="card-child-name"><%= (feed.quantity_left.to_f + feed.quantity_right.to_f) %> ml</p>
+    </div>
   <% end %>
   </div>
 <div class="card-feed-content">
