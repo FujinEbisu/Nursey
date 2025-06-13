@@ -11,7 +11,7 @@
   <%  if feed.nursy_type == "Tetee" && feed.child.present? %>
     <div class="no-style">
       <h4 class="card-child-name"><%= feed.child.first_name %></h4>
-      <p class="card-child-name"><%= feed.time_left + feed.time_right %> min</p>
+      <p class="card-child-name"><%= feed.time_left_minutes + feed.time_right_minutes %> min <%= feed.time_left_seconds + feed.time_right_seconds %> s</p>
     </div>
   <%  elsif feed.nursy_type == "Tirage" %>
     <div class="no-style">

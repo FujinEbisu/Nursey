@@ -56,7 +56,6 @@ class FeedsController < ApplicationController
 
     @mother = current_user.userable
     @feed = Feed.find(params[:id])
-
     if @feed.update(feed_params)
       redirect_to mother_feed_path(@feed), notice: 'La Tetée a bien été modifiée.'
     else

@@ -10,7 +10,16 @@
         <!-- Time -->
         <p>Temps:</p>
         <div class="time-left-show">
-          <%= f.input :time_left, wrapper_html: { class: 'form-group-edit' }, input_html: { class: 'form-input-edit-feed' }, label_html: { class: 'd-none' } %>
+          <div class="row">
+            <div class="col">
+              <%= f.input :time_left_minutes, label: "Minutes", 
+                          input_html: { class: "form-input-edit-feed", min: 0, type: :number } %>
+            </div>
+            <div class="col">
+              <%= f.input :time_left_seconds, label: "Secondes", 
+                          input_html: { class: "form-input-edit-feed", min: 0, max: 59, type: :number } %>
+            </div>
+          </div>
         </div>
         <!-- Quantity -->
         <%  if @feed.nursy_type == "Tirage" %>
@@ -27,7 +36,16 @@
         <!-- Time -->
         <p>Temps:</p>
         <div class="time-right-show">
-          <%= f.input :time_right, wrapper_html: { class: 'form-group-edit' }, input_html: { class: 'form-input-edit-feed' }, label_html: { class: 'd-none'} %>
+          <div class="row">
+            <div class="col">
+              <%= f.input :time_right_minutes, label: "Minutes", 
+                          input_html: { class: "form-input-edit-feed", min: 0, type: :number } %>
+            </div>
+            <div class="col">
+              <%= f.input :time_right_seconds, label: "Secondes", 
+                          input_html: { class: "form-input-edit-feed", min: 0, max: 59, type: :number } %>
+            </div>
+          </div>
         </div>
         <!-- Quantity -->
         <%  if @feed.nursy_type == "Tirage" %>
