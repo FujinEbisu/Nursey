@@ -20,7 +20,7 @@ class AvailabilitiesController < ApplicationController
           render :new, status: :unprocessable_entity
         end
       end
-      redirect_to doctor_path(@doctor), notice: "Disponibilités mises à jour."
+      redirect_to doctor_path(@doctor), notice: 'Disponibilités mises à jour.'
   end
 
   def update
