@@ -1,7 +1,7 @@
 <!--
   zone de generation de données a metre dans le controller plus tard
 -->
-<% avg_mood = Feed.average(:mood).to_i %>
+<% avg_mood = @mother.feeds.where(created_at: 30.days.ago..Time.current).average(:mood).to_i %>
 <% mood_string = Feed.moods.key(avg_mood) %>
 <% mood_options = {
   "😁" => 5,

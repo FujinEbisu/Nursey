@@ -16,11 +16,12 @@ class AvailabilitiesController < ApplicationController
       @lol = Availability.new
       @lol.date = date
       @lol.doctor = @doctor
-        unless @lol.save
-          render :new, status: :unprocessable_entity
-        end
+      if @lol.save
+        redirect_to doctor_path(@doctor), notice: 'Disponibilités mises à jour.'
+      else
+        render :new, status: :unprocessable_entity
       end
-      redirect_to doctor_path(@doctor), notice: 'Disponibilités mises à jour.'
+
   end
 
   def update
