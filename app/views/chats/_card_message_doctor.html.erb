@@ -9,6 +9,7 @@
         <% end %>
       </div>
     <div class="doctor-info">
+    <p style="font-size: 12px;"><%= chat.created_at.strftime("%d %m %Y") %></p>
       <h5 class="card-title"><%= chat.doctor.last_name.capitalize %></h5>
       <p class="card-text"><%= chat.doctor.speciality.capitalize %></p>
     </div>

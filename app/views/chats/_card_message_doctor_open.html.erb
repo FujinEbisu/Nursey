@@ -1,4 +1,4 @@
-<div class="card-doctor <%="read" if chat.unread %>" id="newmessage-<%= chat.id %>">
+<div class="card-doctor-open <%="read" if chat.unread %>" id="newmessage-<%= chat.id %>">
   <div class="card-header">
    <% if chat.mother.avatar.attached? %>
         <div id="avatar">
@@ -8,14 +8,17 @@
           <%= image_tag "https://res.cloudinary.com/dc7iookgc/image/upload/v1747992835/samples/two-ladies.jpg", class: "avatar" %>
         <% end %>
     <div class="doctor-info">
-    <p style="font-size: 12px;"><%= chat.created_at.strftime("%d %m %Y") %></p>
+<p style="font-size: 12px;"><%= chat.created_at.strftime("%d %m %Y") %></p>
       <h5 class="card-title"><%= chat.mother.last_name.capitalize %></h5>
       <p class="card-text"><%= chat.mother.first_name.capitalize %></p>
+
     </div>
     <div>
+
     <%= link_to chat_path(chat), method: :post, data: { turbo: false } do %>
     <i class="fa-solid fa-eye"></i>
     <% end %>
+
   </div>
 </div>
 </div>

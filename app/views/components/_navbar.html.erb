@@ -12,14 +12,14 @@
         <% if user_signed_in? %>
           <li class="nav-item dropdown">
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Dashboard", "#", class: "dropdown-item" %>
+              <%= link_to "Vos données", "#", class: "dropdown-item" %>
               <%= link_to "Conseils", "#", class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to "Dashboard", "#", class: "dropdown-item" %>
+            <%= link_to "Vos données", "#", class: "dropdown-item" %>
             <%= link_to "Conseils", "#", class: "dropdown-item" %>
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
           </li>

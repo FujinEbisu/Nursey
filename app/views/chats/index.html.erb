@@ -5,7 +5,7 @@
 </div>
 <div class="home-container-feed">
  <% @chats.each do |chat| %>
- <%=  render "chats/card_message_doctor", chat: chat %>
+ <%=  render "chats/card_message_doctor_open", chat: chat %>
 <% end %>
 <div class="button-container">
   <%= link_to "Archives", chats_history_path, class: "link" %>

@@ -28,9 +28,9 @@
       <% if current_page?(mothers_path) %>
       <%= link_to "Profil", mother_path(@mother), class: "menu-item" %>
       <% end %>
-      <%= link_to "Dashboard", dashboard_index_path, class: "menu-item" %>
+      <%= link_to "Vos données", dashboard_index_path, class: "menu-item" %>
       <%= link_to "Historique", mother_feeds_path(@mother), class: "menu-item" %>
-      <%= link_to "Bébé Bienvenu", safe_places_path, class: "menu-item" %>
+      <%= link_to "Douces escales", safe_places_path, class: "menu-item" %>
       <% if user_signed_in? %>
         <%= link_to "Déconnexion", destroy_user_session_path, data: {turbo_method: :delete}, class: "menu-item" %>
       <% else %>

@@ -33,21 +33,21 @@
   </div>
 
   <% if avg_mood == 2 || avg_mood == 3 %>
-    <div class="dashboard-card mt-4">
+    <div class="dashboard-card-humeur mt-2">
       <h4 style="">Humeur générale</h4>
       <h4 class="mt-1"><%= mood_icon %></h4>
       <h6 class="mt-1">N'oubliez pas de prendre du temps pour vous</h4>
     </div>
   <% elsif avg_mood == 1 %>
-  <%= link_to new_chat_path, class: "dashboard-card mt-4" do %>
-   <div class="dashboard-card mt-1">
+  <%= link_to new_chat_path, class: "dashboard-card-humeur mt-2" do %>
+   <div class="dashboard-card-humeur mt-1">
     <h4 style="">Humeur générale</h4>
     <h4 class="mt-1"><%= mood_icon %></h4>
     <h6 style="font-size: 0.7rem;">Contactez un expert pour vous aider, il suffit de cliquer <strong>ICI</strong></h6>
     </div>
   <% end %>
   <% else avg_mood >= 4 %>
-    <div class="dashboard-card mt-4">
+    <div class="dashboard-card-humeur mt-2">
       <h4 style="">Humeur générale</h4>
       <h4 class="mt-1"><%= mood_icon %></h4>
       <h6 class="mt-1">Tout se passe bien, continuez comme ca !</h6>
