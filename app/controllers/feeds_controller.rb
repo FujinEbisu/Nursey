@@ -75,10 +75,11 @@ class FeedsController < ApplicationController
   private
 
   def feed_params
-    params.require(:feed).permit( :nursy_type, :comment, :mood, :child_id,
-    :time_left, :time_right,
-    :quantity_left, :quantity_right
-  )
+    params.require(:feed).permit( :nursy_type, :comment, 
+                                  :mood, :child_id,
+                                  :time_left, :time_right,
+                                  :quantity_left, :quantity_right
+    )
   end
 
   def set_feed

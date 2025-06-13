@@ -2,6 +2,7 @@ class DashboardsController < ApplicationController
     before_action :mother, :doctor, :user, :feeds, :moods, only: [:index]
 
     def index
+        
         feed_count
 
         feeds_last_week     = @Feeds.where(created_at: 7.days.ago..Time.current)
@@ -50,7 +51,7 @@ private
     end
 
     def mother
-        @mother = current_user.userable
+        @mother = current_user.userable if current_user.userable.is_a?(Mother)
     end
 
     def feeds
@@ -67,6 +68,7 @@ private
 
     def user
         @user = current_user
+
     end
 
     def mother_params
