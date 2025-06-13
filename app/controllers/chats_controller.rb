@@ -61,13 +61,14 @@ class ChatsController < ApplicationController
   end
 
   def history
+    if current_user.userable_type == "Doctor"
       @archived = Chat.all.where(doctor: current_user.userable, status: "archivé")
       @doctor = current_user.userable
-    
+    else current_user.userable_type == "Mother"
       @archived = Chat.all.where(mother: current_user.userable, status: "archivé")
       @mother = current_user.userable
   end
-
+end
 
   private
   def chat_params

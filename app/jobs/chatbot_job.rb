@@ -51,8 +51,8 @@ class ChatbotJob < ApplicationJob
       2. Si la question ne concerne PAS la maternité, l'allaitement ou les soins du bébé : réponds exactement 'Je ne suis pas apte à répondre à ce genre de demande. Pour d'autres questions médicales, consultez un professionnel de santé.'
       3. Si tu détectes des symptômes graves (fièvre, infection, douleur INTENSE) : et indique que ces conseils ne sont pas un diagnostic médical, donne des possibilités de solutions et termine toujours par 'Contactez un professionnel de santé pour une consultation, consultez un docteur disponible' avec le lien <a href='/chats/new'>Consulter un docteur</a>
       4. Si la question est une demande de conseil, réponds avec des conseils pratiques en HTML
-      5. Si la question est une demande d'endroit ou les mamans peuvent se retrouver, réponds avec le lien <a href='/safe_places'>Bébé Bienvenu</a>
-      
+      5. Si la question est une demande d'endroit ou les mamans peuvent se retrouver, réponds avec le lien <a href='/safe_places'>Douces escales</a>
+
       EXEMPLES DE QUESTIONS ACCEPTÉES :
       - Questions sur l'allaitement (positions, fréquence, problèmes)
       - Conseils pour nouvelles mamans
